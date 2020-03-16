@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MTGCounter</string>
+    <string name="plus">＋</string>
+    <string name="minus">−</string>
 </resources>
