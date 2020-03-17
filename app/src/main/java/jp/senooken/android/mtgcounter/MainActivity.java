@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
 
     private int life1_ = 20;
     private SimpleAdapter adapter1_;
-    private List<Map<String, Integer>> history1_ = new ArrayList<Map<String, Integer>>();
+    private List<Map<String, Integer>> history1_ = new ArrayList<>();
     private int life2_ = 20;
     private SimpleAdapter adapter2_;
-    private List<Map<String, Integer>> history2_ = new ArrayList<Map<String, Integer>>();
+    private List<Map<String, Integer>> history2_ = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,24 @@ public class MainActivity extends AppCompatActivity {
         history2.setAdapter(adapter2_);
     }
 
+    public void onCommitButtonClick(View view) {
+        HashMap<String, Integer>turn1 = new HashMap<>();
+        turn1.put("turnGlobal", turnGlobal_);
+        turn1.put("turnLocal", turnGlobal_/2+turnGlobal_%2);
+        turn1.put("turnLife", life1_);
+        history1_.add(turn1);
+        adapter1_.notifyDataSetChanged();
+
+        HashMap<String, Integer>turn2 = new HashMap<>();
+        turn2.put("turnGlobal", turnGlobal_);
+        turn2.put("turnLocal", turnGlobal_/2+turnGlobal_%2);
+        turn2.put("turnLife", life2_);
+        history2_.add(turn2);
+        adapter2_.notifyDataSetChanged();
+
+        ++turnGlobal_;
+    }
+
     public void onPlusButton1Click(View view) {
         ++life1_;
         TextView life = findViewById(R.id.life1);
@@ -49,15 +67,6 @@ public class MainActivity extends AppCompatActivity {
         --life1_;
         TextView life = findViewById(R.id.life1);
         life.setText(String.valueOf(life1_));
-    }
-    public void onCommitButton1Click(View view) {
-        HashMap<String, Integer>map = new HashMap<String, Integer>();
-        map.put("turnGlobal", turnGlobal_);
-        map.put("turnLocal", turnGlobal_/2+turnGlobal_%2);
-        map.put("turnLife", life1_);
-        history1_.add(map);
-        adapter1_.notifyDataSetChanged();
-        ++turnGlobal_;
     }
 
     public void onPlusButton2Click(View view) {
@@ -69,14 +78,5 @@ public class MainActivity extends AppCompatActivity {
         --life2_;
         TextView life = findViewById(R.id.life2);
         life.setText(String.valueOf(life2_));
-    }
-    public void onCommitButton2Click(View view) {
-        HashMap<String, Integer>map = new HashMap<String, Integer>();
-        map.put("turnGlobal", turnGlobal_);
-        map.put("turnLocal", turnGlobal_/2+turnGlobal_%2);
-        map.put("turnLife", life2_);
-        history2_.add(map);
-        adapter2_.notifyDataSetChanged();
-        ++turnGlobal_;
     }
 }

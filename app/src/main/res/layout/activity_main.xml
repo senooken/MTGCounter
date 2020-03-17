@@ -29,30 +29,30 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/minus1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onMinusButton1Click"
         android:text="@string/minus"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toStartOf="@+id/button5"
+        app:layout_constraintEnd_toStartOf="@+id/commit1"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/life1" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/commit1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onCommitButton1Click"
+        android:onClick="onCommitButtonClick"
         android:text="@string/commit"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/plus1"
+        app:layout_constraintStart_toEndOf="@+id/minus1"
         app:layout_constraintTop_toBottomOf="@+id/life1" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/plus1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onPlusButton1Click"
@@ -60,7 +60,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button5"
+        app:layout_constraintStart_toEndOf="@+id/commit1"
         app:layout_constraintTop_toBottomOf="@+id/life1" />
 
     <ListView
@@ -84,30 +84,30 @@
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/minus2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onMinusButton2Click"
         android:text="@string/minus"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button6"
+        app:layout_constraintEnd_toStartOf="@+id/commit2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/life2" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/commit2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onCommitButton2Click"
+        android:onClick="onCommitButtonClick"
         android:text="@string/commit"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
-        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@+id/plus2"
+        app:layout_constraintStart_toEndOf="@+id/minus2"
         app:layout_constraintTop_toBottomOf="@+id/life2" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/plus2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onPlusButton2Click"
@@ -115,7 +115,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button6"
+        app:layout_constraintStart_toEndOf="@+id/commit2"
         app:layout_constraintTop_toBottomOf="@+id/life2" />
 
     <androidx.constraintlayout.widget.Guideline
