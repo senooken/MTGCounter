@@ -4,5 +4,7 @@
     <string name="plus">＋</string>
     <string name="minus">−</string>
     <string name="commit">COMMIT</string>
-    <string name="hint">Life value</string>
+    <string name="pending">PENDING</string>
+    <string name="turn_hint">Life</string>
+    <string name="comment">COMMENT</string>
 </resources>

@@ -1,27 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<HorizontalScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/turnGlobal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
-    <TextView
-        android:id="@+id/turnLocal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+    <LinearLayout
 
-    <EditText
-        android:id="@+id/turnLife"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:autofillHints=""
-        android:hint="@string/hint"
-        android:inputType="number"
-        tools:text="@string/life" tools:targetApi="o"/>
-</LinearLayout>
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/turnGlobal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/turnLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <EditText
+            android:id="@+id/turnLife"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:ems="3"
+            android:hint="@string/turn_hint"
+            android:inputType="number"
+            android:maxLength="5"
+            tools:targetApi="o"
+            tools:text="@string/life" />
+
+        <EditText
+            android:id="@+id/turnComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:autofillHints=""
+            android:hint="@string/comment"
+            android:inputType="text"
+            tools:targetApi="o" />
+
+    </LinearLayout>
+
+
+</HorizontalScrollView>
+
+
+
+

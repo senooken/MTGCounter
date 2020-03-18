@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    >
 
     <ListView
         android:id="@+id/history1"
@@ -28,6 +31,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/comment1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:inputType="text"
+        android:hint="@string/comment"
+        app:layout_constraintBottom_toTopOf="@+id/minus1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/life1" tools:targetApi="o" />
+
     <Button
         android:id="@+id/minus1"
         android:layout_width="wrap_content"
@@ -35,20 +50,10 @@
         android:onClick="onMinusButton1Click"
         android:text="@string/minus"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toStartOf="@+id/commit1"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/life1" />
-
-    <Button
-        android:id="@+id/commit1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onCommitButtonClick"
-        android:text="@string/commit"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toStartOf="@+id/plus1"
-        app:layout_constraintStart_toEndOf="@+id/minus1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/history1"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/life1" />
 
     <Button
@@ -60,14 +65,38 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/commit1"
+        app:layout_constraintStart_toEndOf="@+id/minus1"
         app:layout_constraintTop_toBottomOf="@+id/life1" />
+
+    <Button
+        android:id="@+id/pending1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onPendingButton1Click"
+        android:text="@string/pending"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/commit1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/minus1" />
+
+    <Button
+        android:id="@+id/commit1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onCommitButtonClick"
+        android:text="@string/commit"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pending1"
+        app:layout_constraintTop_toBottomOf="@+id/plus1" />
 
     <ListView
         android:id="@+id/history2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/life2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/history1" />
@@ -83,6 +112,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
+    <EditText
+        android:id="@+id/comment2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="@string/comment"
+        app:layout_constraintBottom_toTopOf="@+id/minus2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/life2"
+        android:autofillHints="" tools:targetApi="o" />
+
     <Button
         android:id="@+id/minus2"
         android:layout_width="wrap_content"
@@ -90,20 +131,9 @@
         android:onClick="onMinusButton2Click"
         android:text="@string/minus"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/commit2"
+        app:layout_constraintEnd_toStartOf="@+id/plus2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/life2" />
-
-    <Button
-        android:id="@+id/commit2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onCommitButtonClick"
-        android:text="@string/commit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/plus2"
-        app:layout_constraintStart_toEndOf="@+id/minus2"
         app:layout_constraintTop_toBottomOf="@+id/life2" />
 
     <Button
@@ -115,8 +145,31 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/commit2"
+        app:layout_constraintStart_toEndOf="@+id/minus2"
         app:layout_constraintTop_toBottomOf="@+id/life2" />
+
+    <Button
+        android:id="@+id/pending2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onPendingButton2Click"
+        android:text="@string/pending"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/commit2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/minus2" />
+
+    <Button
+        android:id="@+id/commit2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onCommitButtonClick"
+        android:text="@string/commit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pending2"
+        app:layout_constraintTop_toBottomOf="@+id/plus2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
