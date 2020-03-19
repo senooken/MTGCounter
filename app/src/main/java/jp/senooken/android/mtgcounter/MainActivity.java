@@ -2,8 +2,14 @@ package jp.senooken.android.mtgcounter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -35,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        adapter1_ = new SimpleAdapter(this, history1_, R.layout.turn, FROM, TO);
+        adapter1_ = new HistoryListAdapter(this, history1_);
         ListView history1 = findViewById(R.id.history1);
         history1.setAdapter(adapter1_);
 
-        adapter2_ = new SimpleAdapter(this, history2_, R.layout.turn, FROM, TO);
+        adapter2_ = new HistoryListAdapter(this, history2_);
         ListView history2 = findViewById(R.id.history2);
         history2.setAdapter(adapter2_);
     }
@@ -113,5 +119,58 @@ public class MainActivity extends AppCompatActivity {
         --life2_;
         TextView life = findViewById(R.id.life2);
         life.setText(String.valueOf(life2_));
+    }
+
+    private class HistoryListAdapter extends SimpleAdapter {
+        private final List<? extends Map<String, String>> data_;
+
+        HistoryListAdapter(Context context, List<? extends Map<String, String>> data) {
+            super(context, data, R.layout.turn, FROM, TO);
+            data_ = data;
+        }
+
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            convertView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.turn, parent, false);
+
+            TextView turnGlobal = convertView.findViewById(R.id.turnGlobal);
+            turnGlobal.setText(data_.get(position).get("turnGlobal"));
+            TextView turnLocal = convertView.findViewById(R.id.turnLocal);
+            turnLocal.setText(data_.get(position).get("turnLocal"));
+
+            final EditText turnLife = convertView.findViewById(R.id.turnLife);
+            turnLife.setText(data_.get(position).get("turnLife"));
+            turnLife.addTextChangedListener(new HistoryWatcher(data_.get(position), "turnLife"));
+
+            EditText turnComment = convertView.findViewById(R.id.turnComment);
+            turnComment.setText(data_.get(position).get("turnComment"));
+            turnComment.addTextChangedListener(new HistoryWatcher(data_.get(position), "turnComment"));
+
+            return convertView;
+        }
+
+        private class ViewHolder(View view) {
+            
+        }
+
+        private class HistoryWatcher implements TextWatcher {
+            private Map<String, String> map_;
+            private String key_;
+            HistoryWatcher(Map<String, String> map, String key) {
+                map_ = map;
+                key_ = key;
+            }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                map_.put(key_, s.toString());
+            }
+        }
     }
 }
