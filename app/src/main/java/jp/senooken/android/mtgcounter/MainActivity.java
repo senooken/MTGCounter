@@ -6,10 +6,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -131,8 +129,9 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
-            convertView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.turn, parent, false);
+            if (convertView == null) {
+                convertView = getLayoutInflater().inflate(R.layout.turn, parent, false);
+            }
 
             TextView turnGlobal = convertView.findViewById(R.id.turnGlobal);
             turnGlobal.setText(data_.get(position).get("turnGlobal"));
@@ -148,10 +147,6 @@ public class MainActivity extends AppCompatActivity {
             turnComment.addTextChangedListener(new HistoryWatcher(data_.get(position), "turnComment"));
 
             return convertView;
-        }
-
-        private class ViewHolder(View view) {
-            
         }
 
         private class HistoryWatcher implements TextWatcher {
