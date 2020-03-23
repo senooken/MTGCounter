@@ -26,12 +26,12 @@ public class MainActivity extends AppCompatActivity {
 
     private int life1_ = 20;
     private SimpleAdapter adapter1_;
-    private List<Map<String, String>> history1_ = new ArrayList<>();
+    private final List<Map<String, String>> history1_ = new ArrayList<>();
     private String comment1_ = "";
 
     private int life2_ = 20;
     private SimpleAdapter adapter2_;
-    private List<Map<String, String>> history2_ = new ArrayList<>();
+    private final List<Map<String, String>> history2_ = new ArrayList<>();
     private String comment2_ = "";
 
     @Override
@@ -48,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
         history2.setAdapter(adapter2_);
     }
 
-
-    public void onCommitButtonClick(View view) {
+    public void onCommitButtonClick(@SuppressWarnings("unused") View view) {
         HashMap<String, String>turn1 = new HashMap<>();
         turn1.put("turnGlobal", String.valueOf(turnGlobal_));
         turn1.put("turnLocal", String.valueOf(turnGlobal_/2+turnGlobal_%2));
@@ -77,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         ++turnGlobal_;
     }
 
-    public void onPendingButton1Click(View view) {
+    public void onPendingButton1Click(@SuppressWarnings("unused") View view) {
         StringBuilder buffer = new StringBuilder(comment1_);
         if (!comment1_.isEmpty()) {
             buffer.append(", ");
@@ -87,18 +86,19 @@ public class MainActivity extends AppCompatActivity {
         EditText comment = findViewById(R.id.comment1);
         comment.setText(comment1_);
     }
-    public void onPlusButton1Click(View view) {
+    public void onPlusButton1Click(@SuppressWarnings("unused") View view) {
         ++life1_;
         TextView life = findViewById(R.id.life1);
         life.setText(String.valueOf(life1_));
     }
-    public void onMinusButton1Click(View view) {
+
+    public void onMinusButton1Click(@SuppressWarnings("unused") View view) {
         --life1_;
         TextView life = findViewById(R.id.life1);
         life.setText(String.valueOf(life1_));
     }
 
-    public void onPendingButton2Click(View view) {
+    public void onPendingButton2Click(@SuppressWarnings("unused") View view) {
         StringBuilder buffer = new StringBuilder(comment2_);
         if (!comment2_.isEmpty()) {
             buffer.append(", ");
@@ -108,12 +108,12 @@ public class MainActivity extends AppCompatActivity {
         EditText comment = findViewById(R.id.comment2);
         comment.setText(comment2_);
     }
-    public void onPlusButton2Click(View view) {
+    public void onPlusButton2Click(@SuppressWarnings("unused") View view) {
         ++life2_;
         TextView life = findViewById(R.id.life2);
         life.setText(String.valueOf(life2_));
     }
-    public void onMinusButton2Click(View view) {
+    public void onMinusButton2Click(@SuppressWarnings("unused") View view) {
         --life2_;
         TextView life = findViewById(R.id.life2);
         life.setText(String.valueOf(life2_));
@@ -150,8 +150,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private class HistoryWatcher implements TextWatcher {
-            private Map<String, String> map_;
-            private String key_;
+            private final Map<String, String> map_;
+            private final String key_;
             HistoryWatcher(Map<String, String> map, String key) {
                 map_ = map;
                 key_ = key;
