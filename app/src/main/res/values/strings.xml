@@ -7,4 +7,5 @@
     <string name="pending">PENDING</string>
     <string name="turn_hint">Life</string>
     <string name="comment">COMMENT</string>
+    <string name="about">About</string>
 </resources>
