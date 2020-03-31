@@ -41,6 +41,14 @@ public class AboutActivity extends AppCompatActivity {
         map.put("about_key", "Version");
         map.put("about_value", "0.x.x");
         list.add(map);
+        map = new HashMap<>();
+        map.put("about_key", "Author");
+        map.put("about_value", "SENOO, Ken");
+        list.add(map);
+        map = new HashMap<>();
+        map.put("about_key", "Contact");
+        map.put("about_value", "contact@senooken.jp");
+        list.add(map);
 
         SimpleAdapter adapter = new SimpleAdapter(this, list, R.layout.about,
                 new String[]{"about_key", "about_value"}, new int[]{R.id.about_key, R.id.about_value});
