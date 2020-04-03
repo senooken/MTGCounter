@@ -8,4 +8,5 @@
     <string name="turn_hint">Life</string>
     <string name="comment">COMMENT</string>
     <string name="about">About</string>
+    <string name="reset">Reset</string>
 </resources>

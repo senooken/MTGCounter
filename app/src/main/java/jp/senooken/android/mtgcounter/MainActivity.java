@@ -30,12 +30,12 @@ public class MainActivity extends AppCompatActivity {
 
     private int life1_ = 20;
     private SimpleAdapter adapter1_;
-    private final List<Map<String, String>> history1_ = new ArrayList<>();
+    private final ArrayList<HashMap<String, String>> history1_ = new ArrayList<>();
     private String comment1_ = "";
 
     private int life2_ = 20;
     private SimpleAdapter adapter2_;
-    private final List<Map<String, String>> history2_ = new ArrayList<>();
+    private final ArrayList<HashMap<String, String>> history2_ = new ArrayList<>();
     private String comment2_ = "";
 
     @Override
@@ -186,6 +186,14 @@ public class MainActivity extends AppCompatActivity {
         if (itemId == R.id.menu_about) {
             Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
+        } else if (itemId == R.id.menu_reset) {
+            turnGlobal_ = 1;
+            life1_ = 20;
+            history1_.clear();
+            adapter1_.notifyDataSetChanged();
+            life2_ = 20;
+            history2_.clear();
+            adapter2_.notifyDataSetChanged();
         }
         return super.onOptionsItemSelected(item);
     }
