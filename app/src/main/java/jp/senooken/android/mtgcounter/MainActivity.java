@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss", Locale.US);
         HashMap<String, String>turn1 = new HashMap<>();
         turn1.put("turnTime", sdf.format(now));
-        turn1.put("turnGlobal", String.valueOf(turnGlobal_));
-        turn1.put("turnLocal", String.valueOf(turnGlobal_/2+turnGlobal_%2));
+        turn1.put("turnGlobal", String.format(Locale.getDefault(), "%02d", turnGlobal_));
+        turn1.put("turnLocal", String.format(Locale.getDefault(), "%02d", turnGlobal_/2+turnGlobal_%2));
         turn1.put("turnLife", String.valueOf(life1_));
         turn1.put("turnComment", comment1_);
         history1_.add(turn1);
@@ -73,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
 
         HashMap<String, String>turn2 = new HashMap<>();
         turn2.put("turnTime", sdf.format(now));
-        turn2.put("turnGlobal", String.valueOf(turnGlobal_));
-        turn2.put("turnLocal", String.valueOf(turnGlobal_/2+turnGlobal_%2));
+        turn2.put("turnGlobal", String.format(Locale.getDefault(), "%02d", turnGlobal_));
+        turn2.put("turnLocal", String.format(Locale.getDefault(), "%02d", turnGlobal_/2+turnGlobal_%2));
         turn2.put("turnLife", String.valueOf(life2_));
         turn2.put("turnComment", comment2_);
         history2_.add(turn2);
