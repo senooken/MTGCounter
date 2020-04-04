@@ -17,14 +17,17 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    private final String[] FROM = {"turnGlobal", "turnLocal", "turnLife", "turnComment"};
-    private final int[] TO = {R.id.turnGlobal, R.id.turnLocal, R.id.turnLife, R.id.turnComment};
+    private final String[] FROM = {"turnTime", "turnGlobal", "turnLocal", "turnLife", "turnComment"};
+    private final int[] TO = {R.id.turnTime, R.id.turnGlobal, R.id.turnLocal, R.id.turnLife, R.id.turnComment};
 
     private int turnGlobal_ = 1;
 
@@ -53,7 +56,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onCommitButtonClick(@SuppressWarnings("unused") View view) {
+        Date now = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss", Locale.US);
         HashMap<String, String>turn1 = new HashMap<>();
+        turn1.put("turnTime", sdf.format(now));
         turn1.put("turnGlobal", String.valueOf(turnGlobal_));
         turn1.put("turnLocal", String.valueOf(turnGlobal_/2+turnGlobal_%2));
         turn1.put("turnLife", String.valueOf(life1_));
@@ -66,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         comment1.setText(comment1_);
 
         HashMap<String, String>turn2 = new HashMap<>();
+        turn2.put("turnTime", sdf.format(now));
         turn2.put("turnGlobal", String.valueOf(turnGlobal_));
         turn2.put("turnLocal", String.valueOf(turnGlobal_/2+turnGlobal_%2));
         turn2.put("turnLife", String.valueOf(life2_));
@@ -137,6 +144,8 @@ public class MainActivity extends AppCompatActivity {
                 convertView = getLayoutInflater().inflate(R.layout.turn, parent, false);
             }
 
+            TextView turnTime = convertView.findViewById(R.id.turnTime);
+            turnTime.setText(data_.get(position).get("turnTime"));
             TextView turnGlobal = convertView.findViewById(R.id.turnGlobal);
             turnGlobal.setText(data_.get(position).get("turnGlobal"));
             TextView turnLocal = convertView.findViewById(R.id.turnLocal);

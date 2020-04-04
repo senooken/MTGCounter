@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
-    >
+    android:padding="4sp"
+    tools:context=".MainActivity">
 
     <ListView
         android:id="@+id/history1"
@@ -36,12 +36,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autofillHints=""
-        android:inputType="text"
         android:hint="@string/comment"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/minus1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/life1" tools:targetApi="o" />
+        app:layout_constraintTop_toBottomOf="@+id/life1"
+        tools:targetApi="o" />
 
     <Button
         android:id="@+id/minus1"
@@ -96,7 +97,7 @@
         android:id="@+id/history2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/life2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/history1" />
@@ -116,13 +117,14 @@
         android:id="@+id/comment2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="text"
+        android:autofillHints=""
         android:hint="@string/comment"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/minus2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/life2"
-        android:autofillHints="" tools:targetApi="o" />
+        tools:targetApi="o" />
 
     <Button
         android:id="@+id/minus2"

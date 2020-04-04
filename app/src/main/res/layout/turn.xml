@@ -13,16 +13,26 @@
 
 
         <TextView
-            android:id="@+id/turnGlobal"
+            android:id="@+id/turnTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <TextView
+            android:id="@+id/turnGlobal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2sp"
+            android:layout_weight="1"
+            android:layout_marginStart="2sp" />
+
+        <TextView
             android:id="@+id/turnLocal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_marginLeft="2sp"
+            android:layout_weight="1"
+            android:layout_marginStart="2sp" />
 
         <EditText
             android:id="@+id/turnLife"
