@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
@@ -26,8 +27,10 @@ import java.util.Locale;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    private final String[] FROM = {"turnTime", "turnGlobal", "turnLocal", "turnLife", "turnComment"};
+    private final String[] FROM = {"turnTime", "turnGlobal", "turnLocal", "turnLife", "turnCommander", "turnPoison", "turnComment"};
     private final int[] TO = {R.id.turnTime, R.id.turnGlobal, R.id.turnLocal, R.id.turnLife, R.id.turnComment};
+
+    private RadioButton counter_;
 
     private int turnGlobal_ = 1;
 
@@ -46,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        counter_ = findViewById(R.id.player1_life_player);
+
         adapter1_ = new HistoryListAdapter(this, history1_);
         ListView history1 = findViewById(R.id.history1);
         history1.setAdapter(adapter1_);
@@ -55,6 +60,27 @@ public class MainActivity extends AppCompatActivity {
         history2.setAdapter(adapter2_);
     }
 
+    public void onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        if (checked) {
+            clearRadioButtonCheck((ViewGroup)view.getParent().getParent());
+            counter_ = (RadioButton) view;
+            counter_.setChecked(true);
+        }
+    }
+
+    private void clearRadioButtonCheck(ViewGroup group) {
+        for (int i = 0; i < group.getChildCount(); ++i) {
+            if (group.getChildAt(i) instanceof ViewGroup ) {
+                clearRadioButtonCheck((ViewGroup)group.getChildAt(i));
+            }
+            if (group.getChildAt(i) instanceof RadioButton) {
+                RadioButton button = (RadioButton) group.getChildAt(i);
+                button.setChecked(false);
+            }
+        }
+    }
+
     public void onCommitButtonClick(@SuppressWarnings("unused") View view) {
         Date now = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss", Locale.US);
@@ -62,7 +88,14 @@ public class MainActivity extends AppCompatActivity {
         turn1.put("turnTime", sdf.format(now));
         turn1.put("turnGlobal", String.format(Locale.getDefault(), "%02d", turnGlobal_));
         turn1.put("turnLocal", String.format(Locale.getDefault(), "%02d", turnGlobal_/2+turnGlobal_%2));
-        turn1.put("turnLife", String.valueOf(life1_));
+
+        RadioButton life1 = findViewById(R.id.player1_life_player);
+        turn1.put("turnLife", life1.getText().toString());
+        RadioButton commander1 = findViewById(R.id.player1_life_commander);
+        turn1.put("turnCommander", commander1.getText().toString());
+        RadioButton poison1 = findViewById(R.id.player1_life_poison);
+        turn1.put("turnPoison", poison1.getText().toString());
+
         turn1.put("turnComment", comment1_);
         history1_.add(turn1);
         adapter1_.notifyDataSetChanged();
@@ -102,15 +135,20 @@ public class MainActivity extends AppCompatActivity {
         comment.setText(comment1_);
     }
     public void onPlusButton1Click(@SuppressWarnings("unused") View view) {
-        ++life1_;
-        TextView life = findViewById(R.id.life1);
-        life.setText(String.valueOf(life1_));
+//        ++life1_;
+//        TextView life = findViewById(R.id.player1_life_player);
+//        life.setText(String.valueOf(life1_));
+
+        counter_.setText(String.format(Locale.getDefault(), "%02d",
+                Integer.parseInt(counter_.getText().toString())+1));
     }
 
     public void onMinusButton1Click(@SuppressWarnings("unused") View view) {
-        --life1_;
-        TextView life = findViewById(R.id.life1);
-        life.setText(String.valueOf(life1_));
+//        --life1_;
+//        TextView life = findViewById(R.id.player1_life_player);
+//        life.setText(String.valueOf(life1_));
+        counter_.setText(String.format(Locale.getDefault(), "%02d",
+                        Integer.parseInt(counter_.getText().toString())-1));
     }
 
     public void onPendingButton2Click(@SuppressWarnings("unused") View view) {

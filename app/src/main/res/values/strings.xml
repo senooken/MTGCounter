@@ -1,12 +1,28 @@
 <resources>
     <string name="app_name">MTGCounter</string>
+    <string name="zero">00</string>
     <string name="life">20</string>
     <string name="plus">＋</string>
     <string name="minus">−</string>
-    <string name="commit">COMMIT</string>
-    <string name="pending">PENDING</string>
+    <string name="commit">Commit</string>
+    <string name="pending">Pending</string>
     <string name="turn_hint">Life</string>
-    <string name="comment">COMMENT</string>
+    <string name="comment">Comment</string>
+
+    <string name="label_life">Life</string>
+    <string name="label_commander">(Commander)</string>
+    <string name="label_poison">(Poison)</string>
+    <string name="label_mana">Mana</string>
+    <string name="label_counter">Counter</string>
+    <string name="label_storm">(Storm)</string>
+    <string name="label_draw">(Draw)</string>
+    <string name="label_other">(Other)</string>
+
+    <string name="turn_time">HH:mm:ss</string>
+
+    <string name="header_timestamp">Timestamp</string>
+    <string name="header_turn">Turn</string>
+
     <string name="about">About</string>
     <string name="reset">Reset</string>
 </resources>

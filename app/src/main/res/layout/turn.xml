@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:layout_weight="1">
 
+
     <LinearLayout
 
         android:layout_width="wrap_content"
@@ -16,23 +17,26 @@
             android:id="@+id/turnTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="@string/turn_time" />
 
         <TextView
             android:id="@+id/turnGlobal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="2sp"
             android:layout_marginLeft="2sp"
             android:layout_weight="1"
-            android:layout_marginStart="2sp" />
+            tools:text="@string/zero" />
 
         <TextView
             android:id="@+id/turnLocal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="2sp"
             android:layout_marginLeft="2sp"
             android:layout_weight="1"
-            android:layout_marginStart="2sp" />
+            tools:text="@string/zero" />
 
         <EditText
             android:id="@+id/turnLife"
@@ -47,6 +51,30 @@
             tools:text="@string/life" />
 
         <EditText
+            android:id="@+id/turnCommander"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:ems="3"
+            android:hint="@string/label_commander"
+            android:inputType="number"
+            android:maxLength="5"
+            tools:targetApi="o"
+            tools:text="@string/life" />
+
+        <EditText
+            android:id="@+id/turnPoison"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:ems="3"
+            android:hint="@string/label_poison"
+            android:inputType="number"
+            android:maxLength="5"
+            tools:targetApi="o"
+            tools:text="@string/zero" />
+
+        <EditText
             android:id="@+id/turnComment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,8 +84,8 @@
             android:inputType="text"
             tools:targetApi="o" />
 
-    </LinearLayout>
 
+    </LinearLayout>
 
 </HorizontalScrollView>
 
