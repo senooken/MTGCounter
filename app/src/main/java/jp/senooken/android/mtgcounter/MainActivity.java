@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
         comment1_ = "";
         EditText comment1 = findViewById(R.id.comment1);
         comment1.setText(comment1_);
+        ListView lv1 = findViewById(R.id.history1);
+        lv1.smoothScrollToPosition(history1_.size());
 
         HashMap<String, String>turn2 = new HashMap<>();
         turn2.put("turnTime", sdf.format(now));
@@ -83,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
         comment2_ = "";
         EditText comment2 = findViewById(R.id.comment2);
         comment2.setText(comment2_);
+        ListView lv2 = findViewById(R.id.history2);
+        lv2.smoothScrollToPosition(history2_.size());
 
         ++turnGlobal_;
     }
