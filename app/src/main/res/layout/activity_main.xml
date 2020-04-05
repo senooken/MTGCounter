@@ -9,102 +9,150 @@
     android:padding="4sp"
     tools:context=".MainActivity">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/life1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/life"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/comment1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:hint="@string/comment"
+                android:inputType="text"
+                tools:targetApi="o" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/minus1"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onMinusButton1Click"
+                android:text="@string/minus" />
+
+            <Button
+                android:id="@+id/plus1"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onPlusButton1Click"
+                android:text="@string/plus" />
+
+            <Button
+                android:id="@+id/pending1"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onPendingButton1Click"
+                android:text="@string/pending" />
+
+            <Button
+                android:id="@+id/commit1"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onCommitButtonClick"
+                android:text="@string/commit" />
+        </LinearLayout>
 
         <ListView
             android:id="@+id/history1"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/life2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:text="@string/life"
+                android:textSize="30sp" />
 
-                <TextView
-                    android:id="@+id/life1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/life"
-                    android:textSize="30sp" />
-
-                <EditText
-                    android:id="@+id/comment1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:hint="@string/comment"
-                    android:inputType="text"
-                    tools:targetApi="o" />
-            </LinearLayout>
-
-            <LinearLayout
-                style="?android:attr/buttonBarStyle"
-                android:layout_width="match_parent"
+            <EditText
+                android:id="@+id/comment2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/minus1"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onMinusButton1Click"
-                    android:text="@string/minus" />
-
-                <Button
-                    android:id="@+id/plus1"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onPlusButton1Click"
-                    android:text="@string/plus" />
-            </LinearLayout>
-
-            <LinearLayout
-                style="?android:attr/buttonBarStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/pending1"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onPendingButton1Click"
-                    android:text="@string/pending" />
-
-                <Button
-                    android:id="@+id/commit1"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onCommitButtonClick"
-                    android:text="@string/commit" />
-            </LinearLayout>
-
+                android:autofillHints=""
+                android:hint="@string/comment"
+                android:inputType="text"
+                tools:targetApi="o" />
         </LinearLayout>
 
-    </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
 
+            <Button
+                android:id="@+id/minus2"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onMinusButton2Click"
+                android:text="@string/minus" />
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+            <Button
+                android:id="@+id/plus2"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onPlusButton2Click"
+                android:text="@string/plus" />
+
+            <Button
+                android:id="@+id/pending2"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onPendingButton2Click"
+                android:text="@string/pending" />
+
+            <Button
+                android:id="@+id/commit2"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onCommitButtonClick"
+                android:text="@string/commit" />
+        </LinearLayout>
 
         <ListView
             android:id="@+id/history2"
@@ -113,83 +161,7 @@
 
         </ListView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+    </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/life2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/life"
-                    android:textSize="30sp" />
-
-                <EditText
-                    android:id="@+id/comment2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:hint="@string/comment"
-                    android:inputType="text"
-                    tools:targetApi="o" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/minus2"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onMinusButton2Click"
-                    android:text="@string/minus" />
-
-                <Button
-                    android:id="@+id/plus2"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onPlusButton2Click"
-                    android:text="@string/plus" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/pending2"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onPendingButton2Click"
-                    android:text="@string/pending" />
-
-                <Button
-                    android:id="@+id/commit2"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onCommitButtonClick"
-                    android:text="@string/commit" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-    </FrameLayout>
 
 </LinearLayout>
