@@ -22,50 +22,49 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private final String[] FROM = {"turnTime", "turnGlobal", "turnLocal", "turnLife", "turnCommander", "turnPoison", "turnComment"};
     private final int[] TO = {R.id.turnTime, R.id.turnGlobal, R.id.turnLocal, R.id.turnLife, R.id.turnComment};
 
-    private RadioButton counter_;
-
+    private final int totalPlayers_ = 2;
     private int turnGlobal_ = 1;
 
-    private int life1_ = 20;
-    private SimpleAdapter adapter1_;
-    private final ArrayList<HashMap<String, String>> history1_ = new ArrayList<>();
-    private String comment1_ = "";
+    private class Player {
+        private RadioButton life;
+        private SimpleAdapter adapter;
+        private final ArrayList<HashMap<String, String>> history = new ArrayList<>();
+        private EditText comment;
+        private RadioButton counter;
+    }
 
-    private int life2_ = 20;
-    private SimpleAdapter adapter2_;
-    private final ArrayList<HashMap<String, String>> history2_ = new ArrayList<>();
-    private String comment2_ = "";
+    private final Player[] player_ = {new Player(), new Player()};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        counter_ = findViewById(R.id.player1_life_player);
-
-        adapter1_ = new HistoryListAdapter(this, history1_);
-        ListView history1 = findViewById(R.id.history1);
-        history1.setAdapter(adapter1_);
-
-        adapter2_ = new HistoryListAdapter(this, history2_);
-        ListView history2 = findViewById(R.id.history2);
-        history2.setAdapter(adapter2_);
+        for (int i = 0; i < totalPlayers_; ++i) {
+            Player player = player_[i];
+            player.adapter = new HistoryListAdapter(this, player.history);
+            ListView history = findViewById(getPlayerResourceId(i, "history"));
+            history.setAdapter(player.adapter);
+            player.life = findViewById(getPlayerResourceId(i, "life_player"));
+            player.counter = player.life;
+            player.comment = findViewById(getPlayerResourceId(i, "comment"));
+        }
     }
 
     public void onRadioButtonClicked(View view) {
         boolean checked = ((RadioButton) view).isChecked();
         if (checked) {
             clearRadioButtonCheck((ViewGroup)view.getParent().getParent());
-            counter_ = (RadioButton) view;
-            counter_.setChecked(true);
+            int player_id = Integer.parseInt(getResources().getResourceEntryName(view.getId()).replaceAll("[^0-9]", ""));
+            Player player = player_[player_id];
+            player.counter = (RadioButton) view;
+            player.counter.setChecked(true);
         }
     }
 
@@ -81,101 +80,64 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void onCommitButtonClick(@SuppressWarnings("unused") View view) {
-        Date now = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss", Locale.US);
-        HashMap<String, String>turn1 = new HashMap<>();
-        turn1.put("turnTime", sdf.format(now));
-        turn1.put("turnGlobal", String.format(Locale.getDefault(), "%02d", turnGlobal_));
-        turn1.put("turnLocal", String.format(Locale.getDefault(), "%02d", turnGlobal_/2+turnGlobal_%2));
+    public void onCommitButtonClicked(@SuppressWarnings("unused") View view) {
+        for (int i = 0; i < totalPlayers_; ++i) {
+            Player player = player_[i];
+            Date now = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss", Locale.US);
+            HashMap<String, String>turn = new HashMap<>();
+            turn.put("turnTime", sdf.format(now));
+            turn.put("turnGlobal", String.format(Locale.getDefault(), "%02d", turnGlobal_));
+            turn.put("turnLocal", String.format(Locale.getDefault(), "%02d", turnGlobal_/2+turnGlobal_%2));
 
-        RadioButton life1 = findViewById(R.id.player1_life_player);
-        turn1.put("turnLife", life1.getText().toString());
-        RadioButton commander1 = findViewById(R.id.player1_life_commander);
-        turn1.put("turnCommander", commander1.getText().toString());
-        RadioButton poison1 = findViewById(R.id.player1_life_poison);
-        turn1.put("turnPoison", poison1.getText().toString());
+            turn.put("turnLife", player.life.getText().toString());
+            RadioButton commander = findViewById(getPlayerResourceId(i, "life_commander"));
+            turn.put("turnCommander", commander.getText().toString());
+            RadioButton poison = findViewById(getPlayerResourceId(i, "life_poison"));
+            turn.put("turnPoison", poison.getText().toString());
 
-        turn1.put("turnComment", comment1_);
-        history1_.add(turn1);
-        adapter1_.notifyDataSetChanged();
-        // Reset turn comment.
-        comment1_ = "";
-        EditText comment1 = findViewById(R.id.comment1);
-        comment1.setText(comment1_);
-        ListView lv1 = findViewById(R.id.history1);
-        lv1.smoothScrollToPosition(history1_.size());
+            turn.put("turnComment", player.comment.getText().toString());
+            player.history.add(turn);
+            player.adapter.notifyDataSetChanged();
 
-        HashMap<String, String>turn2 = new HashMap<>();
-        turn2.put("turnTime", sdf.format(now));
-        turn2.put("turnGlobal", String.format(Locale.getDefault(), "%02d", turnGlobal_));
-        turn2.put("turnLocal", String.format(Locale.getDefault(), "%02d", turnGlobal_/2+turnGlobal_%2));
-        turn2.put("turnLife", String.valueOf(life2_));
-        turn2.put("turnComment", comment2_);
-        history2_.add(turn2);
-        adapter2_.notifyDataSetChanged();
-        // Reset turn comment.
-        comment2_ = "";
-        EditText comment2 = findViewById(R.id.comment2);
-        comment2.setText(comment2_);
-        ListView lv2 = findViewById(R.id.history2);
-        lv2.smoothScrollToPosition(history2_.size());
+            // Reset turn comment.
+            player.comment.setText("");
 
+            ListView lv = findViewById(getPlayerResourceId(i, "history"));
+            lv.smoothScrollToPosition(player.history.size());
+        }
         ++turnGlobal_;
     }
 
-    public void onPendingButton1Click(@SuppressWarnings("unused") View view) {
-        StringBuilder buffer = new StringBuilder(comment1_);
-        if (!comment1_.isEmpty()) {
+    public void onPlusButtonClicked(@SuppressWarnings("unused") View view) {
+        int player_id = Integer.parseInt(getResources().getResourceEntryName(view.getId()).replaceAll("[^0-9]", ""));
+        Player player = player_[player_id];
+        player.counter.setText(String.format(Locale.getDefault(), "%02d",
+                Integer.parseInt(player.counter.getText().toString())+1));
+    }
+
+    public void onMinusButtonClicked(@SuppressWarnings("unused") View view) {
+        int player_id = Integer.parseInt(getResources().getResourceEntryName(view.getId()).replaceAll("[^0-9]", ""));
+        Player player = player_[player_id];
+        player.counter.setText(String.format(Locale.getDefault(), "%02d",
+                Integer.parseInt(player.counter.getText().toString())-1));
+    }
+
+    public void onPendingButtonClicked(@SuppressWarnings("unused") View view) {
+        int player_id = Integer.parseInt(getResources().getResourceEntryName(view.getId()).replaceAll("[^0-9]", ""));
+        Player player = player_[player_id];
+        StringBuilder buffer = new StringBuilder(player.comment.getText().toString());
+        if (!player.comment.getText().toString().isEmpty()) {
             buffer.append(", ");
         }
-        buffer.append(life1_);
-        comment1_ = buffer.toString();
-        EditText comment = findViewById(R.id.comment1);
-        comment.setText(comment1_);
-    }
-    public void onPlusButton1Click(@SuppressWarnings("unused") View view) {
-//        ++life1_;
-//        TextView life = findViewById(R.id.player1_life_player);
-//        life.setText(String.valueOf(life1_));
-
-        counter_.setText(String.format(Locale.getDefault(), "%02d",
-                Integer.parseInt(counter_.getText().toString())+1));
-    }
-
-    public void onMinusButton1Click(@SuppressWarnings("unused") View view) {
-//        --life1_;
-//        TextView life = findViewById(R.id.player1_life_player);
-//        life.setText(String.valueOf(life1_));
-        counter_.setText(String.format(Locale.getDefault(), "%02d",
-                        Integer.parseInt(counter_.getText().toString())-1));
-    }
-
-    public void onPendingButton2Click(@SuppressWarnings("unused") View view) {
-        StringBuilder buffer = new StringBuilder(comment2_);
-        if (!comment2_.isEmpty()) {
-            buffer.append(", ");
-        }
-        buffer.append(life2_);
-        comment2_ = buffer.toString();
-        EditText comment = findViewById(R.id.comment2);
-        comment.setText(comment2_);
-    }
-    public void onPlusButton2Click(@SuppressWarnings("unused") View view) {
-        ++life2_;
-        TextView life = findViewById(R.id.life2);
-        life.setText(String.valueOf(life2_));
-    }
-    public void onMinusButton2Click(@SuppressWarnings("unused") View view) {
-        --life2_;
-        TextView life = findViewById(R.id.life2);
-        life.setText(String.valueOf(life2_));
+        buffer.append(player.life.getText().toString());
+        player.comment.setText(buffer.toString());
     }
 
     private class HistoryListAdapter extends SimpleAdapter {
-        private final List<? extends Map<String, String>> data_;
+        private final ArrayList<? extends HashMap<String, String>> data_;
 
-        HistoryListAdapter(Context context, List<? extends Map<String, String>> data) {
+        HistoryListAdapter(Context context, ArrayList<? extends HashMap<String, String>> data) {
             super(context, data, R.layout.turn, FROM, TO);
             data_ = data;
         }
@@ -197,6 +159,15 @@ public class MainActivity extends AppCompatActivity {
             turnLife.setText(data_.get(position).get("turnLife"));
             turnLife.addTextChangedListener(new HistoryWatcher(data_.get(position), "turnLife"));
 
+            final EditText turnCommander = convertView.findViewById(R.id.turnCommander);
+            turnCommander.setText(data_.get(position).get("turnCommander"));
+            turnCommander.addTextChangedListener(new HistoryWatcher(data_.get(position), "turnCommander"));
+
+            final EditText turnPoison = convertView.findViewById(R.id.turnPoison);
+            turnPoison.setText(data_.get(position).get("turnPoison"));
+            turnPoison.addTextChangedListener(new HistoryWatcher(data_.get(position), "turnPoison"));
+
+
             EditText turnComment = convertView.findViewById(R.id.turnComment);
             turnComment.setText(data_.get(position).get("turnComment"));
             turnComment.addTextChangedListener(new HistoryWatcher(data_.get(position), "turnComment"));
@@ -205,9 +176,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private class HistoryWatcher implements TextWatcher {
-            private final Map<String, String> map_;
+            private final HashMap<String, String> map_;
             private final String key_;
-            HistoryWatcher(Map<String, String> map, String key) {
+            HistoryWatcher(HashMap<String, String> map, String key) {
                 map_ = map;
                 key_ = key;
             }
@@ -239,13 +210,18 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         } else if (itemId == R.id.menu_reset) {
             turnGlobal_ = 1;
-            life1_ = 20;
-            history1_.clear();
-            adapter1_.notifyDataSetChanged();
-            life2_ = 20;
-            history2_.clear();
-            adapter2_.notifyDataSetChanged();
+            for (int i = 0; i < totalPlayers_; ++i) {
+                Player player = player_[i];
+                player.life.setText(R.string.life);
+                player.history.clear();
+                player.adapter.notifyDataSetChanged();
+            }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private int getPlayerResourceId(int player, String key) {
+        return getResources().getIdentifier(
+                String.format(Locale.getDefault(), "player%d_%s", player, key), "id", getPackageName());
     }
 }

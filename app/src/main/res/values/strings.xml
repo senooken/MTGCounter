@@ -20,7 +20,7 @@
 
     <string name="turn_time">HH:mm:ss</string>
 
-    <string name="header_timestamp">Timestamp</string>
+    <string name="header_time">Time</string>
     <string name="header_turn">Turn</string>
 
     <string name="about">About</string>

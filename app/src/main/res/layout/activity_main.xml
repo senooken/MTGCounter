@@ -6,7 +6,6 @@
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    android:padding="4sp"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -18,14 +17,298 @@
 
         <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="?attr/colorButtonNormal"
+            android:paddingLeft="4sp"
+            android:paddingRight="4sp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_life" />
+
+                <RadioButton
+                    android:id="@+id/player0_life_player"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/life" />
+
+                <EditText
+                    android:id="@+id/player0_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:hint="@string/comment"
+                    android:inputType="text"
+                    tools:targetApi="o" />
+
+                <RadioButton
+                    android:id="@+id/player0_life_commander"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/life" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_commander" />
+
+                <RadioButton
+                    android:id="@+id/player0_life_poison"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/zero"
+                    android:textColor="@android:color/holo_purple" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_poison"
+                    android:textColor="@android:color/holo_purple" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_mana" />
+
+                <RadioButton
+                    android:id="@+id/player0_mana_colorless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/zero"
+                    android:textColor="@android:color/darker_gray" />
+
+                <RadioButton
+                    android:id="@+id/player0_mana_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/zero"
+                    android:textColor="@android:color/white" />
+
+                <RadioButton
+                    android:id="@+id/player0_mana_blue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/zero"
+                    android:textColor="@android:color/holo_blue_dark" />
+
+                <RadioButton
+                    android:id="@+id/player0_mana_black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/zero"
+                    android:textColor="@android:color/black" />
+
+                <RadioButton
+                    android:id="@+id/player0_mana_green"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/zero"
+                    android:textColor="@android:color/holo_green_light" />
+
+                <RadioButton
+                    android:id="@+id/player0_mana_red"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/zero"
+                    android:textColor="@android:color/holo_red_light" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_counter" />
+
+                <RadioButton
+                    android:id="@+id/player0_counter_storm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/zero" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_storm" />
+
+                <RadioButton
+                    android:id="@+id/player0_counter_draw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/zero" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_draw" />
+
+                <RadioButton
+                    android:id="@+id/player0_counter_other"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/zero" />
+
+                <EditText
+                    android:id="@+id/editText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:ems="4"
+                    android:hint="@string/label_other"
+                    android:inputType="text"
+                    android:text="@string/label_other"
+                    tools:targetApi="o" />
+
+            </LinearLayout>
+
+        </RadioGroup>
+
+        <LinearLayout
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/player0_minus"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onMinusButtonClicked"
+                android:text="@string/minus" />
+
+            <Button
+                android:id="@+id/player0_plus"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onPlusButtonClicked"
+                android:text="@string/plus" />
+
+            <Button
+                android:id="@+id/player0_pending"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onPendingButtonClicked"
+                android:text="@string/pending" />
+
+            <Button
+                android:id="@+id/player0_commit"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onCommitButtonClicked"
+                android:text="@string/commit" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="4sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/header_time" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/header_turn" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/header_turn" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/label_life" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/label_commander" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/label_poison" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/comment" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/player0_history"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorButtonNormal"
+            android:paddingLeft="4sp"
+            android:paddingRight="4sp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_life" />
@@ -39,7 +322,7 @@
                     android:text="@string/life" />
 
                 <EditText
-                    android:id="@+id/comment1"
+                    android:id="@+id/player1_comment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:autofillHints=""
@@ -55,7 +338,6 @@
                     android:text="@string/life" />
 
                 <TextView
-                    android:id="@+id/textView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_commander" />
@@ -177,7 +459,6 @@
                     android:text="@string/zero" />
 
                 <EditText
-                    android:id="@+id/editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:autofillHints=""
@@ -203,7 +484,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onMinusButton1Click"
+                android:onClick="onMinusButtonClicked"
                 android:text="@string/minus" />
 
             <Button
@@ -211,7 +492,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onPlusButton1Click"
+                android:onClick="onPlusButtonClicked"
                 android:text="@string/plus" />
 
             <Button
@@ -219,7 +500,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onPendingButton1Click"
+                android:onClick="onPendingButtonClicked"
                 android:text="@string/pending" />
 
             <Button
@@ -227,20 +508,21 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onCommitButtonClick"
+                android:onClick="onCommitButtonClicked"
                 android:text="@string/commit" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="4sp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/header_timestamp" />
+                android:text="@string/header_time" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -280,91 +562,12 @@
         </LinearLayout>
 
         <ListView
-            android:id="@+id/history1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-        </ListView>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/life2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/life"
-                android:textSize="30sp" />
-
-            <EditText
-                android:id="@+id/comment2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:hint="@string/comment"
-                android:inputType="text"
-                tools:targetApi="o" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/minus2"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onMinusButton2Click"
-                android:text="@string/minus" />
-
-            <Button
-                android:id="@+id/plus2"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onPlusButton2Click"
-                android:text="@string/plus" />
-
-            <Button
-                android:id="@+id/pending2"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onPendingButton2Click"
-                android:text="@string/pending" />
-
-            <Button
-                android:id="@+id/commit2"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onCommitButtonClick"
-                android:text="@string/commit" />
-        </LinearLayout>
-
-        <ListView
-            android:id="@+id/history2"
+            android:id="@+id/player1_history"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
         </ListView>
 
     </LinearLayout>
-
 
 </LinearLayout>

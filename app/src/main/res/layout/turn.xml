@@ -55,10 +55,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:autofillHints=""
-            android:ems="3"
+            android:ems="2"
             android:hint="@string/label_commander"
             android:inputType="number"
-            android:maxLength="5"
+            android:maxLength="2"
             tools:targetApi="o"
             tools:text="@string/life" />
 
@@ -67,10 +67,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:autofillHints=""
-            android:ems="3"
+            android:ems="2"
             android:hint="@string/label_poison"
             android:inputType="number"
-            android:maxLength="5"
+            android:maxLength="2"
             tools:targetApi="o"
             tools:text="@string/zero" />
 
