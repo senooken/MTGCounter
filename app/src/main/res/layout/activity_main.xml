@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center"
         android:orientation="vertical">
 
         <RadioGroup
@@ -29,6 +28,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:ems="3"
                     android:text="@string/label_life" />
 
                 <RadioButton
@@ -38,15 +38,6 @@
                     android:checked="true"
                     android:onClick="onRadioButtonClicked"
                     android:text="@string/life" />
-
-                <EditText
-                    android:id="@+id/player0_comment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:hint="@string/comment"
-                    android:inputType="text"
-                    tools:targetApi="o" />
 
                 <RadioButton
                     android:id="@+id/player0_life_commander"
@@ -84,6 +75,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:ems="3"
                     android:text="@string/label_mana" />
 
                 <RadioButton
@@ -144,6 +136,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:ems="3"
                     android:text="@string/label_counter" />
 
                 <RadioButton
@@ -192,6 +185,15 @@
 
         </RadioGroup>
 
+        <EditText
+            android:id="@+id/player0_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="@string/comment"
+            android:inputType="text"
+            tools:targetApi="o" />
+
         <LinearLayout
             style="?android:attr/buttonBarStyle"
             android:layout_width="match_parent"
@@ -200,10 +202,20 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/player0_pending"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onPendingButtonClicked"
+                android:text="@string/pending" />
+
+            <Button
                 android:id="@+id/player0_minus"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="onMinusButtonClicked"
                 android:text="@string/minus" />
 
@@ -212,22 +224,16 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="onPlusButtonClicked"
                 android:text="@string/plus" />
-
-            <Button
-                android:id="@+id/player0_pending"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onPendingButtonClicked"
-                android:text="@string/pending" />
 
             <Button
                 android:id="@+id/player0_commit"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="onCommitButtonClicked"
                 android:text="@string/commit" />
         </LinearLayout>
@@ -294,7 +300,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center"
         android:orientation="vertical">
 
         <RadioGroup
@@ -311,6 +316,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:ems="3"
                     android:text="@string/label_life" />
 
                 <RadioButton
@@ -320,15 +326,6 @@
                     android:checked="true"
                     android:onClick="onRadioButtonClicked"
                     android:text="@string/life" />
-
-                <EditText
-                    android:id="@+id/player1_comment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:hint="@string/comment"
-                    android:inputType="text"
-                    tools:targetApi="o" />
 
                 <RadioButton
                     android:id="@+id/player1_life_commander"
@@ -365,6 +362,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:ems="3"
                     android:text="@string/label_mana" />
 
                 <RadioButton
@@ -425,6 +423,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:ems="3"
                     android:text="@string/label_counter" />
 
                 <RadioButton
@@ -472,6 +471,15 @@
 
         </RadioGroup>
 
+        <EditText
+            android:id="@+id/player1_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="@string/comment"
+            android:inputType="text"
+            tools:targetApi="o" />
+
         <LinearLayout
             style="?android:attr/buttonBarStyle"
             android:layout_width="match_parent"
@@ -480,10 +488,20 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/player1_pending"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onPendingButtonClicked"
+                android:text="@string/pending" />
+
+            <Button
                 android:id="@+id/player1_minus"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="onMinusButtonClicked"
                 android:text="@string/minus" />
 
@@ -492,22 +510,16 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="onPlusButtonClicked"
                 android:text="@string/plus" />
-
-            <Button
-                android:id="@+id/player1_pending"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onPendingButtonClicked"
-                android:text="@string/pending" />
 
             <Button
                 android:id="@+id/player1_commit"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="onCommitButtonClicked"
                 android:text="@string/commit" />
         </LinearLayout>
