@@ -31,6 +31,16 @@ public class MainActivity extends AppCompatActivity {
     private final int totalPlayers_ = 2;
     private int turnGlobal_ = 1;
 
+    private class GameHistory {
+        private final ArrayList<ArrayList<HashMap<String, String>>> history;
+        GameHistory(ArrayList<ArrayList<HashMap<String, String>>> hist) {
+            history = hist;
+        }
+    }
+
+    private GameHistory gameHistory_;
+    private final ArrayList<GameHistory> gameHistories_ = new ArrayList<>();
+
     private class Player {
         private RadioButton life;
         private SimpleAdapter adapter;
@@ -57,6 +67,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        gameHistory_ = new GameHistory(new ArrayList<ArrayList<HashMap<String, String>>>());
+    }
+
     public void onRadioButtonClicked(View view) {
         boolean checked = ((RadioButton) view).isChecked();
         if (checked) {
@@ -81,8 +97,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onCommitButtonClicked(@SuppressWarnings("unused") View view) {
-        for (int i = 0; i < totalPlayers_; ++i) {
-            Player player = player_[i];
+        for (int player_i = 0; player_i < totalPlayers_; ++player_i) {
+            Player player = player_[player_i];
             Date now = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss", Locale.US);
             HashMap<String, String>turn = new HashMap<>();
@@ -91,9 +107,9 @@ public class MainActivity extends AppCompatActivity {
             turn.put("turnLocal", String.format(Locale.getDefault(), "%02d", turnGlobal_/2+turnGlobal_%2));
 
             turn.put("turnLife", player.life.getText().toString());
-            RadioButton commander = findViewById(getPlayerResourceId(i, "life_commander"));
+            RadioButton commander = findViewById(getPlayerResourceId(player_i, "life_commander"));
             turn.put("turnCommander", commander.getText().toString());
-            RadioButton poison = findViewById(getPlayerResourceId(i, "life_poison"));
+            RadioButton poison = findViewById(getPlayerResourceId(player_i, "life_poison"));
             turn.put("turnPoison", poison.getText().toString());
 
             turn.put("turnComment", player.comment.getText().toString());
@@ -103,8 +119,13 @@ public class MainActivity extends AppCompatActivity {
             // Reset turn comment.
             player.comment.setText("");
 
-            ListView lv = findViewById(getPlayerResourceId(i, "history"));
+            ListView lv = findViewById(getPlayerResourceId(player_i, "history"));
             lv.smoothScrollToPosition(player.history.size());
+
+            if (gameHistory_.history.size() < totalPlayers_) {
+                gameHistory_.history.add(new ArrayList<HashMap<String, String>>());
+            }
+            gameHistory_.history.set(player_i, player.history);
         }
         ++turnGlobal_;
     }
@@ -167,7 +188,6 @@ public class MainActivity extends AppCompatActivity {
             turnPoison.setText(data_.get(position).get("turnPoison"));
             turnPoison.addTextChangedListener(new HistoryWatcher(data_.get(position), "turnPoison"));
 
-
             EditText turnComment = convertView.findViewById(R.id.turnComment);
             turnComment.setText(data_.get(position).get("turnComment"));
             turnComment.addTextChangedListener(new HistoryWatcher(data_.get(position), "turnComment"));
@@ -208,6 +228,8 @@ public class MainActivity extends AppCompatActivity {
         if (itemId == R.id.menu_about) {
             Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
+        } else if (itemId == R.id.menu_save) {
+            gameHistories_.add(0, gameHistory_);
         } else if (itemId == R.id.menu_reset) {
             turnGlobal_ = 1;
             for (int i = 0; i < totalPlayers_; ++i) {

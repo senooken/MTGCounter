@@ -25,4 +25,5 @@
 
     <string name="about">About</string>
     <string name="reset">Reset</string>
+    <string name="save">Save to History</string>
 </resources>
