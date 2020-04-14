@@ -18,6 +18,11 @@ import android.widget.RadioButton;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,6 +32,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
     private final String[] FROM = {"turnTime", "turnGlobal", "turnLocal", "turnLife", "turnCommander", "turnPoison", "turnComment"};
     private final int[] TO = {R.id.turnTime, R.id.turnGlobal, R.id.turnLocal, R.id.turnLife, R.id.turnComment};
+    private final String HISTORY_FILE = "gameHistory.obj";
 
     private final int totalPlayers_ = 2;
     private int turnGlobal_ = 1;
@@ -65,6 +71,33 @@ public class MainActivity extends AppCompatActivity {
             player.counter = player.life;
             player.comment = findViewById(getPlayerResourceId(i, "comment"));
         }
+
+        gameHistories_.add(0, gameHistory_);
+        FileInputStream stream = null;
+        try {
+            stream = getApplicationContext().openFileInput(HISTORY_FILE);
+            ObjectInputStream object = new ObjectInputStream(stream);
+            try {
+                // Avoid Unchecked cast warning.
+                for (Object x : (ArrayList) object.readObject()) {
+                    gameHistories_.add((GameHistory) x);
+                }
+
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (stream != null) {
+                try {
+                    stream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
     }
 
     @Override
@@ -230,6 +263,23 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         } else if (itemId == R.id.menu_save) {
             gameHistories_.add(0, gameHistory_);
+            FileOutputStream stream = null;
+            try {
+                stream = getApplicationContext().openFileOutput(HISTORY_FILE, Context.MODE_PRIVATE);
+                ObjectOutputStream object = new ObjectOutputStream(stream);
+                object.writeObject(gameHistories_);
+                object.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (stream != null) {
+                    try {
+                        stream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
         } else if (itemId == R.id.menu_reset) {
             turnGlobal_ = 1;
             for (int i = 0; i < totalPlayers_; ++i) {
