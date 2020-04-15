@@ -23,7 +23,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,15 +30,18 @@ import java.util.HashMap;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    private final String[] FROM = {"turnTime", "turnGlobal", "turnLocal", "turnLife", "turnCommander", "turnPoison", "turnComment"};
-    private final int[] TO = {R.id.turnTime, R.id.turnGlobal, R.id.turnLocal, R.id.turnLife, R.id.turnComment};
+    private final String[] FROM = {"turn_time", "turn_global", "turn_local", "turn_life", "turn_commander", "turn_poison", "turn_comment"};
+    private final int[] TO = {R.id.turn_time, R.id.turn_global, R.id.turn_local, R.id.turn_life, R.id.turn_commander, R.id.turn_poison, R.id.turn_comment};
     private final String HISTORY_FILE = "gameHistory.obj";
 
     private final int totalPlayers_ = 2;
     private int turnGlobal_ = 1;
 
-    private GameHistory gameHistory_;
-    private final ArrayList<GameHistory> gameHistories_ = new ArrayList<>();
+//    private GameHistory gameHistory_;
+//    private final ArrayList<GameHistory> gameHistories_ = new ArrayList<>();
+
+    private ArrayList<ArrayList<HashMap<String, String>>> gameHistory_;
+    private ArrayList<ArrayList<ArrayList<HashMap<String, String>>>> gameHistories_ = new ArrayList<>();
 
     private class Player {
         private RadioButton life;
@@ -72,10 +74,12 @@ public class MainActivity extends AppCompatActivity {
             stream = getApplicationContext().openFileInput(HISTORY_FILE);
             ObjectInputStream object = new ObjectInputStream(stream);
             try {
+                gameHistories_ = (ArrayList<ArrayList<ArrayList<HashMap<String, String>>>>) object.readObject();
                 // Avoid Unchecked cast warning.
-                for (Object x : (ArrayList) object.readObject()) {
-                    gameHistories_.add((GameHistory) x);
-                }
+//                for (Object x : (ArrayList) object.readObject()) {
+////                    gameHistories_.add((GameHistory) x);
+//                    gameHistories_.add((ArrayList<ArrayList<HashMap<String, String>>>) x);
+//                }
 
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
@@ -97,7 +101,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        gameHistory_ = new GameHistory(new ArrayList<ArrayList<HashMap<String, String>>>());
+//        gameHistory_ = new GameHistory(new ArrayList<ArrayList<HashMap<String, String>>>());
+        gameHistory_ = new ArrayList<ArrayList<HashMap<String, String>>>();
     }
 
     public void onRadioButtonClicked(View view) {
@@ -129,17 +134,17 @@ public class MainActivity extends AppCompatActivity {
             Date now = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss", Locale.US);
             HashMap<String, String>turn = new HashMap<>();
-            turn.put("turnTime", sdf.format(now));
-            turn.put("turnGlobal", String.format(Locale.getDefault(), "%02d", turnGlobal_));
-            turn.put("turnLocal", String.format(Locale.getDefault(), "%02d", turnGlobal_/2+turnGlobal_%2));
+            turn.put("turn_time", sdf.format(now));
+            turn.put("turn_global", String.format(Locale.getDefault(), "%02d", turnGlobal_));
+            turn.put("turn_local", String.format(Locale.getDefault(), "%02d", turnGlobal_/2+turnGlobal_%2));
 
-            turn.put("turnLife", player.life.getText().toString());
+            turn.put("turn_life", player.life.getText().toString());
             RadioButton commander = findViewById(getPlayerResourceId(player_i, "life_commander"));
-            turn.put("turnCommander", commander.getText().toString());
+            turn.put("turn_commander", commander.getText().toString());
             RadioButton poison = findViewById(getPlayerResourceId(player_i, "life_poison"));
-            turn.put("turnPoison", poison.getText().toString());
+            turn.put("turn_poison", poison.getText().toString());
 
-            turn.put("turnComment", player.comment.getText().toString());
+            turn.put("turn_comment", player.comment.getText().toString());
             player.history.add(turn);
             player.adapter.notifyDataSetChanged();
 
@@ -149,10 +154,14 @@ public class MainActivity extends AppCompatActivity {
             ListView lv = findViewById(getPlayerResourceId(player_i, "history"));
             lv.smoothScrollToPosition(player.history.size());
 
-            if (gameHistory_.history.size() < totalPlayers_) {
-                gameHistory_.history.add(new ArrayList<HashMap<String, String>>());
+//            if (gameHistory_.history.size() < totalPlayers_) {
+//                gameHistory_.history.add(new ArrayList<HashMap<String, String>>());
+//            }
+//            gameHistory_.history.set(player_i, player.history);
+            if (gameHistory_.size() < totalPlayers_) {
+                gameHistory_.add(new ArrayList<HashMap<String, String>>());
             }
-            gameHistory_.history.set(player_i, player.history);
+            gameHistory_.set(player_i, player.history);
         }
         ++turnGlobal_;
     }
@@ -196,28 +205,28 @@ public class MainActivity extends AppCompatActivity {
                 convertView = getLayoutInflater().inflate(R.layout.turn, parent, false);
             }
 
-            TextView turnTime = convertView.findViewById(R.id.turnTime);
-            turnTime.setText(data_.get(position).get("turnTime"));
-            TextView turnGlobal = convertView.findViewById(R.id.turnGlobal);
-            turnGlobal.setText(data_.get(position).get("turnGlobal"));
-            TextView turnLocal = convertView.findViewById(R.id.turnLocal);
-            turnLocal.setText(data_.get(position).get("turnLocal"));
+            TextView turnTime = convertView.findViewById(R.id.turn_time);
+            turnTime.setText(data_.get(position).get("turn_time"));
+            TextView turnGlobal = convertView.findViewById(R.id.turn_global);
+            turnGlobal.setText(data_.get(position).get("turn_global"));
+            TextView turnLocal = convertView.findViewById(R.id.turn_local);
+            turnLocal.setText(data_.get(position).get("turn_local"));
 
-            final EditText turnLife = convertView.findViewById(R.id.turnLife);
-            turnLife.setText(data_.get(position).get("turnLife"));
-            turnLife.addTextChangedListener(new HistoryWatcher(data_.get(position), "turnLife"));
+            final EditText turnLife = convertView.findViewById(R.id.turn_life);
+            turnLife.setText(data_.get(position).get("turn_life"));
+            turnLife.addTextChangedListener(new HistoryWatcher(data_.get(position), "turn_life"));
 
-            final EditText turnCommander = convertView.findViewById(R.id.turnCommander);
-            turnCommander.setText(data_.get(position).get("turnCommander"));
-            turnCommander.addTextChangedListener(new HistoryWatcher(data_.get(position), "turnCommander"));
+            final EditText turnCommander = convertView.findViewById(R.id.turn_commander);
+            turnCommander.setText(data_.get(position).get("turn_commander"));
+            turnCommander.addTextChangedListener(new HistoryWatcher(data_.get(position), "turn_commander"));
 
-            final EditText turnPoison = convertView.findViewById(R.id.turnPoison);
-            turnPoison.setText(data_.get(position).get("turnPoison"));
-            turnPoison.addTextChangedListener(new HistoryWatcher(data_.get(position), "turnPoison"));
+            final EditText turnPoison = convertView.findViewById(R.id.turn_poison);
+            turnPoison.setText(data_.get(position).get("turn_poison"));
+            turnPoison.addTextChangedListener(new HistoryWatcher(data_.get(position), "turn_poison"));
 
-            EditText turnComment = convertView.findViewById(R.id.turnComment);
-            turnComment.setText(data_.get(position).get("turnComment"));
-            turnComment.addTextChangedListener(new HistoryWatcher(data_.get(position), "turnComment"));
+            EditText turnComment = convertView.findViewById(R.id.turn_comment);
+            turnComment.setText(data_.get(position).get("turn_comment"));
+            turnComment.addTextChangedListener(new HistoryWatcher(data_.get(position), "turn_comment"));
 
             return convertView;
         }

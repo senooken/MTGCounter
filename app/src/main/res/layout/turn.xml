@@ -14,14 +14,14 @@
 
 
         <TextView
-            android:id="@+id/turnTime"
+            android:id="@+id/turn_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/turn_time" />
 
         <TextView
-            android:id="@+id/turnGlobal"
+            android:id="@+id/turn_global"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2sp"
@@ -30,7 +30,7 @@
             tools:text="@string/zero" />
 
         <TextView
-            android:id="@+id/turnLocal"
+            android:id="@+id/turn_local"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2sp"
@@ -39,7 +39,7 @@
             tools:text="@string/zero" />
 
         <EditText
-            android:id="@+id/turnLife"
+            android:id="@+id/turn_life"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:autofillHints=""
@@ -51,7 +51,7 @@
             tools:text="@string/life" />
 
         <EditText
-            android:id="@+id/turnCommander"
+            android:id="@+id/turn_commander"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:autofillHints=""
@@ -63,7 +63,7 @@
             tools:text="@string/life" />
 
         <EditText
-            android:id="@+id/turnPoison"
+            android:id="@+id/turn_poison"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:autofillHints=""
@@ -75,7 +75,7 @@
             tools:text="@string/zero" />
 
         <EditText
-            android:id="@+id/turnComment"
+            android:id="@+id/turn_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
