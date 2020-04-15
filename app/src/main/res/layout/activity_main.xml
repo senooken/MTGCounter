@@ -58,7 +58,7 @@
         </LinearLayout>
 
         <ListView
-            android:id="@+id/player0_history"
+            android:id="@+id/history"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -270,7 +270,7 @@
                 android:text="@string/label_type" />
 
             <RadioButton
-                android:id="@+id/player_life"
+                android:id="@+id/life"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -279,7 +279,7 @@
                 android:text="@string/label_life" />
 
             <RadioButton
-                android:id="@+id/player_commander"
+                android:id="@+id/commander"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -287,7 +287,7 @@
                 android:text="@string/label_commander" />
 
             <RadioButton
-                android:id="@+id/player_poison"
+                android:id="@+id/poison"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
