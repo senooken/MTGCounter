@@ -23,6 +23,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,13 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
     private final int totalPlayers_ = 2;
     private int turnGlobal_ = 1;
-
-    private class GameHistory {
-        private final ArrayList<ArrayList<HashMap<String, String>>> history;
-        GameHistory(ArrayList<ArrayList<HashMap<String, String>>> hist) {
-            history = hist;
-        }
-    }
 
     private GameHistory gameHistory_;
     private final ArrayList<GameHistory> gameHistories_ = new ArrayList<>();
@@ -261,8 +255,12 @@ public class MainActivity extends AppCompatActivity {
         if (itemId == R.id.menu_about) {
             Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
+        } else if (itemId == R.id.menu_history) {
+            Intent intent = new Intent(this, HistoryActivity.class);
+            intent.putExtra("history", gameHistories_);
+            startActivity(intent);
         } else if (itemId == R.id.menu_save) {
-            gameHistories_.add(0, gameHistory_);
+            gameHistories_.add(gameHistory_);
             FileOutputStream stream = null;
             try {
                 stream = getApplicationContext().openFileOutput(HISTORY_FILE, Context.MODE_PRIVATE);
