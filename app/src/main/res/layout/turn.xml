@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<HorizontalScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,87 +7,79 @@
     android:layout_weight="1">
 
 
-    <LinearLayout
-
+    <TextView
+        android:id="@+id/turn_time"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:text="@string/turn_time" />
 
+    <TextView
+        android:id="@+id/turn_global"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2sp"
+        android:layout_marginLeft="2sp"
+        tools:text="@string/zero" />
 
-        <TextView
-            android:id="@+id/turn_time"
+    <EditText
+        android:id="@+id/turn_player0_life"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="2"
+        android:hint="@string/turn_hint"
+        android:inputType="number"
+        android:maxLength="5"
+        tools:targetApi="o"
+        tools:text="@string/life" />
+
+    <EditText
+        android:id="@+id/turn_player0_commander"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="2"
+        android:hint="@string/label_commander"
+        android:inputType="number"
+        android:maxLength="2"
+        tools:targetApi="o"
+        tools:text="@string/life" />
+
+    <EditText
+        android:id="@+id/turn_player0_poison"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="2"
+        android:hint="@string/label_poison"
+        android:inputType="number"
+        android:maxLength="2"
+        tools:targetApi="o"
+        tools:text="@string/zero" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/turn_time" />
-
-        <TextView
-            android:id="@+id/turn_global"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2sp"
-            android:layout_marginLeft="2sp"
-            android:layout_weight="1"
-            tools:text="@string/zero" />
-
-        <TextView
-            android:id="@+id/turn_local"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2sp"
-            android:layout_marginLeft="2sp"
-            android:layout_weight="1"
-            tools:text="@string/zero" />
-
-        <EditText
-            android:id="@+id/turn_life"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:ems="2"
-            android:hint="@string/turn_hint"
-            android:inputType="number"
-            android:maxLength="5"
-            tools:targetApi="o"
-            tools:text="@string/life" />
-
-        <EditText
-            android:id="@+id/turn_commander"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:ems="2"
-            android:hint="@string/label_commander"
-            android:inputType="number"
-            android:maxLength="2"
-            tools:targetApi="o"
-            tools:text="@string/life" />
-
-        <EditText
-            android:id="@+id/turn_poison"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:ems="2"
-            android:hint="@string/label_poison"
-            android:inputType="number"
-            android:maxLength="2"
-            tools:targetApi="o"
-            tools:text="@string/zero" />
-
-        <EditText
-            android:id="@+id/turn_comment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:autofillHints=""
-            android:hint="@string/comment"
-            android:inputType="text"
-            tools:targetApi="o" />
+            android:layout_height="match_parent">
 
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/turn_player0_comment"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:hint="@string/comment"
+                android:inputType="text"
+                tools:targetApi="o" />
+        </LinearLayout>
+    </HorizontalScrollView>
 
-</HorizontalScrollView>
+</LinearLayout>
 
 
 

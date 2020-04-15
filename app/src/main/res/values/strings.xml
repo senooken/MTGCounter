@@ -9,9 +9,16 @@
     <string name="turn_hint">Life</string>
     <string name="comment">Comment</string>
 
+    <string name="label_player">Player</string>
+    <string name="label_player0">1</string>
+    <string name="label_player1">2</string>
+    <string name="label_player2">3</string>
+    <string name="label_player3">4</string>
+
+    <string name="label_type">Type</string>
     <string name="label_life">Life</string>
-    <string name="label_commander">(Commander)</string>
-    <string name="label_poison">(Poison)</string>
+    <string name="label_commander">Commander</string>
+    <string name="label_poison">Poison</string>
     <string name="label_mana">Mana</string>
     <string name="label_counter">Counter</string>
     <string name="label_storm">(Storm)</string>

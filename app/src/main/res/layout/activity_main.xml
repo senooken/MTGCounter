@@ -14,230 +14,6 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorButtonNormal"
-            android:paddingLeft="4sp"
-            android:paddingRight="4sp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="3"
-                    android:text="@string/label_life" />
-
-                <RadioButton
-                    android:id="@+id/player0_life_player"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/life" />
-
-                <RadioButton
-                    android:id="@+id/player0_life_commander"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/life" />
-
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_commander" />
-
-                <RadioButton
-                    android:id="@+id/player0_life_poison"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero"
-                    android:textColor="@android:color/holo_purple" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_poison"
-                    android:textColor="@android:color/holo_purple" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="3"
-                    android:text="@string/label_mana" />
-
-                <RadioButton
-                    android:id="@+id/player0_mana_colorless"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero"
-                    android:textColor="@android:color/darker_gray" />
-
-                <RadioButton
-                    android:id="@+id/player0_mana_white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero"
-                    android:textColor="@android:color/white" />
-
-                <RadioButton
-                    android:id="@+id/player0_mana_blue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero"
-                    android:textColor="@android:color/holo_blue_dark" />
-
-                <RadioButton
-                    android:id="@+id/player0_mana_black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero"
-                    android:textColor="@android:color/black" />
-
-                <RadioButton
-                    android:id="@+id/player0_mana_green"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero"
-                    android:textColor="@android:color/holo_green_light" />
-
-                <RadioButton
-                    android:id="@+id/player0_mana_red"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero"
-                    android:textColor="@android:color/holo_red_light" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="3"
-                    android:text="@string/label_counter" />
-
-                <RadioButton
-                    android:id="@+id/player0_counter_storm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_storm" />
-
-                <RadioButton
-                    android:id="@+id/player0_counter_draw"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_draw" />
-
-                <RadioButton
-                    android:id="@+id/player0_counter_other"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero" />
-
-                <EditText
-                    android:id="@+id/editText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="4"
-                    android:hint="@string/label_other"
-                    android:inputType="text"
-                    android:text="@string/label_other"
-                    tools:targetApi="o" />
-
-            </LinearLayout>
-
-        </RadioGroup>
-
-        <EditText
-            android:id="@+id/player0_comment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:hint="@string/comment"
-            android:inputType="text"
-            tools:targetApi="o" />
-
-        <LinearLayout
-            style="?android:attr/buttonBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/player0_pending"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="onPendingButtonClicked"
-                android:text="@string/pending" />
-
-            <Button
-                android:id="@+id/player0_minus"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="onMinusButtonClicked"
-                android:text="@string/minus" />
-
-            <Button
-                android:id="@+id/player0_plus"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="onPlusButtonClicked"
-                android:text="@string/plus" />
-
-            <Button
-                android:id="@+id/player0_commit"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="onCommitButtonClicked"
-                android:text="@string/commit" />
-        </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -249,12 +25,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/header_time" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/header_turn" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -298,288 +68,410 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorButtonNormal"
-            android:paddingLeft="4sp"
-            android:paddingRight="4sp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="3"
-                    android:text="@string/label_life" />
-
-                <RadioButton
-                    android:id="@+id/player1_life_player"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/life" />
-
-                <RadioButton
-                    android:id="@+id/player1_life_commander"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/life" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_commander" />
-
-                <RadioButton
-                    android:id="@+id/player1_life_poison"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero"
-                    android:textColor="@android:color/holo_purple" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_poison"
-                    android:textColor="@android:color/holo_purple" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="3"
-                    android:text="@string/label_mana" />
-
-                <RadioButton
-                    android:id="@+id/player1_mana_colorless"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero"
-                    android:textColor="@android:color/darker_gray" />
-
-                <RadioButton
-                    android:id="@+id/player1_mana_white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero"
-                    android:textColor="@android:color/white" />
-
-                <RadioButton
-                    android:id="@+id/player1_mana_blue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero"
-                    android:textColor="@android:color/holo_blue_dark" />
-
-                <RadioButton
-                    android:id="@+id/player1_mana_black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero"
-                    android:textColor="@android:color/black" />
-
-                <RadioButton
-                    android:id="@+id/player1_mana_green"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero"
-                    android:textColor="@android:color/holo_green_light" />
-
-                <RadioButton
-                    android:id="@+id/player1_mana_red"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero"
-                    android:textColor="@android:color/holo_red_light" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="3"
-                    android:text="@string/label_counter" />
-
-                <RadioButton
-                    android:id="@+id/player1_counter_storm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_storm" />
-
-                <RadioButton
-                    android:id="@+id/player1_counter_draw"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_draw" />
-
-                <RadioButton
-                    android:id="@+id/player1_counter_other"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/zero" />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="4"
-                    android:hint="@string/label_other"
-                    android:inputType="text"
-                    android:text="@string/label_other"
-                    tools:targetApi="o" />
-
-            </LinearLayout>
-
-        </RadioGroup>
-
-        <EditText
-            android:id="@+id/player1_comment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:hint="@string/comment"
-            android:inputType="text"
-            tools:targetApi="o" />
-
-        <LinearLayout
-            style="?android:attr/buttonBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/player1_pending"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="onPendingButtonClicked"
-                android:text="@string/pending" />
-
-            <Button
-                android:id="@+id/player1_minus"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="onMinusButtonClicked"
-                android:text="@string/minus" />
-
-            <Button
-                android:id="@+id/player1_plus"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="onPlusButtonClicked"
-                android:text="@string/plus" />
-
-            <Button
-                android:id="@+id/player1_commit"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="onCommitButtonClicked"
-                android:text="@string/commit" />
-        </LinearLayout>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false"
+        android:paddingLeft="4sp"
+        android:paddingRight="4sp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="4sp">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/header_time" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/header_turn" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/header_turn" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="@string/label_life" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="@string/label_commander" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="@string/label_poison" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/player0_life"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/life" />
+
+            <TextView
+                android:id="@+id/player0_commander"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zero"
+                tools:text="@string/zero" />
+
+            <TextView
+                android:id="@+id/player0_poison"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zero"
+                tools:text="@string/zero" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/player1_life"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/life" />
+
+            <TextView
+                android:id="@+id/player1_commander"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zero"
+                tools:text="@string/zero" />
+
+            <TextView
+                android:id="@+id/player1_poison"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zero"
+                tools:text="@string/zero" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/player2_life"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/life" />
+
+            <TextView
+                android:id="@+id/player2_commander"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zero" />
+
+            <TextView
+                android:id="@+id/player2_poison"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zero" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/player3_life"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/life" />
+
+            <TextView
+                android:id="@+id/player3_commander"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zero"
+                tools:text="@string/zero" />
+
+            <TextView
+                android:id="@+id/player3_poison"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zero" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="4sp"
+        android:paddingRight="4sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:text="@string/label_player" />
+
+        <RadioButton
+            android:id="@+id/player0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:onClick="onPlayerSelected"
+            android:text="@string/label_player0" />
+
+        <RadioButton
+            android:id="@+id/player1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onPlayerSelected"
+            android:text="@string/label_player1" />
+
+        <RadioButton
+            android:id="@+id/player2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onPlayerSelected"
+            android:text="@string/label_player2" />
+
+        <RadioButton
+            android:id="@+id/player3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/label_player3" />
+
+    </RadioGroup>
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorButtonNormal"
+        android:paddingLeft="4sp"
+        android:paddingRight="4sp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ems="4"
+                android:text="@string/label_type" />
+
+            <RadioButton
+                android:id="@+id/player_life"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/comment"
-                tools:ignore="TooManyViews" />
+                android:checked="true"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/label_life" />
+
+            <RadioButton
+                android:id="@+id/player_commander"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/label_commander" />
+
+            <RadioButton
+                android:id="@+id/player_poison"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/label_poison"
+                android:textColor="@android:color/holo_purple" />
+
         </LinearLayout>
 
-        <ListView
-            android:id="@+id/player1_history"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        </ListView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="4"
+                android:text="@string/label_mana" />
+
+            <RadioButton
+                android:id="@+id/mana_colorless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/zero"
+                android:textColor="@android:color/darker_gray" />
+
+            <RadioButton
+                android:id="@+id/mana_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/zero"
+                android:textColor="@android:color/white" />
+
+            <RadioButton
+                android:id="@+id/mana_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/zero"
+                android:textColor="@android:color/holo_blue_dark" />
+
+            <RadioButton
+                android:id="@+id/mana_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/zero"
+                android:textColor="@android:color/black" />
+
+            <RadioButton
+                android:id="@+id/mana_red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/zero"
+                android:textColor="@android:color/holo_red_light" />
+
+            <RadioButton
+                android:id="@+id/mana_green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/zero"
+                android:textColor="@android:color/holo_green_light" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="4"
+                android:text="@string/label_counter" />
+
+            <RadioButton
+                android:id="@+id/player0_counter_storm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/zero" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_storm" />
+
+            <RadioButton
+                android:id="@+id/player0_counter_draw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/zero" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_draw" />
+
+            <RadioButton
+                android:id="@+id/player0_counter_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/zero" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="4"
+                android:hint="@string/label_other"
+                android:inputType="text"
+                android:text="@string/label_other"
+                tools:targetApi="o" />
+
+        </LinearLayout>
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/comment"
+        android:inputType="text"
+        tools:targetApi="o" />
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/player0_pending"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onPendingButtonClicked"
+            android:text="@string/pending" />
+
+        <Button
+            android:id="@+id/player0_minus"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onMinusButtonClicked"
+            android:text="@string/minus" />
+
+        <Button
+            android:id="@+id/player0_plus"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onPlusButtonClicked"
+            android:text="@string/plus" />
+
+        <Button
+            android:id="@+id/player0_commit"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onCommitButtonClicked"
+            android:text="@string/commit" />
 
     </LinearLayout>
 
