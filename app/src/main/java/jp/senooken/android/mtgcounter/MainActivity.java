@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import java.io.FileInputStream;
@@ -31,7 +30,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
     private final String HISTORY_FILE = "gameHistory.obj";
 
-    public final int totalPlayers_ = 4;
+    public static final int TOTAL_PLAYERS = 4;
     private int turnGlobal_ = 1;
 
     private ArrayList<ArrayList<HashMap<String, String>>> gameHistories_ = new ArrayList<>();
@@ -42,10 +41,11 @@ public class MainActivity extends AppCompatActivity {
     private final ArrayList<HashMap<String, String>> history_ = new ArrayList<>();
     private EditText comment_;
 
-    private static MainActivity instance_;
-
-    public static MainActivity getInstance() {
-        return instance_;
+    public static int getResourceId(Context context, String key) {
+        return context.getResources().getIdentifier(key, "id", context.getPackageName());
+    }
+    private int getResourceId(String key) {
+        return getResourceId(getApplicationContext(), key);
     }
 
     @Override
@@ -53,11 +53,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        instance_ = this;
         counter_ = findViewById(R.id.life);
         comment_ = findViewById(R.id.comment);
 
-        adapter_ = new HistoryListAdapter(this, history_);
+        adapter_ = new HistoryListAdapter(this, getLayoutInflater(), history_);
         ListView history = findViewById(R.id.history);
         history.setAdapter(adapter_);
 
@@ -66,11 +65,8 @@ public class MainActivity extends AppCompatActivity {
             stream = getApplicationContext().openFileInput(HISTORY_FILE);
             ObjectInputStream object = new ObjectInputStream(stream);
             try {
+                //noinspection unchecked
                 gameHistories_ = (ArrayList<ArrayList<HashMap<String, String>>>) object.readObject();
-                // Avoid Unchecked cast warning.
-                for (Object x : (ArrayList) object.readObject()) {
-                    gameHistories_.add((ArrayList<HashMap<String, String>>) x);
-                }
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -85,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-
     }
 
     public void onPlayerSelected(View view) {
@@ -128,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         turn.put("comment", comment_.getText().toString());
 
         String key;
-        for (int playerIndex = 0; playerIndex < totalPlayers_; ++playerIndex) {
+        for (int playerIndex = 0; playerIndex < TOTAL_PLAYERS; ++playerIndex) {
             key = "player" + playerIndex + "_life";
             TextView life = findViewById(getResourceId(key));
             turn.put("turn_"+key, life.getText().toString());
@@ -136,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             TextView poison = findViewById(getResourceId(key));
             turn.put("turn_"+key, poison.getText().toString());
 
-            for (int commanderIndex = 0; commanderIndex < totalPlayers_; ++commanderIndex) {
+            for (int commanderIndex = 0; commanderIndex < TOTAL_PLAYERS; ++commanderIndex) {
                 key = "player" + playerIndex + "_commander" + commanderIndex;
                 TextView commander = findViewById(getResourceId(key));
                 turn.put("turn_"+key, commander.getText().toString());
@@ -161,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
         addCounter(-1);
     }
 
-    public void addCounter(int increment) {
+    private void addCounter(int increment) {
         String text = counter_.getText().toString();
         if (isNumber(text)) {
             counter_.setText(String.format(Locale.getDefault(), "%02d",
@@ -186,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
             buffer.append(", ");
         }
 
-        TextView life = findViewById(getPlayerResourceId(activePlayerIndex_, "life"));
+        TextView life = findViewById(getResourceId("player"+activePlayerIndex_+"_life"));
         buffer.append(life.getText().toString());
         comment_.setText(buffer.toString());
     }
@@ -229,25 +224,46 @@ public class MainActivity extends AppCompatActivity {
             }
         } else if (itemId == R.id.menu_reset) {
             turnGlobal_ = 1;
-            for (int i = 0; i < totalPlayers_; ++i) {
-                TextView life = findViewById(getPlayerResourceId(i, "life"));
-                life.setText(R.string.life);
-                history_.clear();
-                adapter_.notifyDataSetChanged();
+            history_.clear();
+
+            EditText et;
+            et = findViewById(R.id.comment);
+            et.setText("");
+            et = findViewById(R.id.other);
+            et.setText(R.string.label_other);
+
+            RadioButton rb;
+            rb = findViewById(R.id.player0);
+            rb.setChecked(true);
+            rb = findViewById(R.id.life);
+            clearRadioButtonCheck((ViewGroup) rb.getParent().getParent());
+            rb.setChecked(true);
+
+            for (String key : new String[]{
+                    "mana_colorless", "mana_white", "mana_blue", "mana_black", "mana_red", "mana_green",
+                    "counter_storm", "counter_draw", "counter_other",
+            }) {
+                Log.i(this.getLocalClassName(), key);
+                rb = findViewById(getResourceId(key));
+                rb.setText(R.string.zero);
             }
+
+            TextView tv;
+            for (int playerIndex = 0; playerIndex < TOTAL_PLAYERS; ++playerIndex) {
+                String prefix = "player" + playerIndex;
+                tv = findViewById(getResourceId(prefix+"_life"));
+                tv.setText(R.string.life);
+                tv = findViewById(getResourceId(prefix+"_poison"));
+                tv.setText(R.string.zero);
+
+                for (int commanderIndex = 0; commanderIndex < TOTAL_PLAYERS; ++commanderIndex) {
+                    tv = findViewById(getResourceId(prefix+"_commander"+commanderIndex));
+                    tv.setText(R.string.zero);
+                }
+            }
+            adapter_.notifyDataSetChanged();
         }
         return super.onOptionsItemSelected(item);
-    }
-    public int getPlayerResourceId(int player, String key) {
-        return getPlayerResourceId(player, key, "");
-    }
-
-    public int getPlayerResourceId(int player, String key, String prefix) {
-        prefix = prefix.equals("") ? prefix : prefix + "_";
-        return getResourceId(prefix + "player" + player + "_" + key);
-    }
-    public int getResourceId(String key) {
-        return getResources().getIdentifier(key, "id", getPackageName());
     }
 
     private boolean isNumber(String string) {
@@ -258,5 +274,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
-
 }

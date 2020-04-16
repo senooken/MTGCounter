@@ -9,13 +9,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class HistoryActivity extends AppCompatActivity implements  AdapterView.OnItemClickListener {
-//    private ArrayList<GameHistory> histories_ = new ArrayList<GameHistory>();
     private ArrayList<ArrayList<HashMap<String, String>>> histories_ = new ArrayList<>();
 
     @Override
@@ -38,7 +36,7 @@ public class HistoryActivity extends AppCompatActivity implements  AdapterView.O
 
         Intent intent = getIntent();
         if (intent != null) {
-//            histories_ = (ArrayList<GameHistory>) intent.getSerializableExtra("history");
+            //noinspection unchecked
             histories_ = (ArrayList<ArrayList<HashMap<String, String>>>) intent.getSerializableExtra("history");
         }
 
@@ -59,14 +57,10 @@ public class HistoryActivity extends AppCompatActivity implements  AdapterView.O
         lv.setOnItemClickListener(this);
     }
 
-//    private class ListItemClickListener implements AdapterView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//            Intent intent = new Intent(this, GameHistoryActivity.class);
-            Intent intent = new Intent(this, GameHistoryActivity.class);
-            intent.putExtra("history", histories_.get(position));
-            startActivity(intent);
-        }
-
-//    }
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(this, GameHistoryActivity.class);
+        intent.putExtra("history", histories_.get(position));
+        startActivity(intent);
+    }
 }

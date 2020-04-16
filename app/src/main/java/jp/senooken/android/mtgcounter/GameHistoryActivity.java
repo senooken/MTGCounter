@@ -4,15 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
 
 public class GameHistoryActivity extends AppCompatActivity {
     @Override
@@ -36,19 +32,14 @@ public class GameHistoryActivity extends AppCompatActivity {
         ArrayList<HashMap<String, String>> history = new ArrayList<>();
         Intent intent = getIntent();
         if (intent != null) {
-//            if (intent.getSerializableExtra("history") instanceof ArrayList) {
-//                history = (ArrayList<ArrayList<HashMap<String, String>>>) intent.getSerializableExtra("history");
-//            }
-//            history = ((GameHistory) intent.getSerializableExtra("history")).history;
+            //noinspection unchecked
             history = (ArrayList<HashMap<String, String>>) intent.getSerializableExtra("history");
-
-            if (history == null) {
-                history = new ArrayList<>();
-            }
+//            if (history == null) {
+//                history = new ArrayList<>();
+//            }
         }
 
-        HashMap<String, String> row = new HashMap<>();
-        HistoryListAdapter adapter = new HistoryListAdapter(this, history);
+        HistoryListAdapter adapter = new HistoryListAdapter(this, getLayoutInflater(), history);
 
         ListView gameHistory = findViewById(R.id.game_history);
         gameHistory.setAdapter(adapter);

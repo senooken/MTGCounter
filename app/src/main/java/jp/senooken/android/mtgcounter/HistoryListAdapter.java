@@ -3,6 +3,7 @@ package jp.senooken.android.mtgcounter;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -12,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class HistoryListAdapter extends SimpleAdapter {
+class HistoryListAdapter extends SimpleAdapter {
     private static final String[] FROM = {"turn_global", "turn_date", "turn_time", "turn_comment",
             "turn_player0_life", "turn_player0_poison", "turn_player0_commander0", "turn_player0_commander1", "turn_player0_commander2", "turn_player0_commander3",
             "turn_player1_life", "turn_player1_poison", "turn_player1_commander0", "turn_player1_commander1", "turn_player1_commander2", "turn_player1_commander3",
@@ -27,42 +28,49 @@ public class HistoryListAdapter extends SimpleAdapter {
     };
 
     private final ArrayList<? extends HashMap<String, String>> data_;
+    private final Context context_;
+    private final LayoutInflater inflater_;
 
-    HistoryListAdapter(Context context, ArrayList<? extends HashMap<String, String>> data) {
+    HistoryListAdapter(Context context, LayoutInflater inflater, ArrayList<? extends HashMap<String, String>> data) {
         super(context, data, R.layout.turn, FROM, TO);
+        context_ = context;
         data_ = data;
+        inflater_ = inflater;
+    }
 
+    private int getResourceId(String key) {
+        return MainActivity.getResourceId(context_, key);
     }
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = MainActivity.getInstance().getLayoutInflater().inflate(R.layout.turn, parent, false);
+            convertView = inflater_.inflate(R.layout.turn, parent, false);
         }
 
         TextView tv;
         for (String key : new String[]{"turn_global", "turn_date", "turn_time", "turn_comment"}) {
-            tv = convertView.findViewById(MainActivity.getInstance().getResourceId(key));
+            tv = convertView.findViewById(getResourceId(key));
             tv.setText(data_.get(position).get(key));
         }
 
         String key;
         EditText et;
 
-        for (int playerIndex = 0; playerIndex < MainActivity.getInstance().totalPlayers_; ++playerIndex) {
+        for (int playerIndex = 0; playerIndex < MainActivity.TOTAL_PLAYERS; ++playerIndex) {
             key = "turn_player" + playerIndex + "_life";
-            et = convertView.findViewById(MainActivity.getInstance().getResourceId(key));
+            et = convertView.findViewById(getResourceId(key));
             et.setText(data_.get(position).get(key));
             et.addTextChangedListener(new HistoryWatcher(data_.get(position), key));
 
             key = "turn_player" + playerIndex + "_poison";
-            et = convertView.findViewById(MainActivity.getInstance().getResourceId(key));
+            et = convertView.findViewById(getResourceId(key));
             et.setText(data_.get(position).get(key));
             et.addTextChangedListener(new HistoryWatcher(data_.get(position), key));
 
-            for (int commanderIndex = 0; commanderIndex < MainActivity.getInstance().totalPlayers_; ++commanderIndex) {
+            for (int commanderIndex = 0; commanderIndex < MainActivity.TOTAL_PLAYERS; ++commanderIndex) {
                 key = "turn_player" + playerIndex + "_commander" + commanderIndex;
-                et = convertView.findViewById(MainActivity.getInstance().getResourceId(key));
+                et = convertView.findViewById(getResourceId(key));
                 et.setText(data_.get(position).get(key));
                 et.addTextChangedListener(new HistoryWatcher(data_.get(position), key));
             }
