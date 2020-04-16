@@ -16,7 +16,7 @@ import java.util.HashMap;
 
 public class HistoryActivity extends AppCompatActivity implements  AdapterView.OnItemClickListener {
 //    private ArrayList<GameHistory> histories_ = new ArrayList<GameHistory>();
-    private ArrayList<ArrayList<ArrayList<HashMap<String, String>>>> histories_ = new ArrayList<ArrayList<ArrayList<HashMap<String, String>>>>();
+    private ArrayList<ArrayList<HashMap<String, String>>> histories_ = new ArrayList<>();
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -39,12 +39,12 @@ public class HistoryActivity extends AppCompatActivity implements  AdapterView.O
         Intent intent = getIntent();
         if (intent != null) {
 //            histories_ = (ArrayList<GameHistory>) intent.getSerializableExtra("history");
-            histories_ = (ArrayList<ArrayList<ArrayList<HashMap<String, String>>>>) intent.getSerializableExtra("history");
+            histories_ = (ArrayList<ArrayList<HashMap<String, String>>>) intent.getSerializableExtra("history");
         }
 
         // 履歴に存在する最初のコミット
 
-        ArrayList<String> histItems = new ArrayList<String>();
+        ArrayList<String> histItems = new ArrayList<>();
         for (int hist_i = 0; hist_i < histories_.size(); ++hist_i) {
             histItems.add(String.valueOf(hist_i));
         }

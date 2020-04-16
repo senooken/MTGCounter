@@ -33,48 +33,23 @@ public class GameHistoryActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        ArrayList<ArrayList<HashMap<String, String>>> playersHistory = new ArrayList<>();
+        ArrayList<HashMap<String, String>> history = new ArrayList<>();
         Intent intent = getIntent();
         if (intent != null) {
 //            if (intent.getSerializableExtra("history") instanceof ArrayList) {
-//                playersHistory = (ArrayList<ArrayList<HashMap<String, String>>>) intent.getSerializableExtra("history");
+//                history = (ArrayList<ArrayList<HashMap<String, String>>>) intent.getSerializableExtra("history");
 //            }
-//            playersHistory = ((GameHistory) intent.getSerializableExtra("history")).history;
-            playersHistory = (ArrayList<ArrayList<HashMap<String, String>>>) intent.getSerializableExtra("history");
+//            history = ((GameHistory) intent.getSerializableExtra("history")).history;
+            history = (ArrayList<HashMap<String, String>>) intent.getSerializableExtra("history");
 
-            if (playersHistory == null) {
-                playersHistory = new ArrayList<>();
+            if (history == null) {
+                history = new ArrayList<>();
             }
         }
-
-        ArrayList<HashMap<String, String>> history = new ArrayList<>();
 
         HashMap<String, String> row = new HashMap<>();
+        HistoryListAdapter adapter = new HistoryListAdapter(this, history);
 
-        for (int playerIndex = 0; playerIndex < playersHistory.size(); ++playerIndex) {
-            String prefix = String.format(Locale.getDefault(), "history_player%d", playerIndex);
-            for (HashMap<String, String> play : playersHistory.get(playerIndex)) {
-                for (Map.Entry<String, String> entry : play.entrySet()) {
-                    row.put(String.format(Locale.getDefault(), "%s_%s", prefix, entry.getKey()), entry.getValue());
-                }
-                row.put("history_time", row.get(String.format(Locale.getDefault(), "%s_%s", prefix, "time")));
-                row.put("history_turn", row.get(String.format(Locale.getDefault(), "%s_%s", prefix, "global_turn")));
-                history.add(row);
-            }
-        }
-
-        Log.i("GameHistoryActivity", String.valueOf(history.size()));
-
-        SimpleAdapter adapter = new SimpleAdapter(this, history, R.layout.game_turn,
-            new String[]{"history_time", "history_turn",
-                "history_player0_life", "history_player0_commander", "history_player0_poison",
-                "history_player1_life", "history_player1_commander", "history_player1_poison",
-            },
-            new int[]{R.id.history_time, R.id.history_turn,
-                R.id.history_player0_life, R.id.history_player0_commander, R.id.history_player0_poison,
-                R.id.history_player1_life, R.id.history_player1_commander, R.id.history_player1_poison,
-            }
-        );
         ListView gameHistory = findViewById(R.id.game_history);
         gameHistory.setAdapter(adapter);
     }

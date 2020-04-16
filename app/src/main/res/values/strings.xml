@@ -33,8 +33,6 @@
     <string name="turn_date">YYYY-MM-dd</string>
     <string name="turn_time">HH:mm:ss</string>
 
-    <string name="header_time">Time</string>
-    <string name="header_turn">Turn</string>
     <string name="header_turn_time">Turn/Time</string>
 
     <string name="about">About</string>

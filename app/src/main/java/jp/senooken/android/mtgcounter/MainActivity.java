@@ -18,8 +18,10 @@ import android.widget.RadioButton;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,29 +31,14 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    private final String[] FROM = {"turn_global", "turn_date", "turn_time",
-            "turn_player0_life", "turn_player0_poison", "turn_player0_commander0", "turn_player0_commander1", "turn_player0_commander2", "turn_player0_commander3",
-            "turn_player1_life", "turn_player1_poison", "turn_player1_commander0", "turn_player1_commander1", "turn_player1_commander2", "turn_player1_commander3",
-            "turn_player2_life", "turn_player2_poison", "turn_player2_commander0", "turn_player2_commander1", "turn_player2_commander2", "turn_player2_commander3",
-            "turn_player3_life", "turn_player3_poison", "turn_player3_commander0", "turn_player3_commander1", "turn_player3_commander2", "turn_player3_commander3",
-            "turn_comment",
-    };
-    private final int[] TO = {R.id.turn_global, R.id.turn_date, R.id.turn_time,
-            R.id.turn_player0_life, R.id.turn_player0_commander0, R.id.turn_player0_poison, R.id.turn_player0_commander0, R.id.turn_player0_commander1, R.id.turn_player0_commander2, R.id.turn_player0_commander3,
-            R.id.turn_player1_life, R.id.turn_player1_commander0, R.id.turn_player1_poison, R.id.turn_player1_commander0, R.id.turn_player1_commander1, R.id.turn_player1_commander2, R.id.turn_player1_commander3,
-            R.id.turn_player2_life, R.id.turn_player2_commander0, R.id.turn_player2_poison, R.id.turn_player2_commander0, R.id.turn_player2_commander1, R.id.turn_player2_commander2, R.id.turn_player2_commander3,
-            R.id.turn_player3_life, R.id.turn_player3_commander0, R.id.turn_player3_poison, R.id.turn_player3_commander0, R.id.turn_player3_commander1, R.id.turn_player3_commander2, R.id.turn_player3_commander3,
-    };
     private final String HISTORY_FILE = "gameHistory.obj";
 
-    private final int totalPlayers_ = 4;
+    public final int totalPlayers_ = 4;
     private int turnGlobal_ = 1;
 
-//    private GameHistory gameHistory_;
 //    private final ArrayList<GameHistory> gameHistories_ = new ArrayList<>();
 
-    private ArrayList<ArrayList<HashMap<String, String>>> gameHistory_;
-    private ArrayList<ArrayList<ArrayList<HashMap<String, String>>>> gameHistories_ = new ArrayList<>();
+    private ArrayList<ArrayList<HashMap<String, String>>> gameHistories_ = new ArrayList<>();
 
     private class Player {
         private RadioButton life;
@@ -68,11 +55,19 @@ public class MainActivity extends AppCompatActivity {
 
     private final Player[] player_ = {new Player(), new Player()};
 
+
+    private static MainActivity instance_;
+
+    public static MainActivity getInstance() {
+        return instance_;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        instance_ = this;
         counter_ = findViewById(R.id.life);
         comment_ = findViewById(R.id.comment);
 
@@ -80,54 +75,33 @@ public class MainActivity extends AppCompatActivity {
         ListView history = findViewById(R.id.history);
         history.setAdapter(adapter_);
 
-//        for (int i = 0; i < totalPlayers_; ++i) {
-//            Player player = player_[i];
-//            player.adapter = new HistoryListAdapter(this, player.history);
-//            ListView history = findViewById(getPlayerResourceId(i, "history"));
-//            history.setAdapter(player.adapter);
-////            player.life = findViewById(getPlayerResourceId(i, "life"));
-////            player.counter = player.life;
-////            player.comment = findViewById(getPlayerResourceId(i, "comment"));
-//        }
-//
-//        gameHistories_.add(0, gameHistory_);
-//        FileInputStream stream = null;
-//        try {
-//            stream = getApplicationContext().openFileInput(HISTORY_FILE);
-//            ObjectInputStream object = new ObjectInputStream(stream);
-//            try {
-//                gameHistories_ = (ArrayList<ArrayList<ArrayList<HashMap<String, String>>>>) object.readObject();
-//                // Avoid Unchecked cast warning.
-////                for (Object x : (ArrayList) object.readObject()) {
-//////                    gameHistories_.add((GameHistory) x);
-////                    gameHistories_.add((ArrayList<ArrayList<HashMap<String, String>>>) x);
-////                }
-//
-//            } catch (ClassNotFoundException e) {
-//                e.printStackTrace();
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } finally {
-//            if (stream != null) {
-//                try {
-//                    stream.close();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
+        FileInputStream stream = null;
+        try {
+            stream = getApplicationContext().openFileInput(HISTORY_FILE);
+            ObjectInputStream object = new ObjectInputStream(stream);
+            try {
+                gameHistories_ = (ArrayList<ArrayList<HashMap<String, String>>>) object.readObject();
+                // Avoid Unchecked cast warning.
+                for (Object x : (ArrayList) object.readObject()) {
+//                    gameHistories_.add((GameHistory) x);
+                    gameHistories_.add((ArrayList<HashMap<String, String>>) x);
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (stream != null) {
+                try {
+                    stream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
     }
-//
-//
-//
-////    @Override
-////    protected void onStart() {
-////        super.onStart();
-//////        gameHistory_ = new GameHistory(new ArrayList<ArrayList<HashMap<String, String>>>());
-////        gameHistory_ = new ArrayList<ArrayList<HashMap<String, String>>>();
-////    }
 
     public void onPlayerSelected(View view) {
         RadioButton rb = (RadioButton) view;
@@ -168,9 +142,9 @@ public class MainActivity extends AppCompatActivity {
 
         for (int playerIndex = 0; playerIndex < totalPlayers_; ++playerIndex) {
             TextView life = findViewById(getPlayerResourceId(playerIndex, "life"));
-            turn.put(String.format(Locale.getDefault(), "turn_player%d_life", playerIndex), life.getText().toString());
+            turn.put("turn_player" + playerIndex + "_life", life.getText().toString());
             TextView poison = findViewById(getPlayerResourceId(playerIndex, "poison"));
-            turn.put(String.format(Locale.getDefault(), "turn_player%d_poison", playerIndex), poison.getText().toString());
+            turn.put("turn_player" + playerIndex + "_poison", poison.getText().toString());
 
             for (int commanderIndex = 0; commanderIndex < totalPlayers_; ++commanderIndex) {
                 TextView commander = findViewById(getPlayerResourceId(playerIndex,
@@ -178,15 +152,6 @@ public class MainActivity extends AppCompatActivity {
                 turn.put("turn_player" + playerIndex + "_commander" + commanderIndex,
                         commander.getText().toString());
             }
-
-//            if (gameHistory_.history.size() < totalPlayers_) {
-//                gameHistory_.history.add(new ArrayList<HashMap<String, String>>());
-//            }
-////            gameHistory_.history.set(playerIndex, player.history);
-//            if (gameHistory_.size() < totalPlayers_) {
-//                gameHistory_.add(new ArrayList<HashMap<String, String>>());
-//            }
-//            gameHistory_.set(playerIndex, player.history);
         }
 
 //        turn.put("comment", comment_.getText().toString());
@@ -237,72 +202,6 @@ public class MainActivity extends AppCompatActivity {
         comment_.setText(buffer.toString());
     }
 
-    private class HistoryListAdapter extends SimpleAdapter {
-        private final ArrayList<? extends HashMap<String, String>> data_;
-
-        HistoryListAdapter(Context context, ArrayList<? extends HashMap<String, String>> data) {
-            super(context, data, R.layout.turn, FROM, TO);
-            data_ = data;
-        }
-
-        @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
-            if (convertView == null) {
-                convertView = getLayoutInflater().inflate(R.layout.turn, parent, false);
-            }
-
-            TextView turnGlobal = convertView.findViewById(R.id.turn_global);
-            turnGlobal.setText(data_.get(position).get("turn_global"));
-            TextView turnDate = convertView.findViewById(R.id.turn_date);
-            turnDate.setText(data_.get(position).get("turn_date"));
-            TextView turnTime = convertView.findViewById(R.id.turn_time);
-            turnTime.setText(data_.get(position).get("turn_time"));
-
-            String key;
-
-            for (int playerIndex = 0; playerIndex < totalPlayers_; ++playerIndex) {
-                final EditText turnLife = convertView.findViewById(getPlayerResourceId(playerIndex, "life", "turn"));
-                key = "turn_player" + playerIndex + "_life";
-                turnLife.setText(data_.get(position).get(key));
-                turnLife.addTextChangedListener(new HistoryWatcher(data_.get(position), key));
-
-                final EditText turnPoison = convertView.findViewById(getPlayerResourceId(playerIndex, "poison", "turn"));
-                key = "turn_player" + playerIndex + "_poison";
-                turnPoison.setText(data_.get(position).get(key));
-                turnPoison.addTextChangedListener(new HistoryWatcher(data_.get(position), key));
-
-                for (int commanderIndex = 0; commanderIndex < totalPlayers_; ++commanderIndex) {
-                    final EditText turnCommander = convertView.findViewById(
-                            getPlayerResourceId(playerIndex, "commander" + commanderIndex, "turn"));
-                    key = "turn_player" + playerIndex + "_commander" + commanderIndex;
-                    turnCommander.setText(data_.get(position).get(key));
-                    turnCommander.addTextChangedListener(new HistoryWatcher(data_.get(position), key));
-                }
-            }
-
-            return convertView;
-        }
-
-        private class HistoryWatcher implements TextWatcher {
-            private final HashMap<String, String> map_;
-            private final String key_;
-            HistoryWatcher(HashMap<String, String> map, String key) {
-                map_ = map;
-                key_ = key;
-            }
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-            @Override
-            public void afterTextChanged(Editable s) {
-                map_.put(key_, s.toString());
-            }
-        }
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -321,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("history", gameHistories_);
             startActivity(intent);
         } else if (itemId == R.id.menu_save) {
-            gameHistories_.add(gameHistory_);
+            gameHistories_.add(history_);
             FileOutputStream stream = null;
             try {
                 stream = getApplicationContext().openFileOutput(HISTORY_FILE, Context.MODE_PRIVATE);
@@ -350,16 +249,14 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    private int getPlayerResourceId(int player, String key) {
+    public int getPlayerResourceId(int player, String key) {
         return getPlayerResourceId(player, key, "");
     }
 
-    private int getPlayerResourceId(int player, String key, String prefix) {
+    public int getPlayerResourceId(int player, String key, String prefix) {
         prefix = prefix.equals("") ? prefix : prefix + "_";
         return getResources().getIdentifier(
-                prefix + "player" + player + "_" + key,
-//                String.format(Locale.getDefault(), "player%d_%s", player, key),
-                "id", getPackageName());
+                prefix + "player" + player + "_" + key, "id", getPackageName());
     }
 
     private boolean isNumber(String string) {
