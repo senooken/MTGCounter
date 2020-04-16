@@ -26,13 +26,25 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    private final String[] FROM = {"turn_time", "turn_global", "turn_life", "turn_commander", "turn_poison", "turn_comment"};
-    private final int[] TO = {R.id.turn_time, R.id.turn_global, R.id.turn_player0_life, R.id.turn_player0_commander, R.id.turn_player0_poison, R.id.turn_player0_comment};
+    private final String[] FROM = {"turn_global", "turn_date", "turn_time",
+            "turn_player0_life", "turn_player0_poison", "turn_player0_commander0", "turn_player0_commander1", "turn_player0_commander2", "turn_player0_commander3",
+            "turn_player1_life", "turn_player1_poison", "turn_player1_commander0", "turn_player1_commander1", "turn_player1_commander2", "turn_player1_commander3",
+            "turn_player2_life", "turn_player2_poison", "turn_player2_commander0", "turn_player2_commander1", "turn_player2_commander2", "turn_player2_commander3",
+            "turn_player3_life", "turn_player3_poison", "turn_player3_commander0", "turn_player3_commander1", "turn_player3_commander2", "turn_player3_commander3",
+            "turn_comment",
+    };
+    private final int[] TO = {R.id.turn_global, R.id.turn_date, R.id.turn_time,
+            R.id.turn_player0_life, R.id.turn_player0_commander0, R.id.turn_player0_poison, R.id.turn_player0_commander0, R.id.turn_player0_commander1, R.id.turn_player0_commander2, R.id.turn_player0_commander3,
+            R.id.turn_player1_life, R.id.turn_player1_commander0, R.id.turn_player1_poison, R.id.turn_player1_commander0, R.id.turn_player1_commander1, R.id.turn_player1_commander2, R.id.turn_player1_commander3,
+            R.id.turn_player2_life, R.id.turn_player2_commander0, R.id.turn_player2_poison, R.id.turn_player2_commander0, R.id.turn_player2_commander1, R.id.turn_player2_commander2, R.id.turn_player2_commander3,
+            R.id.turn_player3_life, R.id.turn_player3_commander0, R.id.turn_player3_poison, R.id.turn_player3_commander0, R.id.turn_player3_commander1, R.id.turn_player3_commander2, R.id.turn_player3_commander3,
+    };
     private final String HISTORY_FILE = "gameHistory.obj";
 
-    private final int totalPlayers_ = 2;
+    private final int totalPlayers_ = 4;
     private int turnGlobal_ = 1;
 
 //    private GameHistory gameHistory_;
@@ -146,44 +158,47 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onCommitButtonClicked(@SuppressWarnings("unused") View view) {
-        for (int player_i = 0; player_i < totalPlayers_; ++player_i) {
-            Player player = player_[player_i];
-            Date now = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss", Locale.US);
-            HashMap<String, String>turn = new HashMap<>();
-            turn.put("turn_time", sdf.format(now));
-            turn.put("turn_global", String.format(Locale.getDefault(), "%02d", turnGlobal_));
+        Date now = new Date();
+        HashMap<String, String>turn = new HashMap<>();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd", Locale.US);
+        turn.put("turn_date", dateFormat.format(now));
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.US);
+        turn.put("turn_time", timeFormat.format(now));
+        turn.put("turn_global", String.format(Locale.getDefault(), "%02d", turnGlobal_));
 
-            turn.put("turn_life", player.life.getText().toString());
-            RadioButton commander = findViewById(getPlayerResourceId(player_i, "life_commander"));
-            turn.put("turn_commander", commander.getText().toString());
-            RadioButton poison = findViewById(getPlayerResourceId(player_i, "life_poison"));
-            turn.put("turn_poison", poison.getText().toString());
+        for (int playerIndex = 0; playerIndex < totalPlayers_; ++playerIndex) {
+            TextView life = findViewById(getPlayerResourceId(playerIndex, "life"));
+            turn.put(String.format(Locale.getDefault(), "turn_player%d_life", playerIndex), life.getText().toString());
+            TextView poison = findViewById(getPlayerResourceId(playerIndex, "poison"));
+            turn.put(String.format(Locale.getDefault(), "turn_player%d_poison", playerIndex), poison.getText().toString());
 
-//            turn.put("turn_comment", player.comment.getText().toString());
-            turn.put("turn_comment", comment_.getText().toString());
-//            player.history.add(turn);
-//            player.adapter.notifyDataSetChanged();
-            history_.add(turn);
-            adapter_.notifyDataSetChanged();
-
-            // Reset turn comment.
-//            player.comment.setText("");
-            comment_.setText("");
-
-            ListView lv = findViewById(getPlayerResourceId(player_i, "history"));
-//            lv.smoothScrollToPosition(player.history.size());
-            lv.smoothScrollToPosition(history_.size());
+            for (int commanderIndex = 0; commanderIndex < totalPlayers_; ++commanderIndex) {
+                TextView commander = findViewById(getPlayerResourceId(playerIndex,
+                        "commander" + commanderIndex));
+                turn.put("turn_player" + playerIndex + "_commander" + commanderIndex,
+                        commander.getText().toString());
+            }
 
 //            if (gameHistory_.history.size() < totalPlayers_) {
 //                gameHistory_.history.add(new ArrayList<HashMap<String, String>>());
 //            }
-////            gameHistory_.history.set(player_i, player.history);
+////            gameHistory_.history.set(playerIndex, player.history);
 //            if (gameHistory_.size() < totalPlayers_) {
 //                gameHistory_.add(new ArrayList<HashMap<String, String>>());
 //            }
-//            gameHistory_.set(player_i, player.history);
+//            gameHistory_.set(playerIndex, player.history);
         }
+
+//        turn.put("comment", comment_.getText().toString());
+
+        history_.add(turn);
+        adapter_.notifyDataSetChanged();
+
+        comment_.setText("");
+
+        ListView lv = findViewById(R.id.history);
+        lv.smoothScrollToPosition(history_.size());
+
         ++turnGlobal_;
     }
 
@@ -236,26 +251,34 @@ public class MainActivity extends AppCompatActivity {
                 convertView = getLayoutInflater().inflate(R.layout.turn, parent, false);
             }
 
-            TextView turnTime = convertView.findViewById(R.id.turn_time);
-            turnTime.setText(data_.get(position).get("turn_time"));
             TextView turnGlobal = convertView.findViewById(R.id.turn_global);
             turnGlobal.setText(data_.get(position).get("turn_global"));
+            TextView turnDate = convertView.findViewById(R.id.turn_date);
+            turnDate.setText(data_.get(position).get("turn_date"));
+            TextView turnTime = convertView.findViewById(R.id.turn_time);
+            turnTime.setText(data_.get(position).get("turn_time"));
 
-            final EditText turnLife = convertView.findViewById(R.id.turn_player0_life);
-            turnLife.setText(data_.get(position).get("turn_life"));
-            turnLife.addTextChangedListener(new HistoryWatcher(data_.get(position), "turn_life"));
+            String key;
 
-            final EditText turnCommander = convertView.findViewById(R.id.turn_player0_commander);
-            turnCommander.setText(data_.get(position).get("turn_commander"));
-            turnCommander.addTextChangedListener(new HistoryWatcher(data_.get(position), "turn_commander"));
+            for (int playerIndex = 0; playerIndex < totalPlayers_; ++playerIndex) {
+                final EditText turnLife = convertView.findViewById(getPlayerResourceId(playerIndex, "life", "turn"));
+                key = "turn_player" + playerIndex + "_life";
+                turnLife.setText(data_.get(position).get(key));
+                turnLife.addTextChangedListener(new HistoryWatcher(data_.get(position), key));
 
-            final EditText turnPoison = convertView.findViewById(R.id.turn_player0_poison);
-            turnPoison.setText(data_.get(position).get("turn_poison"));
-            turnPoison.addTextChangedListener(new HistoryWatcher(data_.get(position), "turn_poison"));
+                final EditText turnPoison = convertView.findViewById(getPlayerResourceId(playerIndex, "poison", "turn"));
+                key = "turn_player" + playerIndex + "_poison";
+                turnPoison.setText(data_.get(position).get(key));
+                turnPoison.addTextChangedListener(new HistoryWatcher(data_.get(position), key));
 
-            EditText turnComment = convertView.findViewById(R.id.turn_player0_comment);
-            turnComment.setText(data_.get(position).get("turn_comment"));
-            turnComment.addTextChangedListener(new HistoryWatcher(data_.get(position), "turn_comment"));
+                for (int commanderIndex = 0; commanderIndex < totalPlayers_; ++commanderIndex) {
+                    final EditText turnCommander = convertView.findViewById(
+                            getPlayerResourceId(playerIndex, "commander" + commanderIndex, "turn"));
+                    key = "turn_player" + playerIndex + "_commander" + commanderIndex;
+                    turnCommander.setText(data_.get(position).get(key));
+                    turnCommander.addTextChangedListener(new HistoryWatcher(data_.get(position), key));
+                }
+            }
 
             return convertView;
         }
@@ -327,10 +350,16 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
     private int getPlayerResourceId(int player, String key) {
+        return getPlayerResourceId(player, key, "");
+    }
+
+    private int getPlayerResourceId(int player, String key, String prefix) {
+        prefix = prefix.equals("") ? prefix : prefix + "_";
         return getResources().getIdentifier(
-                String.format(Locale.getDefault(), "player%d_%s", player, key), "id", getPackageName());
+                prefix + "player" + player + "_" + key,
+//                String.format(Locale.getDefault(), "player%d_%s", player, key),
+                "id", getPackageName());
     }
 
     private boolean isNumber(String string) {

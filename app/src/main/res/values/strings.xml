@@ -18,6 +18,11 @@
     <string name="label_type">Type</string>
     <string name="label_life">Life</string>
     <string name="label_commander">Commander</string>
+    <string name="label_commander0">C1</string>
+    <string name="label_commander1">C2</string>
+    <string name="label_commander2">C3</string>
+    <string name="label_commander3">C4</string>
+
     <string name="label_poison">Poison</string>
     <string name="label_mana">Mana</string>
     <string name="label_counter">Counter</string>
@@ -25,10 +30,12 @@
     <string name="label_draw">(Draw)</string>
     <string name="label_other">(Other)</string>
 
+    <string name="turn_date">YYYY-MM-dd</string>
     <string name="turn_time">HH:mm:ss</string>
 
     <string name="header_time">Time</string>
     <string name="header_turn">Turn</string>
+    <string name="header_turn_time">Turn/Time</string>
 
     <string name="about">About</string>
     <string name="reset">Reset</string>

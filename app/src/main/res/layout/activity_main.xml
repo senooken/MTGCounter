@@ -18,43 +18,91 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="4sp">
+            android:padding="4sp"
+            android:baselineAligned="false">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/header_time" />
+                android:ems="5"
+                android:text="@string/header_turn_time" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/header_turn" />
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/label_life" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/label_commander" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_player" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/label_poison" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_player0" />
+                </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/comment" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_player" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_player1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_player" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_player2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_player" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_player3" />
+                </LinearLayout>
+
+            </LinearLayout>
+
         </LinearLayout>
 
         <ListView
@@ -88,12 +136,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/label_commander" />
+                android:text="@string/label_poison" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/label_poison" />
+                android:ems="5"
+                android:text="@string/label_commander" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -109,18 +159,49 @@
                 android:text="@string/life" />
 
             <TextView
-                android:id="@+id/player0_commander"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/zero"
-                tools:text="@string/zero" />
-
-            <TextView
                 android:id="@+id/player0_poison"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/zero"
-                tools:text="@string/zero" />
+                android:text="@string/zero" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/player0_commander0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/zero"
+                    tools:text="@string/zero" />
+
+                <TextView
+                    android:id="@+id/player0_commander1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/zero"
+                    tools:text="@string/zero" />
+
+                <TextView
+                    android:id="@+id/player0_commander2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/zero"
+                    tools:text="@string/zero" />
+
+                <TextView
+                    android:id="@+id/player0_commander3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/zero"
+                    tools:text="@string/zero" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -136,18 +217,46 @@
                 android:text="@string/life" />
 
             <TextView
-                android:id="@+id/player1_commander"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/zero"
-                tools:text="@string/zero" />
-
-            <TextView
                 android:id="@+id/player1_poison"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/zero"
                 tools:text="@string/zero" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/player1_commander0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/zero" />
+
+                <TextView
+                    android:id="@+id/player1_commander1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/zero" />
+
+                <TextView
+                    android:id="@+id/player1_commander2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/zero" />
+
+                <TextView
+                    android:id="@+id/player1_commander3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/zero" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -163,16 +272,49 @@
                 android:text="@string/life" />
 
             <TextView
-                android:id="@+id/player2_commander"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/zero" />
-
-            <TextView
                 android:id="@+id/player2_poison"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/zero" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/player2_commander0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/zero"
+                    tools:text="@string/zero" />
+
+                <TextView
+                    android:id="@+id/player2_commander1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/zero"
+                    tools:text="@string/zero" />
+
+                <TextView
+                    android:id="@+id/player2_commander2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/zero"
+                    tools:text="@string/zero" />
+
+                <TextView
+                    android:id="@+id/player2_commander3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/zero"
+                    tools:text="@string/zero" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -188,17 +330,49 @@
                 android:text="@string/life" />
 
             <TextView
-                android:id="@+id/player3_commander"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/zero"
-                tools:text="@string/zero" />
-
-            <TextView
                 android:id="@+id/player3_poison"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/zero" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/player3_commander0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/zero"
+                    tools:text="@string/zero" />
+
+                <TextView
+                    android:id="@+id/player3_commander1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/zero"
+                    tools:text="@string/zero" />
+
+                <TextView
+                    android:id="@+id/player3_commander2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/zero"
+                    tools:text="@string/zero" />
+
+                <TextView
+                    android:id="@+id/player3_commander3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/zero"
+                    tools:text="@string/zero" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
@@ -279,14 +453,6 @@
                 android:text="@string/label_life" />
 
             <RadioButton
-                android:id="@+id/commander"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="onRadioButtonClicked"
-                android:text="@string/label_commander" />
-
-            <RadioButton
                 android:id="@+id/poison"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -294,6 +460,38 @@
                 android:onClick="onRadioButtonClicked"
                 android:text="@string/label_poison"
                 android:textColor="@android:color/holo_purple" />
+
+            <RadioButton
+                android:id="@+id/commander0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/label_commander0" />
+
+            <RadioButton
+                android:id="@+id/commander1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/label_commander1" />
+
+            <RadioButton
+                android:id="@+id/commander2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/label_commander2" />
+
+            <RadioButton
+                android:id="@+id/commander3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/label_commander3" />
 
         </LinearLayout>
 
@@ -414,6 +612,8 @@
                 android:ems="4"
                 android:hint="@string/label_other"
                 android:inputType="text"
+                android:paddingTop="2sp"
+                android:paddingBottom="8sp"
                 android:text="@string/label_other"
                 tools:targetApi="o" />
 
@@ -438,7 +638,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/player0_pending"
+            android:id="@+id/pending"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -447,7 +647,7 @@
             android:text="@string/pending" />
 
         <Button
-            android:id="@+id/player0_minus"
+            android:id="@+id/minus"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -456,7 +656,7 @@
             android:text="@string/minus" />
 
         <Button
-            android:id="@+id/player0_plus"
+            android:id="@+id/plus"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -465,7 +665,7 @@
             android:text="@string/plus" />
 
         <Button
-            android:id="@+id/player0_commit"
+            android:id="@+id/commit"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
