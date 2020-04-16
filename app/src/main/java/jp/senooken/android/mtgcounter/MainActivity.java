@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
         String text = counter_.getText().toString();
         if (isNumber(text)) {
             counter_.setText(String.format(Locale.getDefault(), "%02d",
-                    Integer.parseInt(counter_.getText().toString())+1));
+                    Integer.parseInt(counter_.getText().toString()) + increment));
         } else {
             TextView tv;
             boolean IS_COMMANDER = text.charAt(0) == 'C';
@@ -196,7 +196,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
-        if (itemId == R.id.menu_about) {
+        if (itemId == R.id.menu_reset) {
+            reset();
+        } else if (itemId == R.id.menu_about) {
             Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.menu_history) {
@@ -222,48 +224,51 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-        } else if (itemId == R.id.menu_reset) {
-            turnGlobal_ = 1;
-            history_.clear();
-
-            EditText et;
-            et = findViewById(R.id.comment);
-            et.setText("");
-            et = findViewById(R.id.other);
-            et.setText(R.string.label_other);
-
-            RadioButton rb;
-            rb = findViewById(R.id.player0);
-            rb.setChecked(true);
-            rb = findViewById(R.id.life);
-            clearRadioButtonCheck((ViewGroup) rb.getParent().getParent());
-            rb.setChecked(true);
-
-            for (String key : new String[]{
-                    "mana_colorless", "mana_white", "mana_blue", "mana_black", "mana_red", "mana_green",
-                    "counter_storm", "counter_draw", "counter_other",
-            }) {
-                Log.i(this.getLocalClassName(), key);
-                rb = findViewById(getResourceId(key));
-                rb.setText(R.string.zero);
-            }
-
-            TextView tv;
-            for (int playerIndex = 0; playerIndex < TOTAL_PLAYERS; ++playerIndex) {
-                String prefix = "player" + playerIndex;
-                tv = findViewById(getResourceId(prefix+"_life"));
-                tv.setText(R.string.life);
-                tv = findViewById(getResourceId(prefix+"_poison"));
-                tv.setText(R.string.zero);
-
-                for (int commanderIndex = 0; commanderIndex < TOTAL_PLAYERS; ++commanderIndex) {
-                    tv = findViewById(getResourceId(prefix+"_commander"+commanderIndex));
-                    tv.setText(R.string.zero);
-                }
-            }
-            adapter_.notifyDataSetChanged();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void reset() {
+        turnGlobal_ = 1;
+        activePlayerIndex_ = 0;
+        history_.clear();
+
+        EditText et;
+        et = findViewById(R.id.comment);
+        et.setText("");
+        et = findViewById(R.id.other);
+        et.setText(R.string.label_other);
+
+        RadioButton rb;
+        rb = findViewById(R.id.player0);
+        rb.setChecked(true);
+        counter_ = findViewById(R.id.life);
+        clearRadioButtonCheck((ViewGroup) counter_.getParent().getParent());
+        counter_.setChecked(true);
+
+        for (String key : new String[]{
+                "mana_colorless", "mana_white", "mana_blue", "mana_black", "mana_red", "mana_green",
+                "counter_storm", "counter_draw", "counter_other",
+        }) {
+            Log.i(this.getLocalClassName(), key);
+            rb = findViewById(getResourceId(key));
+            rb.setText(R.string.zero);
+        }
+
+        TextView tv;
+        for (int playerIndex = 0; playerIndex < TOTAL_PLAYERS; ++playerIndex) {
+            String prefix = "player" + playerIndex;
+            tv = findViewById(getResourceId(prefix+"_life"));
+            tv.setText(R.string.life);
+            tv = findViewById(getResourceId(prefix+"_poison"));
+            tv.setText(R.string.zero);
+
+            for (int commanderIndex = 0; commanderIndex < TOTAL_PLAYERS; ++commanderIndex) {
+                tv = findViewById(getResourceId(prefix+"_commander"+commanderIndex));
+                tv.setText(R.string.zero);
+            }
+        }
+        adapter_.notifyDataSetChanged();
     }
 
     private boolean isNumber(String string) {
