@@ -380,6 +380,7 @@
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:checkedButton="@+id/player_0"
         android:orientation="horizontal"
         android:paddingLeft="4sp"
         android:paddingRight="4sp">
@@ -391,14 +392,16 @@
             android:text="@string/label_player" />
 
         <RadioButton
+            android:id="@+id/player_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:checked="true"
+            android:checked="false"
             android:onClick="onPlayerSelected"
             android:text="@string/label_player0" />
 
         <RadioButton
+            android:id="@+id/player_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -406,6 +409,7 @@
             android:text="@string/label_player1" />
 
         <RadioButton
+            android:id="@+id/player_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -413,9 +417,11 @@
             android:text="@string/label_player2" />
 
         <RadioButton
+            android:id="@+id/player_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="onPlayerSelected"
             android:text="@string/label_player3" />
 
     </RadioGroup>
@@ -425,6 +431,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorButtonNormal"
+        android:checkedButton="@+id/life"
         android:paddingLeft="4sp"
         android:paddingRight="4sp">
 
@@ -444,7 +451,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:checked="true"
                 android:onClick="onRadioButtonClicked"
                 android:text="@string/label_life" />
 
@@ -608,7 +614,7 @@
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:hint="@string/comment"
-        android:inputType="text"
+        android:inputType="textMultiLine|text"
         tools:targetApi="o" />
 
     <LinearLayout

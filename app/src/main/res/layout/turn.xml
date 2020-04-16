@@ -18,494 +18,516 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2sp"
+            android:layout_marginLeft="2sp"
             android:text="@string/zero"
-            android:textSize="@dimen/turn_font_size"
-            android:layout_marginLeft="2sp" />
+            android:textSize="@dimen/turn_font_size" />
 
         <TextView
             android:id="@+id/turn_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2sp"
+            android:layout_marginLeft="2sp"
             android:ems="5"
             android:text="@string/turn_date"
-            android:textSize="@dimen/turn_font_size"
-            android:layout_marginLeft="2sp" />
+            android:textSize="@dimen/turn_font_size" />
 
         <TextView
             android:id="@+id/turn_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2sp"
+            android:layout_marginLeft="2sp"
             android:text="@string/turn_time"
-            android:textSize="@dimen/turn_font_size"
-            android:layout_marginLeft="2sp" />
+            android:textSize="@dimen/turn_font_size" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:baselineAligned="false">
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/turn_player0_life"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/turn_hint"
-                    android:inputType="number"
-                    android:maxLength="5"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/life" />
-
-                <EditText
-                    android:id="@+id/turn_player0_poison"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_poison"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/turn_player0_commander0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_commander"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
-
-                <EditText
-                    android:id="@+id/turn_player0_commander1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_commander"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
-
-                <EditText
-                    android:id="@+id/turn_player0_commander2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_commander"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
-
-                <EditText
-                    android:id="@+id/turn_player0_commander3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="0dp"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_commander"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:baselineAligned="false">
 
-                <EditText
-                    android:id="@+id/turn_player1_life"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/turn_hint"
-                    android:inputType="number"
-                    android:maxLength="5"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/life" />
+                    android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/turn_player1_poison"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/turn_player0_life"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/turn_hint"
+                            android:inputType="number"
+                            android:maxLength="5"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/life" />
+
+                        <EditText
+                            android:id="@+id/turn_player0_poison"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_poison"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/turn_player0_commander0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_commander"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+
+                        <EditText
+                            android:id="@+id/turn_player0_commander1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_commander"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+
+                        <EditText
+                            android:id="@+id/turn_player0_commander2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_commander"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+
+                        <EditText
+                            android:id="@+id/turn_player0_commander3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_commander"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_poison"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/turn_player1_life"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/turn_hint"
+                            android:inputType="number"
+                            android:maxLength="5"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/life" />
+
+                        <EditText
+                            android:id="@+id/turn_player1_poison"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_poison"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/turn_player1_commander0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_commander"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+
+                        <EditText
+                            android:id="@+id/turn_player1_commander1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_commander"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+
+                        <EditText
+                            android:id="@+id/turn_player1_commander2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_commander"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+
+                        <EditText
+                            android:id="@+id/turn_player1_commander3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_commander"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/turn_player2_life"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/turn_hint"
+                            android:inputType="number"
+                            android:maxLength="5"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/life" />
+
+                        <EditText
+                            android:id="@+id/turn_player2_poison"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_poison"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/turn_player2_commander0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_commander"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+
+                        <EditText
+                            android:id="@+id/turn_player2_commander1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_commander"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+
+                        <EditText
+                            android:id="@+id/turn_player2_commander2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_commander"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+
+                        <EditText
+                            android:id="@+id/turn_player2_commander3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_commander"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/turn_player3_life"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/turn_hint"
+                            android:inputType="number"
+                            android:maxLength="5"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/life" />
+
+                        <EditText
+                            android:id="@+id/turn_player3_poison"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_poison"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/turn_player3_commander0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_commander"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+
+                        <EditText
+                            android:id="@+id/turn_player3_commander1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_commander"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+
+                        <EditText
+                            android:id="@+id/turn_player3_commander2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_commander"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+
+                        <EditText
+                            android:id="@+id/turn_player3_commander3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:ems="1"
+                            android:hint="@string/label_commander"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="1dp"
+                            android:textSize="@dimen/turn_font_size"
+                            tools:targetApi="o"
+                            tools:text="@string/zero" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/turn_player1_commander0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_commander"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
-
-                <EditText
-                    android:id="@+id/turn_player1_commander1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_commander"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
-
-                <EditText
-                    android:id="@+id/turn_player1_commander2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_commander"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
-
-                <EditText
-                    android:id="@+id/turn_player1_commander3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_commander"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/turn_player2_life"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/turn_hint"
-                    android:inputType="number"
-                    android:maxLength="5"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/life" />
-
-                <EditText
-                    android:id="@+id/turn_player2_poison"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_poison"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/turn_player2_commander0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_commander"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
-
-                <EditText
-                    android:id="@+id/turn_player2_commander1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_commander"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
-
-                <EditText
-                    android:id="@+id/turn_player2_commander2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_commander"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
-
-                <EditText
-                    android:id="@+id/turn_player2_commander3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_commander"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/turn_comment"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/turn_player3_life"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/turn_hint"
-                    android:inputType="number"
-                    android:maxLength="5"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/life" />
-
-                <EditText
-                    android:id="@+id/turn_player3_poison"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_poison"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/turn_player3_commander0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_commander"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
-
-                <EditText
-                    android:id="@+id/turn_player3_commander1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_commander"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
-
-                <EditText
-                    android:id="@+id/turn_player3_commander2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_commander"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
-
-                <EditText
-                    android:id="@+id/turn_player3_commander3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:ems="1"
-                    android:hint="@string/label_commander"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:paddingLeft="1dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="1dp"
-                    android:textSize="@dimen/turn_font_size"
-                    tools:targetApi="o"
-                    tools:text="@string/zero" />
-            </LinearLayout>
-
+                android:autofillHints=""
+                android:ems="15"
+                android:hint="@string/comment"
+                android:inputType="textMultiLine"
+                android:lines="2"
+                tools:targetApi="o" />
         </LinearLayout>
-
-    </LinearLayout>
+    </HorizontalScrollView>
 
 
 </LinearLayout>

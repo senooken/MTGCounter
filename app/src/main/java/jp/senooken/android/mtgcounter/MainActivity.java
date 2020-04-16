@@ -5,8 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -28,7 +27,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private final String HISTORY_FILE = "gameHistory.obj";
@@ -36,25 +34,13 @@ public class MainActivity extends AppCompatActivity {
     public final int totalPlayers_ = 4;
     private int turnGlobal_ = 1;
 
-//    private final ArrayList<GameHistory> gameHistories_ = new ArrayList<>();
-
     private ArrayList<ArrayList<HashMap<String, String>>> gameHistories_ = new ArrayList<>();
-
-    private class Player {
-        private RadioButton life;
-        private SimpleAdapter adapter;
-        private final ArrayList<HashMap<String, String>> history = new ArrayList<>();
-        private EditText comment;
-    }
 
     private int activePlayerIndex_ = 0;
     private RadioButton counter_;
     private HistoryListAdapter adapter_;
     private final ArrayList<HashMap<String, String>> history_ = new ArrayList<>();
     private EditText comment_;
-
-    private final Player[] player_ = {new Player(), new Player()};
-
 
     private static MainActivity instance_;
 
@@ -83,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                 gameHistories_ = (ArrayList<ArrayList<HashMap<String, String>>>) object.readObject();
                 // Avoid Unchecked cast warning.
                 for (Object x : (ArrayList) object.readObject()) {
-//                    gameHistories_.add((GameHistory) x);
                     gameHistories_.add((ArrayList<HashMap<String, String>>) x);
                 }
             } catch (ClassNotFoundException e) {
@@ -107,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         RadioButton rb = (RadioButton) view;
         if (rb.isChecked()) {
             activePlayerIndex_ = Integer.parseInt(rb.getText().toString()) - 1;
+            Log.i(this.getLocalClassName(), "activePlayerIndex_=" + activePlayerIndex_);
         }
     }
 
@@ -139,55 +125,58 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.US);
         turn.put("turn_time", timeFormat.format(now));
         turn.put("turn_global", String.format(Locale.getDefault(), "%02d", turnGlobal_));
+        turn.put("comment", comment_.getText().toString());
 
+        String key;
         for (int playerIndex = 0; playerIndex < totalPlayers_; ++playerIndex) {
-            TextView life = findViewById(getPlayerResourceId(playerIndex, "life"));
-            turn.put("turn_player" + playerIndex + "_life", life.getText().toString());
-            TextView poison = findViewById(getPlayerResourceId(playerIndex, "poison"));
-            turn.put("turn_player" + playerIndex + "_poison", poison.getText().toString());
+            key = "player" + playerIndex + "_life";
+            TextView life = findViewById(getResourceId(key));
+            turn.put("turn_"+key, life.getText().toString());
+            key = "player" + playerIndex + "_poison";
+            TextView poison = findViewById(getResourceId(key));
+            turn.put("turn_"+key, poison.getText().toString());
 
             for (int commanderIndex = 0; commanderIndex < totalPlayers_; ++commanderIndex) {
-                TextView commander = findViewById(getPlayerResourceId(playerIndex,
-                        "commander" + commanderIndex));
-                turn.put("turn_player" + playerIndex + "_commander" + commanderIndex,
-                        commander.getText().toString());
+                key = "player" + playerIndex + "_commander" + commanderIndex;
+                TextView commander = findViewById(getResourceId(key));
+                turn.put("turn_"+key, commander.getText().toString());
             }
         }
-
-//        turn.put("comment", comment_.getText().toString());
 
         history_.add(turn);
         adapter_.notifyDataSetChanged();
 
-        comment_.setText("");
-
         ListView lv = findViewById(R.id.history);
         lv.smoothScrollToPosition(history_.size());
 
+        comment_.setText("");
         ++turnGlobal_;
     }
 
     public void onPlusButtonClicked(@SuppressWarnings("unused") View view) {
-        if (isNumber(counter_.getText().toString())) {
-            counter_.setText(String.format(Locale.getDefault(), "%02d",
-                    Integer.parseInt(counter_.getText().toString())+1));
-        } else {
-            TextView tv = findViewById(getPlayerResourceId(
-                    activePlayerIndex_, counter_.getText().toString().toLowerCase()));
-            tv.setText(String.format(Locale.getDefault(), "%02d",
-                    Integer.parseInt(tv.getText().toString())+1));
-        }
+        addCounter(+1);
     }
 
     public void onMinusButtonClicked(@SuppressWarnings("unused") View view) {
-        if (isNumber(counter_.getText().toString())) {
+        addCounter(-1);
+    }
+
+    public void addCounter(int increment) {
+        String text = counter_.getText().toString();
+        if (isNumber(text)) {
             counter_.setText(String.format(Locale.getDefault(), "%02d",
-                    Integer.parseInt(counter_.getText().toString())-1));
+                    Integer.parseInt(counter_.getText().toString())+1));
         } else {
-            TextView tv = findViewById(getPlayerResourceId(
-                    activePlayerIndex_, counter_.getText().toString().toLowerCase()));
+            TextView tv;
+            boolean IS_COMMANDER = text.charAt(0) == 'C';
+            if (IS_COMMANDER) {
+                int commanderIndex = Integer.parseInt(text.substring(1)) - 1;
+                tv = findViewById(getResourceId("player"+activePlayerIndex_+"_commander"+commanderIndex));
+            } else {
+                tv = findViewById(getResourceId("player"+activePlayerIndex_+"_"+text.toLowerCase()));
+            }
             tv.setText(String.format(Locale.getDefault(), "%02d",
-                    Integer.parseInt(tv.getText().toString())-1));
+                    Integer.parseInt(tv.getText().toString()) + increment));
         }
     }
 
@@ -255,8 +244,10 @@ public class MainActivity extends AppCompatActivity {
 
     public int getPlayerResourceId(int player, String key, String prefix) {
         prefix = prefix.equals("") ? prefix : prefix + "_";
-        return getResources().getIdentifier(
-                prefix + "player" + player + "_" + key, "id", getPackageName());
+        return getResourceId(prefix + "player" + player + "_" + key);
+    }
+    public int getResourceId(String key) {
+        return getResources().getIdentifier(key, "id", getPackageName());
     }
 
     private boolean isNumber(String string) {

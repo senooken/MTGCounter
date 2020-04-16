@@ -13,14 +13,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class HistoryListAdapter extends SimpleAdapter {
-    private static final String[] FROM = {"turn_global", "turn_date", "turn_time",
+    private static final String[] FROM = {"turn_global", "turn_date", "turn_time", "turn_comment",
             "turn_player0_life", "turn_player0_poison", "turn_player0_commander0", "turn_player0_commander1", "turn_player0_commander2", "turn_player0_commander3",
             "turn_player1_life", "turn_player1_poison", "turn_player1_commander0", "turn_player1_commander1", "turn_player1_commander2", "turn_player1_commander3",
             "turn_player2_life", "turn_player2_poison", "turn_player2_commander0", "turn_player2_commander1", "turn_player2_commander2", "turn_player2_commander3",
             "turn_player3_life", "turn_player3_poison", "turn_player3_commander0", "turn_player3_commander1", "turn_player3_commander2", "turn_player3_commander3",
-            "turn_comment",
     };
-    private static final int[] TO = {R.id.turn_global, R.id.turn_date, R.id.turn_time,
+    private static final int[] TO = {R.id.turn_global, R.id.turn_date, R.id.turn_time, R.id.turn_comment,
             R.id.turn_player0_life, R.id.turn_player0_commander0, R.id.turn_player0_poison, R.id.turn_player0_commander0, R.id.turn_player0_commander1, R.id.turn_player0_commander2, R.id.turn_player0_commander3,
             R.id.turn_player1_life, R.id.turn_player1_commander0, R.id.turn_player1_poison, R.id.turn_player1_commander0, R.id.turn_player1_commander1, R.id.turn_player1_commander2, R.id.turn_player1_commander3,
             R.id.turn_player2_life, R.id.turn_player2_commander0, R.id.turn_player2_poison, R.id.turn_player2_commander0, R.id.turn_player2_commander1, R.id.turn_player2_commander2, R.id.turn_player2_commander3,
@@ -41,34 +40,31 @@ public class HistoryListAdapter extends SimpleAdapter {
             convertView = MainActivity.getInstance().getLayoutInflater().inflate(R.layout.turn, parent, false);
         }
 
-        TextView turnGlobal = convertView.findViewById(R.id.turn_global);
-        turnGlobal.setText(data_.get(position).get("turn_global"));
-        TextView turnDate = convertView.findViewById(R.id.turn_date);
-        turnDate.setText(data_.get(position).get("turn_date"));
-        TextView turnTime = convertView.findViewById(R.id.turn_time);
-        turnTime.setText(data_.get(position).get("turn_time"));
+        TextView tv;
+        for (String key : new String[]{"turn_global", "turn_date", "turn_time", "turn_comment"}) {
+            tv = convertView.findViewById(MainActivity.getInstance().getResourceId(key));
+            tv.setText(data_.get(position).get(key));
+        }
 
         String key;
+        EditText et;
 
         for (int playerIndex = 0; playerIndex < MainActivity.getInstance().totalPlayers_; ++playerIndex) {
-            final EditText turnLife = convertView.findViewById(
-                    MainActivity.getInstance().getPlayerResourceId(playerIndex, "life", "turn"));
             key = "turn_player" + playerIndex + "_life";
-            turnLife.setText(data_.get(position).get(key));
-            turnLife.addTextChangedListener(new HistoryWatcher(data_.get(position), key));
+            et = convertView.findViewById(MainActivity.getInstance().getResourceId(key));
+            et.setText(data_.get(position).get(key));
+            et.addTextChangedListener(new HistoryWatcher(data_.get(position), key));
 
-            final EditText turnPoison = convertView.findViewById(
-                    MainActivity.getInstance().getPlayerResourceId(playerIndex, "poison", "turn"));
             key = "turn_player" + playerIndex + "_poison";
-            turnPoison.setText(data_.get(position).get(key));
-            turnPoison.addTextChangedListener(new HistoryWatcher(data_.get(position), key));
+            et = convertView.findViewById(MainActivity.getInstance().getResourceId(key));
+            et.setText(data_.get(position).get(key));
+            et.addTextChangedListener(new HistoryWatcher(data_.get(position), key));
 
             for (int commanderIndex = 0; commanderIndex < MainActivity.getInstance().totalPlayers_; ++commanderIndex) {
-                final EditText turnCommander = convertView.findViewById(
-                        MainActivity.getInstance().getPlayerResourceId(playerIndex, "commander" + commanderIndex, "turn"));
                 key = "turn_player" + playerIndex + "_commander" + commanderIndex;
-                turnCommander.setText(data_.get(position).get(key));
-                turnCommander.addTextChangedListener(new HistoryWatcher(data_.get(position), key));
+                et = convertView.findViewById(MainActivity.getInstance().getResourceId(key));
+                et.setText(data_.get(position).get(key));
+                et.addTextChangedListener(new HistoryWatcher(data_.get(position), key));
             }
         }
 
