@@ -4,17 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class HistoryActivity extends AppCompatActivity implements  AdapterView.OnItemClickListener {
-    private ArrayList<ArrayList<HashMap<String, String>>> histories_ = new ArrayList<>();
+//    private ArrayList<ArrayList<HashMap<String, String>>> histories_ = new ArrayList<>();
+    private ArrayList<GameHistory> histories_ = new ArrayList<>();
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -36,23 +41,27 @@ public class HistoryActivity extends AppCompatActivity implements  AdapterView.O
 
         Intent intent = getIntent();
         if (intent != null) {
-            //noinspection unchecked
-            histories_ = (ArrayList<ArrayList<HashMap<String, String>>>) intent.getSerializableExtra("history");
+            histories_ = (ArrayList<GameHistory>) intent.getSerializableExtra("game_histories");
         }
 
-        // 履歴に存在する最初のコミット
+        ArrayList<HashMap<String, String>> historyItems = new ArrayList<>();
 
-        ArrayList<String> histItems = new ArrayList<>();
-        for (int hist_i = 0; hist_i < histories_.size(); ++hist_i) {
-            histItems.add(String.valueOf(hist_i));
+        SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-dd E hh:mm", Locale.US);
+
+        for (int historyIndex = 0; historyIndex < histories_.size(); ++historyIndex) {
+            HashMap<String, String> map = new HashMap<>();
+            map.put("history_id", String.format(Locale.getDefault(), "%3d", historyIndex+1));
+            GameHistory gh = histories_.get(historyIndex);
+            map.put("history_date", format.format(gh.createdDate));
+            map.put("history_title", gh.title);
+            historyItems.add(map);
         }
 
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, new ArrayList<String>());
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, histItems);
-//        SimpleAdapter adapter = new SimpleAdapter(this, list, R.layout.about,
-//                new String[]{"about_key", "about_value"}, new int[]{R.id.about_key, R.id.about_value});
+        SimpleAdapter adapter = new SimpleAdapter(this, historyItems, R.layout.history,
+                new String[]{"history_id", "history_date", "history_title"},
+                new int[]{R.id.history_id, R.id.history_date, R.id.history_title});
 
-        ListView lv = findViewById(R.id.history);
+        ListView lv = findViewById(R.id.history_id);
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(this);
     }

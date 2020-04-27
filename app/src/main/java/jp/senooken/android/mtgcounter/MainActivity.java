@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,13 +35,16 @@ public class MainActivity extends AppCompatActivity {
     public static final int TOTAL_PLAYERS = 4;
     private int turnGlobal_ = 1;
 
-    private ArrayList<ArrayList<HashMap<String, String>>> gameHistories_ = new ArrayList<>();
+//    private ArrayList<ArrayList<HashMap<String, String>>> gameHistories_ = new ArrayList<>();
+    private ArrayList<GameHistory> gameHistories_ = new ArrayList<>();
 
     private int activePlayerIndex_ = 0;
     private RadioButton counter_;
     private HistoryListAdapter adapter_;
-    private final ArrayList<HashMap<String, String>> history_ = new ArrayList<>();
+//    private final ArrayList<HashMap<String, String>> history_ = new ArrayList<>();
+    private final GameHistory gameHistory_ = new GameHistory();
     private EditText comment_;
+    private EditText title_;
 
     public static int getResourceId(Context context, String key) {
         return context.getResources().getIdentifier(key, "id", context.getPackageName());
@@ -55,9 +60,13 @@ public class MainActivity extends AppCompatActivity {
 
         counter_ = findViewById(R.id.life);
         comment_ = findViewById(R.id.comment);
+        title_ = findViewById(R.id.title);
+        title_.addTextChangedListener(new TitleWatcher(gameHistory_));
+//        title_.setImeOptions(IME_NULL);
 
-        adapter_ = new HistoryListAdapter(this, getLayoutInflater(), history_);
-        ListView history = findViewById(R.id.history);
+//        adapter_ = new HistoryListAdapter(this, getLayoutInflater(), history_);
+        adapter_ = new HistoryListAdapter(this, getLayoutInflater(), gameHistory_.history);
+        ListView history = findViewById(R.id.history_id);
         history.setAdapter(adapter_);
 
         FileInputStream stream = null;
@@ -66,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
             ObjectInputStream object = new ObjectInputStream(stream);
             try {
                 //noinspection unchecked
-                gameHistories_ = (ArrayList<ArrayList<HashMap<String, String>>>) object.readObject();
+//                gameHistories_ = (ArrayList<ArrayList<HashMap<String, String>>>) object.readObject();
+                gameHistories_ = (ArrayList<GameHistory>) object.readObject();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -114,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onCommitButtonClicked(@SuppressWarnings("unused") View view) {
         Date now = new Date();
-        HashMap<String, String>turn = new HashMap<>();
+        HashMap<String, String> turn = new HashMap<>();
         SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd", Locale.US);
         turn.put("turn_date", dateFormat.format(now));
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.US);
@@ -138,11 +148,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        history_.add(turn);
+//        history_.add(turn);
+        gameHistory_.history.add(turn);
         adapter_.notifyDataSetChanged();
 
-        ListView lv = findViewById(R.id.history);
-        lv.smoothScrollToPosition(history_.size());
+        ListView lv = findViewById(R.id.history_id);
+//        lv.smoothScrollToPosition(history_.size());
+        lv.smoothScrollToPosition(gameHistory_.history.size());
 
         comment_.setText("");
         ++turnGlobal_;
@@ -203,10 +215,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         } else if (itemId == R.id.menu_history) {
             Intent intent = new Intent(this, HistoryActivity.class);
-            intent.putExtra("history", gameHistories_);
+            intent.putExtra("game_histories", gameHistories_);
             startActivity(intent);
         } else if (itemId == R.id.menu_save) {
-            gameHistories_.add(history_);
+//            gameHistories_.add(history_);
+            gameHistory_.createdDate = new Date();
+            gameHistories_.add(gameHistory_);
             FileOutputStream stream = null;
             try {
                 stream = getApplicationContext().openFileOutput(HISTORY_FILE, Context.MODE_PRIVATE);
@@ -231,7 +245,8 @@ public class MainActivity extends AppCompatActivity {
     private void reset() {
         turnGlobal_ = 1;
         activePlayerIndex_ = 0;
-        history_.clear();
+//        history_.clear();
+        gameHistory_.clear();
 
         EditText et;
         et = findViewById(R.id.comment);
@@ -279,4 +294,22 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+
+    private class TitleWatcher implements TextWatcher {
+        private GameHistory gameHistory_;
+        TitleWatcher(GameHistory gameHistory) {
+            gameHistory_ = gameHistory;
+        }
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
+        @Override
+        public void afterTextChanged(Editable s) {
+            gameHistory_.title = s.toString();
+        }
+    }
+
 }
