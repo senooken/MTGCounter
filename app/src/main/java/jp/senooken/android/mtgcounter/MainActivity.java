@@ -35,13 +35,11 @@ public class MainActivity extends AppCompatActivity {
     public static final int TOTAL_PLAYERS = 4;
     private int turnGlobal_ = 1;
 
-//    private ArrayList<ArrayList<HashMap<String, String>>> gameHistories_ = new ArrayList<>();
     private ArrayList<GameHistory> gameHistories_ = new ArrayList<>();
 
     private int activePlayerIndex_ = 0;
     private RadioButton counter_;
     private HistoryListAdapter adapter_;
-//    private final ArrayList<HashMap<String, String>> history_ = new ArrayList<>();
     private final GameHistory gameHistory_ = new GameHistory();
     private EditText comment_;
     private EditText title_;
@@ -62,12 +60,9 @@ public class MainActivity extends AppCompatActivity {
         comment_ = findViewById(R.id.comment);
         title_ = findViewById(R.id.game_title);
         title_.addTextChangedListener(new TitleWatcher(gameHistory_));
-//        title_.setImeOptions(IME_NULL);
 
-//        adapter_ = new HistoryListAdapter(this, getLayoutInflater(), history_);
         adapter_ = new HistoryListAdapter(this, getLayoutInflater(), gameHistory_.history);
         ListView history = findViewById(R.id.game_history);
-//        ListView history = findViewById(R.id.main_game_history).findViewById(R.id.game_history);
         history.setAdapter(adapter_);
 
         FileInputStream stream = null;
@@ -75,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
             stream = getApplicationContext().openFileInput(HISTORY_FILE);
             ObjectInputStream object = new ObjectInputStream(stream);
             try {
-                //noinspection unchecked
-//                gameHistories_ = (ArrayList<ArrayList<HashMap<String, String>>>) object.readObject();
                 gameHistories_ = (ArrayList<GameHistory>) object.readObject();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
@@ -149,12 +142,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-//        history_.add(turn);
         gameHistory_.history.add(turn);
         adapter_.notifyDataSetChanged();
 
         ListView lv = findViewById(R.id.game_history);
-//        lv.smoothScrollToPosition(history_.size());
         lv.smoothScrollToPosition(gameHistory_.history.size());
 
         comment_.setText("");
@@ -219,7 +210,6 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("game_histories", gameHistories_);
             startActivity(intent);
         } else if (itemId == R.id.menu_save) {
-//            gameHistories_.add(history_);
             gameHistory_.createdDate = new Date();
             gameHistories_.add(gameHistory_);
             FileOutputStream stream = null;
@@ -246,8 +236,10 @@ public class MainActivity extends AppCompatActivity {
     private void reset() {
         turnGlobal_ = 1;
         activePlayerIndex_ = 0;
-//        history_.clear();
         gameHistory_.clear();
+
+        title_.setText("");
+        comment_.setText("");
 
         EditText et;
         et = findViewById(R.id.comment);

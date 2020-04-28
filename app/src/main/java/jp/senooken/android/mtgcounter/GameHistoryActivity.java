@@ -27,19 +27,12 @@ public class GameHistoryActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-//        ArrayList<HashMap<String, String>> history = new ArrayList<>();
         GameHistory history = new GameHistory();
         Intent intent = getIntent();
         if (intent != null) {
-            //noinspection unchecked
-//            history = (ArrayList<HashMap<String, String>>) intent.getSerializableExtra("history");
-//            if (history == null) {
-//                history = new ArrayList<>();
-//            }
             history = (GameHistory) intent.getSerializableExtra("game_history");
         }
 
-//        HistoryListAdapter adapter = new HistoryListAdapter(this, getLayoutInflater(), history);
         HistoryListAdapter adapter = new HistoryListAdapter(this, getLayoutInflater(), history.history);
 
         ListView gameHistory = findViewById(R.id.game_history);

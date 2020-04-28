@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.Locale;
 
 public class HistoryActivity extends AppCompatActivity implements  AdapterView.OnItemClickListener {
-//    private ArrayList<ArrayList<HashMap<String, String>>> histories_ = new ArrayList<>();
     private ArrayList<GameHistory> histories_ = new ArrayList<>();
 
     @Override
