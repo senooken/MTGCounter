@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         return getResourceId(getApplicationContext(), key);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -289,7 +290,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class TitleWatcher implements TextWatcher {
-        private GameHistory gameHistory_;
+        private final GameHistory gameHistory_;
         TitleWatcher(GameHistory gameHistory) {
             gameHistory_ = gameHistory;
         }

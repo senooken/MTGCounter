@@ -38,6 +38,7 @@ public class HistoryActivity extends AppCompatActivity implements  AdapterView.O
 
         Intent intent = getIntent();
         if (intent != null) {
+            //noinspection unchecked
             histories_ = (ArrayList<GameHistory>) intent.getSerializableExtra("game_histories");
         }
 
