@@ -10,7 +10,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/history" />
+        android:text="@string/history"
+        android:textSize="24sp" />
 
     <ListView
         android:id="@+id/game_history"
