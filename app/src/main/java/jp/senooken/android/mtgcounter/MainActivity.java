@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         TextView life = findViewById(getResourceId("player"+activePlayerIndex_+"_life"));
-        buffer.append(life.getText().toString());
+        buffer.append(life.getText().toString()).append(" (P").append(activePlayerIndex_+1).append(")");
         comment_.setText(buffer.toString());
     }
 
