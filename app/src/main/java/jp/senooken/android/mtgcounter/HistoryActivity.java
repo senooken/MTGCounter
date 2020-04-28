@@ -4,11 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -61,7 +59,7 @@ public class HistoryActivity extends AppCompatActivity implements  AdapterView.O
                 new String[]{"history_id", "history_date", "history_title"},
                 new int[]{R.id.history_id, R.id.history_date, R.id.history_title});
 
-        ListView lv = findViewById(R.id.history_id);
+        ListView lv = findViewById(R.id.game_history);
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(this);
     }
@@ -69,7 +67,7 @@ public class HistoryActivity extends AppCompatActivity implements  AdapterView.O
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(this, GameHistoryActivity.class);
-        intent.putExtra("history", histories_.get(position));
+        intent.putExtra("game_history", histories_.get(position));
         startActivity(intent);
     }
 }

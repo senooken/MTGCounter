@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class GameHistoryActivity extends AppCompatActivity {
     @Override
@@ -29,19 +27,25 @@ public class GameHistoryActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        ArrayList<HashMap<String, String>> history = new ArrayList<>();
+//        ArrayList<HashMap<String, String>> history = new ArrayList<>();
+        GameHistory history = new GameHistory();
         Intent intent = getIntent();
         if (intent != null) {
             //noinspection unchecked
-            history = (ArrayList<HashMap<String, String>>) intent.getSerializableExtra("history");
+//            history = (ArrayList<HashMap<String, String>>) intent.getSerializableExtra("history");
 //            if (history == null) {
 //                history = new ArrayList<>();
 //            }
+            history = (GameHistory) intent.getSerializableExtra("game_history");
         }
 
-        HistoryListAdapter adapter = new HistoryListAdapter(this, getLayoutInflater(), history);
+//        HistoryListAdapter adapter = new HistoryListAdapter(this, getLayoutInflater(), history);
+        HistoryListAdapter adapter = new HistoryListAdapter(this, getLayoutInflater(), history.history);
 
         ListView gameHistory = findViewById(R.id.game_history);
         gameHistory.setAdapter(adapter);
+
+        EditText et = findViewById(R.id.game_title);
+        et.setText(history.title);
     }
 }
