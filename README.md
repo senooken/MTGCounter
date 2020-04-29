@@ -9,5 +9,7 @@ This counter application has following features.
 3. Commander.
 
 ## Screenshot
-![image1](image/v0.6.0-1.jpg)
-![image2](image/v0.6.0-2.jpg)
+![image1](image/v0.6.0/1.home.jpg)
+![image2](image/v0.6.0/2.menu.jpg)
+![image3](image/v0.6.0/3.history-list.jpg)
+![image4](image/v0.6.0/4.history-item.jpg)
