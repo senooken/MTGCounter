@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.US);
         turn.put("turn_time", timeFormat.format(now));
         turn.put("turn_global", String.format(Locale.getDefault(), "%02d", turnGlobal_));
-        turn.put("comment", comment_.getText().toString());
+        turn.put("turn_comment", comment_.getText().toString());
 
         String key;
         for (int playerIndex = 0; playerIndex < TOTAL_PLAYERS; ++playerIndex) {
