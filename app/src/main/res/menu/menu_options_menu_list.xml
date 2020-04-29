@@ -4,6 +4,9 @@
         android:id="@+id/menu_reset"
         android:title="@string/reset" />
     <item
+        android:id="@+id/menu_commander"
+        android:title="@string/menu_commander" />
+    <item
         android:id="@+id/menu_save"
         android:title="@string/save" />
     <item

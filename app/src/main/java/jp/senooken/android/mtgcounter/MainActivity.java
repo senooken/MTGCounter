@@ -203,6 +203,8 @@ public class MainActivity extends AppCompatActivity {
         int itemId = item.getItemId();
         if (itemId == R.id.menu_reset) {
             reset();
+        } else if (itemId == R.id.menu_commander) {
+            setCommanderLife();
         } else if (itemId == R.id.menu_about) {
             Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
@@ -278,6 +280,15 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         adapter_.notifyDataSetChanged();
+    }
+
+    private void setCommanderLife() {
+        TextView tv;
+        for (int playerIndex = 0; playerIndex < TOTAL_PLAYERS; ++playerIndex) {
+            String prefix = "player" + playerIndex;
+            tv = findViewById(getResourceId(prefix+"_life"));
+            tv.setText(R.string.commander);
+        }
     }
 
     private boolean isNumber(String string) {
