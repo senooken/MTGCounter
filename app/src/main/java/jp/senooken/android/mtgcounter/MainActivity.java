@@ -1,5 +1,6 @@
 package jp.senooken.android.mtgcounter;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -30,8 +31,7 @@ import java.util.HashMap;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    private final String HISTORY_FILE = "gameHistory.obj";
-
+    public static final String HISTORY_FILE = "gameHistory.obj";
     public static final int TOTAL_PLAYERS = 4;
     private int turnGlobal_ = 1;
 
@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         return getResourceId(getApplicationContext(), key);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -211,7 +210,9 @@ public class MainActivity extends AppCompatActivity {
         } else if (itemId == R.id.menu_history) {
             Intent intent = new Intent(this, HistoryActivity.class);
             intent.putExtra("game_histories", gameHistories_);
-            startActivity(intent);
+//            startActivity(intent);
+            startActivityForResult(intent, 200);
+
         } else if (itemId == R.id.menu_save) {
             gameHistory_.createdDate = new Date();
             gameHistories_.add(gameHistory_);
@@ -298,6 +299,14 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if ((requestCode == 200) && (data != null)) {
+            gameHistories_ = (ArrayList<GameHistory>) data.getSerializableExtra("game_histories");
+        }
     }
 
     private class TitleWatcher implements TextWatcher {

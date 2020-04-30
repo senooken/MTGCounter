@@ -1,15 +1,25 @@
 package jp.senooken.android.mtgcounter;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,6 +27,8 @@ import java.util.Locale;
 
 public class HistoryActivity extends AppCompatActivity implements  AdapterView.OnItemClickListener {
     private ArrayList<GameHistory> histories_ = new ArrayList<>();
+    SimpleAdapter adapter_;
+    ArrayList<HashMap<String, String>> historyItems_ = new ArrayList<>();
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -42,8 +54,6 @@ public class HistoryActivity extends AppCompatActivity implements  AdapterView.O
             histories_ = (ArrayList<GameHistory>) intent.getSerializableExtra("game_histories");
         }
 
-        ArrayList<HashMap<String, String>> historyItems = new ArrayList<>();
-
         SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-dd E hh:mm", Locale.US);
 
         for (int historyIndex = 0; historyIndex < histories_.size(); ++historyIndex) {
@@ -52,16 +62,18 @@ public class HistoryActivity extends AppCompatActivity implements  AdapterView.O
             GameHistory gh = histories_.get(historyIndex);
             map.put("history_date", format.format(gh.createdDate));
             map.put("history_title", gh.title);
-            historyItems.add(map);
+            historyItems_.add(map);
         }
 
-        SimpleAdapter adapter = new SimpleAdapter(this, historyItems, R.layout.history,
+        adapter_ = new SimpleAdapter(this, historyItems_, R.layout.history,
                 new String[]{"history_id", "history_date", "history_title"},
                 new int[]{R.id.history_id, R.id.history_date, R.id.history_title});
 
         ListView lv = findViewById(R.id.game_history);
-        lv.setAdapter(adapter);
+        lv.setAdapter(adapter_);
         lv.setOnItemClickListener(this);
+
+        registerForContextMenu(lv);
     }
 
     @Override
@@ -70,4 +82,47 @@ public class HistoryActivity extends AppCompatActivity implements  AdapterView.O
         intent.putExtra("game_history", histories_.get(position));
         startActivity(intent);
     }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.history_menu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        int position = ((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position;
+        int itemId = item.getItemId();
+        if (itemId == R.id.menu_history_delete) {
+            historyItems_.remove(position);
+            histories_.remove(position);
+            adapter_.notifyDataSetChanged();
+
+            Intent intent = new Intent();
+            intent.putExtra("game_histories", histories_);
+            setResult(Activity.RESULT_OK, intent);
+
+            FileOutputStream stream = null;
+            try {
+                stream = getApplicationContext().openFileOutput(MainActivity.HISTORY_FILE, Context.MODE_PRIVATE);
+                ObjectOutputStream object = new ObjectOutputStream(stream);
+                object.writeObject(histories_);
+                object.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (stream != null) {
+                    try {
+                        stream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+        return super.onContextItemSelected(item);
+    }
+
 }

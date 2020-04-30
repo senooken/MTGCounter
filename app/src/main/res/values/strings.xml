@@ -41,6 +41,7 @@
     <string name="save">Save to History</string>
     <string name="history">History</string>
     <string name="menu_commander">Set commander life</string>
+    <string name="menu_delete">Delete</string>
 
     <string name="commander">40</string>
 </resources>
