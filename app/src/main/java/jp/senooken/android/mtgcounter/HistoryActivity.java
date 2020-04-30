@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,6 +20,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -53,7 +55,7 @@ public class HistoryActivity extends AppCompatActivity implements  AdapterView.O
 
         SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-dd E hh:mm", Locale.US);
 
-        for (int historyIndex = 0; historyIndex < histories_.size(); ++historyIndex) {
+        for (int historyIndex = histories_.size()-1; historyIndex >= 0; --historyIndex) {
             HashMap<String, String> map = new HashMap<>();
             map.put("history_id", String.format(Locale.getDefault(), "%3d", historyIndex+1));
             GameHistory gh = histories_.get(historyIndex);
@@ -92,34 +94,53 @@ public class HistoryActivity extends AppCompatActivity implements  AdapterView.O
         int position = ((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position;
         int itemId = item.getItemId();
         if (itemId == R.id.menu_history_delete) {
-            historyItems_.remove(position);
-            histories_.remove(position);
-            adapter_.notifyDataSetChanged();
-
-            Intent intent = new Intent();
-            intent.putExtra("game_histories", histories_);
-            setResult(Activity.RESULT_OK, intent);
-
-            FileOutputStream stream = null;
-            try {
-                stream = getApplicationContext().openFileOutput(MainActivity.HISTORY_FILE, Context.MODE_PRIVATE);
-                ObjectOutputStream object = new ObjectOutputStream(stream);
-                object.writeObject(histories_);
-                object.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (stream != null) {
-                    try {
-                        stream.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
+            ArrayList<Integer> positions = new ArrayList<>();
+            positions.add(position);
+            deleteHistory(positions);
         }
 
         return super.onContextItemSelected(item);
     }
 
+    public void onClickedDeleteAll(@SuppressWarnings("unused") View view) {
+        ArrayList<Integer> positions = new ArrayList<>();
+        for (int index = 0; index < histories_.size(); ++index) {
+            positions.add(index);
+        }
+
+        deleteHistory(positions);
+    }
+
+    private void deleteHistory(ArrayList<Integer> positions) {
+        Collections.sort(positions);
+        for (int position = positions.size()-1; position >= 0; --position) {
+            Log.i(this.getLocalClassName(), "index=" + position + ", pos=" + positions.get(position));
+            historyItems_.remove(positions.get(position).intValue());
+            histories_.remove(positions.get(position).intValue());
+        }
+
+        adapter_.notifyDataSetChanged();
+
+        Intent intent = new Intent();
+        intent.putExtra("game_histories", histories_);
+        setResult(Activity.RESULT_OK, intent);
+
+        FileOutputStream stream = null;
+        try {
+            stream = getApplicationContext().openFileOutput(MainActivity.HISTORY_FILE, Context.MODE_PRIVATE);
+            ObjectOutputStream object = new ObjectOutputStream(stream);
+            object.writeObject(histories_);
+            object.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (stream != null) {
+                try {
+                    stream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 }
