@@ -32,7 +32,10 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
     public static final String HISTORY_FILE = "gameHistory.obj";
     public static final int TOTAL_PLAYERS = 4;
+
+    private final int REQUEST_MENU_HISTORY = 200;
     private int turnGlobal_ = 1;
+    private boolean saved_ = false;
 
     private ArrayList<GameHistory> gameHistories_ = new ArrayList<>();
 
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private final GameHistory gameHistory_ = new GameHistory();
     private EditText comment_;
     private EditText title_;
+
 
     public static int getResourceId(Context context, String key) {
         return context.getResources().getIdentifier(key, "id", context.getPackageName());
@@ -210,12 +214,15 @@ public class MainActivity extends AppCompatActivity {
         } else if (itemId == R.id.menu_history) {
             Intent intent = new Intent(this, HistoryActivity.class);
             intent.putExtra("game_histories", gameHistories_);
-//            startActivity(intent);
-            startActivityForResult(intent, 200);
+            startActivityForResult(intent, REQUEST_MENU_HISTORY);
 
         } else if (itemId == R.id.menu_save) {
-            gameHistory_.createdDate = new Date();
-            gameHistories_.add(gameHistory_);
+            if (!saved_) {
+                gameHistory_.createdDate = new Date();
+                gameHistories_.add(gameHistory_);
+                saved_ = true;
+            }
+
             FileOutputStream stream = null;
             try {
                 stream = getApplicationContext().openFileOutput(HISTORY_FILE, Context.MODE_PRIVATE);
@@ -304,7 +311,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if ((requestCode == 200) && (data != null)) {
+        if ((requestCode == REQUEST_MENU_HISTORY) && (data != null)) {
             //noinspection unchecked
             gameHistories_ = (ArrayList<GameHistory>) data.getSerializableExtra("game_histories");
         }
