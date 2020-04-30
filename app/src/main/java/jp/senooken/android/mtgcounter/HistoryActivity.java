@@ -1,14 +1,11 @@
 package jp.senooken.android.mtgcounter;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,8 +24,8 @@ import java.util.Locale;
 
 public class HistoryActivity extends AppCompatActivity implements  AdapterView.OnItemClickListener {
     private ArrayList<GameHistory> histories_ = new ArrayList<>();
-    SimpleAdapter adapter_;
-    ArrayList<HashMap<String, String>> historyItems_ = new ArrayList<>();
+    private SimpleAdapter adapter_;
+    private final ArrayList<HashMap<String, String>> historyItems_ = new ArrayList<>();
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

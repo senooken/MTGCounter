@@ -1,6 +1,5 @@
 package jp.senooken.android.mtgcounter;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -70,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
             stream = getApplicationContext().openFileInput(HISTORY_FILE);
             ObjectInputStream object = new ObjectInputStream(stream);
             try {
+                //noinspection unchecked
                 gameHistories_ = (ArrayList<GameHistory>) object.readObject();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
@@ -305,6 +305,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if ((requestCode == 200) && (data != null)) {
+            //noinspection unchecked
             gameHistories_ = (ArrayList<GameHistory>) data.getSerializableExtra("game_histories");
         }
     }
