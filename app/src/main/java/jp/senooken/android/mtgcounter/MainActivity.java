@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText comment_;
     private EditText title_;
 
-
     public static int getResourceId(Context context, String key) {
         return context.getResources().getIdentifier(key, "id", context.getPackageName());
     }
@@ -65,8 +64,7 @@ public class MainActivity extends AppCompatActivity {
         title_.addTextChangedListener(new TitleWatcher(gameHistory_));
 
         adapter_ = new HistoryListAdapter(this, getLayoutInflater(), gameHistory_.history);
-        ListView history = findViewById(R.id.game_history);
-        history.setAdapter(adapter_);
+        ((ListView) findViewById(R.id.game_history)).setAdapter(adapter_);
 
         FileInputStream stream = null;
         try {
@@ -197,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_options_menu_list, menu);
+        inflater.inflate(R.menu.main_options, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -206,6 +204,9 @@ public class MainActivity extends AppCompatActivity {
         int itemId = item.getItemId();
         if (itemId == R.id.menu_reset) {
             reset();
+        } else if (itemId == R.id.menu_new) {
+            reset();
+            recreate();
         } else if (itemId == R.id.menu_commander) {
             setCommanderLife();
         } else if (itemId == R.id.menu_about) {
@@ -219,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (itemId == R.id.menu_save) {
             if (!saved_) {
                 gameHistory_.createdDate = new Date();
-                gameHistories_.add(gameHistory_);
+                gameHistories_.add(0, gameHistory_);
                 saved_ = true;
             }
 

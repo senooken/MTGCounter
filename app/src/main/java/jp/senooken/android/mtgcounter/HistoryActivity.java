@@ -55,7 +55,7 @@ public class HistoryActivity extends AppCompatActivity implements  AdapterView.O
 
         SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-dd E hh:mm", Locale.US);
 
-        for (int historyIndex = histories_.size()-1; historyIndex >= 0; --historyIndex) {
+        for (int historyIndex = 0; historyIndex < histories_.size(); ++historyIndex) {
             HashMap<String, String> map = new HashMap<>();
             map.put("history_id", String.format(Locale.getDefault(), "%3d", historyIndex+1));
             GameHistory gh = histories_.get(historyIndex);
@@ -86,7 +86,7 @@ public class HistoryActivity extends AppCompatActivity implements  AdapterView.O
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.history_menu, menu);
+        inflater.inflate(R.menu.history_context, menu);
     }
 
     @Override

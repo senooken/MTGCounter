@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/menu_about"
+        android:title="@string/about" />
+    <item
+        android:id="@+id/menu_new"
+        android:title="@string/menu_new" />
+    <item
         android:id="@+id/menu_reset"
         android:title="@string/reset" />
     <item
         android:id="@+id/menu_commander"
         android:title="@string/menu_commander" />
     <item
-        android:id="@+id/menu_save"
-        android:title="@string/save" />
-    <item
         android:id="@+id/menu_history"
         android:title="@string/history" />
     <item
-        android:id="@+id/menu_about"
-        android:title="@string/about" />
+        android:id="@+id/menu_save"
+        android:title="@string/save" />
 </menu>

@@ -40,8 +40,9 @@
     <string name="reset">Reset</string>
     <string name="save">Save to History</string>
     <string name="history">History</string>
-    <string name="delete_all">Delete all</string>
-    <string name="menu_commander">Set commander life</string>
+    <string name="delete_all">Delete All</string>
+    <string name="menu_new">New Game</string>
+    <string name="menu_commander">Commander Life</string>
     <string name="menu_delete">Delete</string>
 
     <string name="commander">40</string>
