@@ -7,7 +7,6 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="24"
@@ -16,7 +15,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="icon.svg">
+   sodipodi:docname="icon.svg"
+   inkscape:export-filename="/home/senooken/project/product/MTGCounter/image/icon.png"
+   inkscape:export-xdpi="96.000008"
+   inkscape:export-ydpi="96.000008">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -26,16 +28,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="13.828971"
-     inkscape:cx="0.24158983"
-     inkscape:cy="7.5097098"
+     inkscape:zoom="6.9144855"
+     inkscape:cx="-5.638087"
+     inkscape:cy="24.743491"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1052"
-     inkscape:window-x="1366"
-     inkscape:window-y="0"
+     inkscape:window-width="1323"
+     inkscape:window-height="713"
+     inkscape:window-x="43"
+     inkscape:window-y="339"
      inkscape:window-maximized="1"
      units="px"
      fit-margin-top="0"
@@ -50,7 +52,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -59,13 +61,6 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-290.64998)">
-    <rect
-       style="opacity:1;fill:#000000;fill-opacity:0.99384616;stroke:#000000;stroke-width:0.238157;stroke-opacity:1"
-       id="rect4766"
-       width="6.1118426"
-       height="6.1118431"
-       x="0.12792572"
-       y="290.76907" />
     <flowRoot
        xml:space="preserve"
        id="flowRoot8501"
@@ -77,19 +72,25 @@
            height="40.357143"
            x="-13.214286"
            y="-147.42857" /></flowRegion><flowPara
-         id="flowPara8507">こんにちは。</flowPara></flowRoot>    <flowRoot
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88055563px;line-height:125%;font-family:FreeSerif;-inkscape-font-specification:'FreeSerif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ff4500;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       id="flowRoot8535"
-       transform="translate(11.959713,14.371507)"><flowRegion
-         id="flowRegion8537"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88055563px;font-family:FreeSerif;-inkscape-font-specification:'FreeSerif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"><use
-           x="0"
-           y="0"
-           xlink:href="#rect4766"
-           id="use8539"
-           width="100%"
-           height="100%"
-           transform="translate(-11.87493,-13.620557)" /></flowRegion><flowPara
-         id="flowPara8541">MC</flowPara></flowRoot>  </g>
+         id="flowPara8507">こんにちは。</flowPara></flowRoot>    <ellipse
+       style="opacity:1;fill:#000000;fill-opacity:0.99384616;stroke:#000000;stroke-width:0.2400634;stroke-opacity:1"
+       id="path4757"
+       cx="3.175"
+       cy="293.82498"
+       rx="3.0549684"
+       ry="3.0549681" />
+    <g
+       aria-label="MC"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:125%;font-family:FreeSerif;-inkscape-font-specification:'FreeSerif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ff4500;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text4755">
+      <path
+         d="m 2.8542203,292.97126 -0.9031111,2.02142 H 1.9017203 L 1.0162481,293.0524 v 1.42169 q 0,0.26811 0.0635,0.35631 0.0635,0.0847 0.2681111,0.0953 v 0.067 H 0.51883148 v -0.067 q 0.21872222,-0.0141 0.27869444,-0.0953 0.0635,-0.0847 0.0635,-0.35631 v -1.43228 q 0,-0.19402 -0.0599722,-0.24694 -0.0564444,-0.0564 -0.27516665,-0.0706 v -0.067 H 1.224387 l 0.8149167,1.78152 0.7796388,-1.78152 h 0.7020278 v 0.067 q -0.1975556,0.0176 -0.254,0.0741 -0.052917,0.0564 -0.052917,0.24341 v 1.56634 q 0,0.18697 0.056445,0.24694 0.056444,0.0564 0.2504722,0.0706 v 0.067 H 2.5331925 v -0.067 q 0.2081389,-0.0141 0.2645834,-0.0741 0.056444,-0.0635 0.056444,-0.28222 z"
+         style=""
+         id="path4764" />
+      <path
+         d="m 3.696863,293.84615 q 0,-0.55034 0.3386667,-0.89253 0.3386666,-0.34572 0.8431389,-0.34572 0.2257777,0 0.4233333,0.06 0.1975555,0.0564 0.2293055,0.0564 0.1164167,0 0.1481667,-0.11641 h 0.074083 l 0.03175,0.79728 h -0.081139 q -0.1940277,-0.65617 -0.7584722,-0.65617 -0.3845277,0 -0.6138333,0.28575 -0.2257778,0.28575 -0.2257778,0.76553 0,0.30691 0.077611,0.53269 0.081139,0.22225 0.2151945,0.33867 0.1340555,0.11289 0.2751666,0.1658 0.1446389,0.0494 0.3069167,0.0494 0.4162778,0 0.7866944,-0.3563 l 0.0635,0.0635 q -0.1622778,0.21519 -0.41275,0.33161 -0.2504722,0.11641 -0.5503333,0.11641 -0.5221111,0 -0.8466666,-0.32808 Q 3.696863,294.3859 3.696863,293.84615 Z"
+         style=""
+         id="path4766" />
+    </g>
+  </g>
 </svg>
