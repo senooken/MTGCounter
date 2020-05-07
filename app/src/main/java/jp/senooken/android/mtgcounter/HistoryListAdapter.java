@@ -14,13 +14,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 class HistoryListAdapter extends SimpleAdapter {
-    private static final String[] FROM = {"turn_global", "turn_date", "turn_time", "turn_comment",
+    private static final String[] FROM = {"turn_count", "turn_date", "turn_time", "turn_comment",
             "turn_player0_life", "turn_player0_poison", "turn_player0_commander0", "turn_player0_commander1", "turn_player0_commander2", "turn_player0_commander3",
             "turn_player1_life", "turn_player1_poison", "turn_player1_commander0", "turn_player1_commander1", "turn_player1_commander2", "turn_player1_commander3",
             "turn_player2_life", "turn_player2_poison", "turn_player2_commander0", "turn_player2_commander1", "turn_player2_commander2", "turn_player2_commander3",
             "turn_player3_life", "turn_player3_poison", "turn_player3_commander0", "turn_player3_commander1", "turn_player3_commander2", "turn_player3_commander3",
     };
-    private static final int[] TO = {R.id.turn_global, R.id.turn_date, R.id.turn_time, R.id.turn_comment,
+    private static final int[] TO = {R.id.turn_count, R.id.turn_date, R.id.turn_time, R.id.turn_comment,
             R.id.turn_player0_life, R.id.turn_player0_commander0, R.id.turn_player0_poison, R.id.turn_player0_commander0, R.id.turn_player0_commander1, R.id.turn_player0_commander2, R.id.turn_player0_commander3,
             R.id.turn_player1_life, R.id.turn_player1_commander0, R.id.turn_player1_poison, R.id.turn_player1_commander0, R.id.turn_player1_commander1, R.id.turn_player1_commander2, R.id.turn_player1_commander3,
             R.id.turn_player2_life, R.id.turn_player2_commander0, R.id.turn_player2_poison, R.id.turn_player2_commander0, R.id.turn_player2_commander1, R.id.turn_player2_commander2, R.id.turn_player2_commander3,
@@ -49,7 +49,7 @@ class HistoryListAdapter extends SimpleAdapter {
         }
 
         TextView tv;
-        for (String key : new String[]{"turn_global", "turn_date", "turn_time", "turn_comment"}) {
+        for (String key : new String[]{"turn_count", "turn_date", "turn_time", "turn_comment"}) {
             tv = convertView.findViewById(getResourceId(key));
             tv.setText(data_.get(position).get(key));
         }

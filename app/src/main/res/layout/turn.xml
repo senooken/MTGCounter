@@ -14,7 +14,7 @@
         android:paddingRight="2sp">
 
         <TextView
-            android:id="@+id/turn_global"
+            android:id="@+id/turn_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2sp"

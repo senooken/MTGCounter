@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int TOTAL_PLAYERS = 4;
 
     private final int REQUEST_MENU_HISTORY = 200;
-    private int turnGlobal_ = 1;
+    private int turnCount_ = 1;
     private boolean saved_ = false;
 
     private ArrayList<GameHistory> gameHistories_ = new ArrayList<>();
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         turn.put("turn_date", dateFormat.format(now));
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.US);
         turn.put("turn_time", timeFormat.format(now));
-        turn.put("turn_global", String.format(Locale.getDefault(), "%02d", turnGlobal_));
+        turn.put("turn_count", String.format(Locale.getDefault(), "%02d", turnCount_));
         turn.put("turn_comment", comment_.getText().toString());
 
         String key;
@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
         lv.smoothScrollToPosition(gameHistory_.history.size());
 
         comment_.setText("");
-        ++turnGlobal_;
+        ++turnCount_;
     }
 
     public void onPlusButtonClicked(@SuppressWarnings("unused") View view) {
@@ -246,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void reset() {
-        turnGlobal_ = 1;
+        turnCount_ = 1;
         activePlayerIndex_ = 0;
         gameHistory_.clear();
 
