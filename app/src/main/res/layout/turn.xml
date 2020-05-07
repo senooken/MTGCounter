@@ -87,8 +87,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/slash"
-                            android:textColor="@color/fixedFront" />
+                            android:text="@string/slash" />
 
                         <EditText
                             android:id="@+id/turn_player0_poison"
@@ -215,8 +214,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/slash"
-                            android:textColor="@color/player1" />
+                            android:text="@string/slash" />
 
                         <EditText
                             android:id="@+id/turn_player1_poison"
@@ -340,8 +338,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/slash"
-                            android:textColor="@color/fixedFront" />
+                            android:text="@string/slash" />
 
                         <EditText
                             android:id="@+id/turn_player2_poison"
@@ -466,8 +463,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/slash"
-                            android:textColor="@color/fixedFront" />
+                            android:text="@string/slash" />
 
                         <EditText
                             android:id="@+id/turn_player3_poison"

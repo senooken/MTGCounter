@@ -18,7 +18,6 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/fixedBack"
         android:baselineAligned="false"
         android:orientation="horizontal"
         android:paddingLeft="4sp"
@@ -33,15 +32,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="5"
-                android:text="@string/label_life_poison"
-                android:textColor="@color/fixedFront" />
+                android:text="@string/label_life_poison" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="5"
-                android:text="@string/label_commander"
-                android:textColor="@color/fixedFront" />
+                android:text="@string/label_commander" />
 
         </LinearLayout>
 
@@ -65,8 +62,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/slash"
-                    android:textColor="@color/fixedFront" />
+                    android:text="@string/slash" />
 
                 <TextView
                     android:id="@+id/player0_poison"
@@ -141,8 +137,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/slash"
-                    android:textColor="@color/fixedFront" />
+                    android:text="@string/slash" />
 
                 <TextView
                     android:id="@+id/player1_poison"
@@ -214,8 +209,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/slash"
-                    android:textColor="@color/fixedFront" />
+                    android:text="@string/slash" />
 
                 <TextView
                     android:id="@+id/player2_poison"
@@ -290,8 +284,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/slash"
-                    android:textColor="@color/fixedFront" />
+                    android:text="@string/slash" />
 
                 <TextView
                     android:id="@+id/player3_poison"
@@ -562,7 +555,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/label_storm" />
+                android:text="@string/label_storm"
+                android:textSize="@dimen/radio" />
 
             <RadioButton
                 android:id="@+id/counter_draw"
@@ -575,7 +569,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/label_draw" />
+                android:text="@string/label_draw"
+                android:textSize="@dimen/radio" />
 
             <RadioButton
                 android:id="@+id/counter_other"
@@ -595,7 +590,7 @@
                 android:paddingTop="2sp"
                 android:paddingBottom="8sp"
                 android:text="@string/label_other"
-                android:textSize="13sp"
+                android:textSize="@dimen/radio"
                 tools:targetApi="o" />
 
         </LinearLayout>
@@ -617,7 +612,6 @@
         style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/fixedBack"
         android:gravity="center"
         android:orientation="horizontal">
 

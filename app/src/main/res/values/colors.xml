@@ -4,9 +4,6 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#ff4500</color>
 
-    <color name="fixedBack">#000000</color>
-    <color name="fixedFront">#ffffff</color>
-
     <color name="white">#ffff99</color>
     <color name="blue">#9999ff</color>
     <color name="black">#7e7e7e</color>
