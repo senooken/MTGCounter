@@ -79,9 +79,16 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player0"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/life" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/slash"
+                            android:textColor="@color/fixedFront" />
 
                         <EditText
                             android:id="@+id/turn_player0_poison"
@@ -95,6 +102,7 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/poison"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />
@@ -111,12 +119,13 @@
                             android:layout_height="wrap_content"
                             android:autofillHints=""
                             android:ems="1"
-                            android:hint="@string/label_commander"
+                            android:hint="@string/label_player0"
                             android:inputType="number"
                             android:maxLength="2"
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player0"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />
@@ -133,6 +142,7 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player1"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />
@@ -149,6 +159,7 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player2"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />
@@ -166,6 +177,7 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player3"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />
@@ -195,9 +207,16 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player1"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/life" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/slash"
+                            android:textColor="@color/player1" />
 
                         <EditText
                             android:id="@+id/turn_player1_poison"
@@ -211,6 +230,7 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/poison"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />
@@ -232,6 +252,7 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player0"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />
@@ -248,6 +269,7 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player1"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />
@@ -264,6 +286,7 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player2"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />
@@ -280,6 +303,7 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player3"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />
@@ -308,9 +332,16 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player2"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/life" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/slash"
+                            android:textColor="@color/fixedFront" />
 
                         <EditText
                             android:id="@+id/turn_player2_poison"
@@ -324,6 +355,7 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/poison"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />
@@ -345,6 +377,7 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player0"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />
@@ -361,6 +394,7 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player1"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />
@@ -377,6 +411,7 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player2"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />
@@ -393,6 +428,7 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player3"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />
@@ -422,9 +458,16 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player3"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/life" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/slash"
+                            android:textColor="@color/fixedFront" />
 
                         <EditText
                             android:id="@+id/turn_player3_poison"
@@ -438,6 +481,7 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/poison"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />
@@ -459,6 +503,7 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player0"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />
@@ -475,6 +520,7 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player1"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />
@@ -491,6 +537,7 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player2"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />
@@ -507,6 +554,7 @@
                             android:paddingLeft="1dp"
                             android:paddingTop="0dp"
                             android:paddingRight="1dp"
+                            android:textColor="@color/player3"
                             android:textSize="@dimen/turn_font_size"
                             tools:targetApi="o"
                             tools:text="@string/zero" />

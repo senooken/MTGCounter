@@ -3,4 +3,22 @@
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#ff4500</color>
+
+    <color name="fixedBack">#000000</color>
+    <color name="fixedFront">#ffffff</color>
+    <color name="fixedRadio">#ff8c00</color>
+
+    <color name="white">#ffff99</color>
+    <color name="blue">#9999ff</color>
+    <color name="black">#7e7e7e</color>
+    <color name="red">#ff9999</color>
+    <color name="green">#99ff99</color>
+    <color name="colorless">@android:color/white</color>
+
+    <color name="player0">@color/white</color>
+    <color name="player1">@color/blue</color>
+    <color name="player2">@color/red</color>
+    <color name="player3">@color/green</color>
+    <color name="poison">#dda0dd</color>
+    <color name="commander">@android:color/white</color>
 </resources>

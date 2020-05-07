@@ -8,6 +8,7 @@
     <string name="pending">Pending</string>
     <string name="turn_hint">Life</string>
     <string name="comment">Comment</string>
+    <string name="slash">/</string>
 
     <string name="label_player">Player</string>
     <string name="label_player0">1</string>
@@ -18,6 +19,7 @@
     <string name="label_type">Type</string>
     <string name="label_life">Life</string>
     <string name="label_commander">Commander</string>
+    <string name="label_life_poison">Life/Poison</string>
     <string name="label_commander0">C1</string>
     <string name="label_commander1">C2</string>
     <string name="label_commander2">C3</string>

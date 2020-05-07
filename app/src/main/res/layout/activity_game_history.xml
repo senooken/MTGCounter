@@ -19,6 +19,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/fixedBack"
         android:baselineAligned="false"
         android:orientation="horizontal"
         android:padding="4sp">
@@ -27,7 +28,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="5"
-            android:text="@string/header_turn_time" />
+            android:text="@string/header_turn_time"
+            android:textColor="@color/fixedFront" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,12 +46,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/label_player" />
+                    android:text="@string/label_player"
+                    android:textColor="@color/player0" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/label_player0" />
+                    android:text="@string/label_player0"
+                    android:textColor="@color/player0" />
             </LinearLayout>
 
             <LinearLayout
@@ -61,12 +65,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/label_player" />
+                    android:text="@string/label_player"
+                    android:textColor="@color/player1" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/label_player1" />
+                    android:text="@string/label_player1"
+                    android:textColor="@color/player1" />
             </LinearLayout>
 
             <LinearLayout
@@ -78,12 +84,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/label_player" />
+                    android:text="@string/label_player"
+                    android:textColor="@color/player2" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/label_player2" />
+                    android:text="@string/label_player2"
+                    android:textColor="@color/player2" />
             </LinearLayout>
 
             <LinearLayout
@@ -95,12 +103,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/label_player" />
+                    android:text="@string/label_player"
+                    android:textColor="@color/player3" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/label_player3" />
+                    android:text="@string/label_player3"
+                    android:textColor="@color/player3" />
             </LinearLayout>
 
         </LinearLayout>
