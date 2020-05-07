@@ -56,7 +56,6 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/player0_life"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/life"
@@ -69,7 +68,6 @@
                     android:textColor="@color/fixedFront" />
 
                 <TextView
-                    android:id="@+id/player0_poison"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/zero"
@@ -82,7 +80,6 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/player0_commander0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -91,7 +88,6 @@
                     tools:text="@string/zero" />
 
                 <TextView
-                    android:id="@+id/player0_commander1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -100,7 +96,6 @@
                     tools:text="@string/zero" />
 
                 <TextView
-                    android:id="@+id/player0_commander2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -109,7 +104,6 @@
                     tools:text="@string/zero" />
 
                 <TextView
-                    android:id="@+id/player0_commander3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -132,7 +126,6 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/player1_life"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/life"
@@ -145,7 +138,6 @@
                     android:textColor="@color/fixedFront" />
 
                 <TextView
-                    android:id="@+id/player1_poison"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/zero"
@@ -159,7 +151,6 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/player1_commander0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -167,7 +158,6 @@
                     android:textColor="@color/player0" />
 
                 <TextView
-                    android:id="@+id/player1_commander1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -175,7 +165,6 @@
                     android:textColor="@color/player1" />
 
                 <TextView
-                    android:id="@+id/player1_commander2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -183,7 +172,6 @@
                     android:textColor="@color/player2" />
 
                 <TextView
-                    android:id="@+id/player1_commander3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -205,7 +193,6 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/player2_life"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/life"
@@ -218,7 +205,6 @@
                     android:textColor="@color/fixedFront" />
 
                 <TextView
-                    android:id="@+id/player2_poison"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/zero"
@@ -231,7 +217,6 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/player2_commander0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -240,7 +225,6 @@
                     tools:text="@string/zero" />
 
                 <TextView
-                    android:id="@+id/player2_commander1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -249,7 +233,6 @@
                     tools:text="@string/zero" />
 
                 <TextView
-                    android:id="@+id/player2_commander2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -258,7 +241,6 @@
                     tools:text="@string/zero" />
 
                 <TextView
-                    android:id="@+id/player2_commander3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -281,7 +263,6 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/player3_life"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/life"
@@ -294,7 +275,6 @@
                     android:textColor="@color/fixedFront" />
 
                 <TextView
-                    android:id="@+id/player3_poison"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/zero"
@@ -308,7 +288,6 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/player3_commander0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -317,7 +296,6 @@
                     tools:text="@string/zero" />
 
                 <TextView
-                    android:id="@+id/player3_commander1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -326,7 +304,6 @@
                     tools:text="@string/zero" />
 
                 <TextView
-                    android:id="@+id/player3_commander2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -335,7 +312,6 @@
                     tools:text="@string/zero" />
 
                 <TextView
-                    android:id="@+id/player3_commander3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -374,7 +350,6 @@
             android:textColor="@color/player0" />
 
         <RadioButton
-            android:id="@+id/player1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -383,7 +358,6 @@
             android:textColor="@color/player1" />
 
         <RadioButton
-            android:id="@+id/player2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -392,7 +366,6 @@
             android:textColor="@color/player2" />
 
         <RadioButton
-            android:id="@+id/player3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -484,7 +457,6 @@
                 android:text="@string/label_mana" />
 
             <RadioButton
-                android:id="@+id/mana_colorless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -494,7 +466,6 @@
                 android:textColor="@color/colorless" />
 
             <RadioButton
-                android:id="@+id/mana_white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -503,7 +474,6 @@
                 android:textColor="@color/white" />
 
             <RadioButton
-                android:id="@+id/mana_blue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -512,7 +482,6 @@
                 android:textColor="@color/blue" />
 
             <RadioButton
-                android:id="@+id/mana_black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -521,7 +490,6 @@
                 android:textColor="@color/black" />
 
             <RadioButton
-                android:id="@+id/mana_red"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -530,7 +498,6 @@
                 android:textColor="@color/red" />
 
             <RadioButton
-                android:id="@+id/mana_green"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -553,7 +520,6 @@
                 tools:ignore="TooManyViews" />
 
             <RadioButton
-                android:id="@+id/counter_storm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onRadioButtonClicked"
@@ -565,7 +531,6 @@
                 android:text="@string/label_storm" />
 
             <RadioButton
-                android:id="@+id/counter_draw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onRadioButtonClicked"
@@ -577,7 +542,6 @@
                 android:text="@string/label_draw" />
 
             <RadioButton
-                android:id="@+id/counter_other"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onRadioButtonClicked"
@@ -627,7 +591,8 @@
             android:layout_weight="1"
             android:onClick="onPendingButtonClicked"
             android:text="@string/pending"
-            android:textSize="@dimen/button" />
+            android:textSize="@dimen/button"
+            tools:ignore="TooManyViews" />
 
         <Button
             style="?android:attr/buttonBarButtonStyle"
