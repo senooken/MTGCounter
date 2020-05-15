@@ -38,7 +38,7 @@ public class AboutActivity extends AppCompatActivity {
         list.add(map);
         map = new HashMap<>();
         map.put("about_key", "Version");
-        map.put("about_value", "0.x.x");
+        map.put("about_value", "1.0.0");
         list.add(map);
         map = new HashMap<>();
         map.put("about_key", "Author");
