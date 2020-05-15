@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
     private final int REQUEST_MENU_HISTORY = 200;
     private int turnCount_ = 1;
-    private boolean saved_ = false;
 
     private ArrayList<GameHistory> gameHistories_ = new ArrayList<>();
 
@@ -215,11 +214,8 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(intent, REQUEST_MENU_HISTORY);
 
         } else if (itemId == R.id.menu_save) {
-            if (!saved_) {
-                gameHistory_.createdDate = new Date();
-                gameHistories_.add(0, gameHistory_);
-                saved_ = true;
-            }
+            gameHistory_.createdDate = new Date();
+            gameHistories_.add(0, gameHistory_);
 
             FileOutputStream stream = null;
             try {
