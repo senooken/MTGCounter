@@ -198,9 +198,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
-        if (itemId == R.id.menu_reset) {
-            reset();
-        } else if (itemId == R.id.menu_new) {
+        if (itemId == R.id.menu_new) {
             reset();
             recreate();
         } else if (itemId == R.id.menu_commander) {
