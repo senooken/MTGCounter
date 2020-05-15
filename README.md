@@ -38,13 +38,13 @@ Fill in [Title] text fieled.
 
 After fill in title, you can count you and your opponent life by downwards buttons.
 
-Select [Player] ID and counter [Type] in radio buttons. Then you can increment/decrement bottom ob [-/+] buttons.
+Select [Player] ID and counter [Type] in radio buttons. Then you can increment/decrement bottom of [-]/[+] buttons.
 
-Current life is shown in center of application.
+Current life is shown in middle of application. This area is editable. So you can update directly.
 
 You can fill in turn's comment in [COMMENT] field.
 
-After fix life changes, select [COMMIT] button. Information of turn is commited and shown top list.
+After fix life changes, select [COMMIT] button. Information of turn is commited and shown top list. In this list, value is editable except for [Turn/Time].
 
 [COMMENT] fieled is shown end of right in list. You can slide list item to left and right .
 
