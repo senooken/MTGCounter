@@ -6,6 +6,8 @@
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
+    android:paddingLeft="4sp"
+    android:paddingRight="4sp"
     tools:context=".MainActivity">
 
     <include
@@ -15,13 +17,10 @@
         android:layout_weight="1" />
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:baselineAligned="false"
-        android:orientation="horizontal"
-        android:paddingLeft="4sp"
-        android:paddingRight="4sp">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -32,312 +31,728 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="5"
-                android:text="@string/label_life_poison" />
+                android:text="@string/label_player_counter0"
+                android:textSize="@dimen/turn_font_size" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="5"
-                android:text="@string/label_commander" />
+                android:text="@string/label_commander"
+                android:textSize="@dimen/turn_font_size" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/player0_life"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/life"
-                    android:textColor="@color/player0" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/slash" />
-
-                <TextView
-                    android:id="@+id/player0_poison"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/zero"
-                    android:textColor="@color/poison" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/player0_commander0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textColor="@color/player0"
-                    tools:text="@string/zero" />
-
-                <TextView
-                    android:id="@+id/player0_commander1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textColor="@color/player1"
-                    tools:text="@string/zero" />
-
-                <TextView
-                    android:id="@+id/player0_commander2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textColor="@color/player2"
-                    tools:text="@string/zero" />
-
-                <TextView
-                    android:id="@+id/player0_commander3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textColor="@color/player3"
-                    tools:text="@string/zero" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginStart="@dimen/turn_left"
+                android:layout_marginLeft="@dimen/turn_left"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/player1_life"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/life"
-                    android:textColor="@color/player1" />
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/slash" />
+                    android:gravity="end"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/player1_poison"
+                    <EditText
+                        android:id="@+id/player0_life"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:gravity="end"
+                        android:hint="@string/turn_hint"
+                        android:inputType="number"
+                        android:text="@string/life"
+                        android:textColor="@color/player0"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player0_poison"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_poison"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@string/zero"
+                        android:textColor="@color/poison"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player0_experience"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_poison"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@string/zero"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player0_energy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_poison"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@string/zero"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/zero"
-                    android:textColor="@color/poison"
-                    tools:text="@string/zero" />
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/player0_commander0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_commander"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/player0"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/zero" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player0_commander1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_commander"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/player1"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/zero" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player0_commander2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_commander"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/player2"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/zero" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player0_commander3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_commander"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/player3"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/zero" />
+                </LinearLayout>
+
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/player1_commander0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textColor="@color/player0" />
-
-                <TextView
-                    android:id="@+id/player1_commander1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textColor="@color/player1" />
-
-                <TextView
-                    android:id="@+id/player1_commander2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textColor="@color/player2" />
-
-                <TextView
-                    android:id="@+id/player1_commander3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textColor="@color/player3" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginStart="@dimen/turn_left"
+                android:layout_marginLeft="@dimen/turn_left"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/player2_life"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/life"
-                    android:textColor="@color/player2" />
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/slash" />
+                    android:gravity="end"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/player2_poison"
+                    <EditText
+                        android:id="@+id/player1_life"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:gravity="end"
+                        android:hint="@string/turn_hint"
+                        android:inputType="number"
+                        android:textColor="@color/player1"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/life" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player1_poison"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_poison"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/poison"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/zero" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player1_experience"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_poison"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@string/zero"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player1_energy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_poison"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@string/zero"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/zero"
-                    android:textColor="@color/poison" />
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/player1_commander0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_commander"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/player0"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/zero" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player1_commander1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_commander"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/player1"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/zero" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player1_commander2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_commander"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/player2"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/zero" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player1_commander3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_commander"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/player3"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/zero" />
+                </LinearLayout>
+
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/player2_commander0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textColor="@color/player0"
-                    tools:text="@string/zero" />
-
-                <TextView
-                    android:id="@+id/player2_commander1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textColor="@color/player1"
-                    tools:text="@string/zero" />
-
-                <TextView
-                    android:id="@+id/player2_commander2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textColor="@color/player2"
-                    tools:text="@string/zero" />
-
-                <TextView
-                    android:id="@+id/player2_commander3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textColor="@color/player3"
-                    tools:text="@string/zero" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginStart="@dimen/turn_left"
+                android:layout_marginLeft="@dimen/turn_left"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/player3_life"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/life"
-                    android:textColor="@color/player3" />
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/slash" />
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/player3_poison"
+                    <EditText
+                        android:id="@+id/player2_life"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:gravity="end"
+                        android:hint="@string/turn_hint"
+                        android:inputType="number"
+                        android:textColor="@color/player2"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/life" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player2_poison"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_poison"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/poison"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/zero" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player2_experience"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_poison"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@string/zero"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player2_energy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_poison"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@string/zero"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/zero"
-                    android:textColor="@color/poison" />
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/player2_commander0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_commander"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/player0"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/zero" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player2_commander1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_commander"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/player1"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/zero" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player2_commander2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_commander"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/player2"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/zero" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player2_commander3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_commander"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/player3"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/zero" />
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/turn_left"
+                android:layout_marginLeft="@dimen/turn_left"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/player3_commander0"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textColor="@color/player0"
-                    tools:text="@string/zero" />
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/player3_commander1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textColor="@color/player1"
-                    tools:text="@string/zero" />
+                    <EditText
+                        android:id="@+id/player3_life"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:gravity="end"
+                        android:hint="@string/turn_hint"
+                        android:inputType="number"
+                        android:textColor="@color/player3"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/life" />
 
-                <TextView
-                    android:id="@+id/player3_commander2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textColor="@color/player2"
-                    tools:text="@string/zero" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
 
-                <TextView
-                    android:id="@+id/player3_commander3"
+                    <EditText
+                        android:id="@+id/player3_poison"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_poison"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/poison"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/zero" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player3_experience"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_poison"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@string/zero"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player3_energy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_poison"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@string/zero"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textColor="@color/player3"
-                    tools:text="@string/zero" />
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/player3_commander0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_commander"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/player0"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/zero" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player3_commander1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_commander"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/player1"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/zero" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player3_commander2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_commander"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/player2"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/zero" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/slash"
+                        android:textSize="@dimen/turn_font_size" />
+
+                    <EditText
+                        android:id="@+id/player3_commander3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="1"
+                        android:hint="@string/label_commander"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/player3"
+                        android:textSize="@dimen/turn_font_size"
+                        tools:targetApi="o"
+                        android:text="@string/zero" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
+
+
 
     </LinearLayout>
 
@@ -346,15 +761,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checkedButton="@+id/player0"
-        android:orientation="horizontal"
-        android:paddingLeft="4sp"
-        android:paddingRight="4sp">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="5"
-            android:text="@string/label_player" />
+            android:text="@string/label_player"
+            android:textSize="@dimen/turn_font_size" />
 
         <RadioButton
             android:id="@+id/player0"
@@ -382,7 +796,8 @@
             android:layout_weight="1"
             android:onClick="onPlayerSelected"
             android:text="@string/label_player2"
-            android:textColor="@color/player2" />
+            android:textColor="@color/player2"
+            tools:ignore="TooManyViews" />
 
         <RadioButton
             android:id="@+id/player3"
@@ -400,20 +815,19 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:checkedButton="@+id/life"
-        android:paddingLeft="4sp"
-        android:paddingRight="4sp">
+        android:checkedButton="@+id/life">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="5"
-                android:text="@string/label_type" />
+                android:text="@string/label_type"
+                android:textSize="@dimen/turn_font_size" />
 
             <RadioButton
                 android:id="@+id/life"
@@ -430,6 +844,33 @@
                 android:onClick="onRadioButtonClicked"
                 android:text="@string/label_poison"
                 android:textColor="@color/poison" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/label_experience" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/label_energy" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="5"
+                android:textSize="@dimen/turn_font_size" />
 
             <RadioButton
                 android:layout_width="wrap_content"
@@ -474,7 +915,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="5"
-                android:text="@string/label_mana" />
+                android:text="@string/label_mana"
+                android:textSize="@dimen/turn_font_size" />
 
             <RadioButton
                 android:id="@+id/mana_colorless"
@@ -542,7 +984,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="5"
-                android:text="@string/label_counter"
+                android:text="@string/label_other"
+                android:textSize="@dimen/turn_font_size"
                 tools:ignore="TooManyViews" />
 
             <RadioButton
@@ -584,12 +1027,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
+                android:background="@null"
                 android:ems="4"
                 android:hint="@string/label_other"
                 android:inputType="text"
                 android:paddingTop="2sp"
                 android:paddingBottom="8sp"
-                android:text="@string/label_other"
+                android:text="@string/label_other_radio"
                 android:textSize="@dimen/radio"
                 tools:targetApi="o" />
 

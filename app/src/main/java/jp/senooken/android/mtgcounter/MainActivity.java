@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.TextView;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -58,13 +57,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        counter_ = findViewById(R.id.life);
-        comment_ = findViewById(R.id.comment);
-        title_ = findViewById(R.id.game_title);
-        title_.addTextChangedListener(new TitleWatcher(gameHistory_));
-
         adapter_ = new HistoryListAdapter(this, getLayoutInflater(), gameHistory_.history);
         ((ListView) findViewById(R.id.game_history)).setAdapter(adapter_);
+
+        counter_ = findViewById(R.id.life);
+        comment_ = findViewById(R.id.comment);
+
+        title_ = findViewById(R.id.game_title);
+        title_.addTextChangedListener(new TitleWatcher(gameHistory_));
 
         FileInputStream stream = null;
         try {
@@ -121,8 +121,6 @@ public class MainActivity extends AppCompatActivity {
     public void onCommitButtonClicked(@SuppressWarnings("unused") View view) {
         Date now = new Date();
         HashMap<String, String> turn = new HashMap<>();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd", Locale.US);
-        turn.put("turn_date", dateFormat.format(now));
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.US);
         turn.put("turn_time", timeFormat.format(now));
         turn.put("turn_count", String.format(Locale.getDefault(), "%02d", turnCount_));
@@ -130,16 +128,15 @@ public class MainActivity extends AppCompatActivity {
 
         String key;
         for (int playerIndex = 0; playerIndex < TOTAL_PLAYERS; ++playerIndex) {
-            key = "player" + playerIndex + "_life";
-            TextView life = findViewById(getResourceId(key));
-            turn.put("turn_"+key, life.getText().toString());
-            key = "player" + playerIndex + "_poison";
-            TextView poison = findViewById(getResourceId(key));
-            turn.put("turn_"+key, poison.getText().toString());
+            for (String type : new String[]{"life", "poison", "experience", "energy"}) {
+                key = "player" + playerIndex + "_" + type;
+                EditText et = findViewById(getResourceId(key));
+                turn.put("turn_"+key, et.getText().toString());
+            }
 
             for (int commanderIndex = 0; commanderIndex < TOTAL_PLAYERS; ++commanderIndex) {
                 key = "player" + playerIndex + "_commander" + commanderIndex;
-                TextView commander = findViewById(getResourceId(key));
+                EditText commander = findViewById(getResourceId(key));
                 turn.put("turn_"+key, commander.getText().toString());
             }
         }
@@ -168,16 +165,16 @@ public class MainActivity extends AppCompatActivity {
             counter_.setText(String.format(Locale.getDefault(), "%02d",
                     Integer.parseInt(counter_.getText().toString()) + increment));
         } else {
-            TextView tv;
+            EditText counter;
             boolean IS_COMMANDER = text.charAt(0) == 'C';
             if (IS_COMMANDER) {
                 int commanderIndex = Integer.parseInt(text.substring(1)) - 1;
-                tv = findViewById(getResourceId("player"+activePlayerIndex_+"_commander"+commanderIndex));
+                counter = findViewById(getResourceId("player"+activePlayerIndex_+"_commander"+commanderIndex));
             } else {
-                tv = findViewById(getResourceId("player"+activePlayerIndex_+"_"+text.toLowerCase()));
+                counter = findViewById(getResourceId("player"+activePlayerIndex_+"_"+text.toLowerCase()));
             }
-            tv.setText(String.format(Locale.getDefault(), "%02d",
-                    Integer.parseInt(tv.getText().toString()) + increment));
+            counter.setText(String.format(Locale.getDefault(), "%02d",
+                    Integer.parseInt(counter.getText().toString()) + increment));
         }
     }
 
@@ -187,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
             buffer.append(", ");
         }
 
-        TextView life = findViewById(getResourceId("player"+activePlayerIndex_+"_life"));
+        EditText life = findViewById(getResourceId("player"+activePlayerIndex_+"_life"));
         buffer.append(life.getText().toString()).append(" (P").append(activePlayerIndex_+1).append(")");
         comment_.setText(buffer.toString());
     }
@@ -275,28 +272,31 @@ public class MainActivity extends AppCompatActivity {
             rb.setText(R.string.zero);
         }
 
-        TextView tv;
+        EditText counter;
         for (int playerIndex = 0; playerIndex < TOTAL_PLAYERS; ++playerIndex) {
             String prefix = "player" + playerIndex;
-            tv = findViewById(getResourceId(prefix+"_life"));
-            tv.setText(R.string.life);
-            tv = findViewById(getResourceId(prefix+"_poison"));
-            tv.setText(R.string.zero);
+            counter = findViewById(getResourceId(prefix+"_life"));
+            counter.setText(R.string.life);
+
+            for (String type : new String[]{"poison", "experience", "energy"}) {
+                counter = findViewById(getResourceId(prefix+"_"+type));
+                counter.setText(R.string.zero);
+            }
 
             for (int commanderIndex = 0; commanderIndex < TOTAL_PLAYERS; ++commanderIndex) {
-                tv = findViewById(getResourceId(prefix+"_commander"+commanderIndex));
-                tv.setText(R.string.zero);
+                counter = findViewById(getResourceId(prefix+"_commander"+commanderIndex));
+                counter.setText(R.string.zero);
             }
         }
         adapter_.notifyDataSetChanged();
     }
 
     private void setCommanderLife() {
-        TextView tv;
+        EditText counter;
         for (int playerIndex = 0; playerIndex < TOTAL_PLAYERS; ++playerIndex) {
             String prefix = "player" + playerIndex;
-            tv = findViewById(getResourceId(prefix+"_life"));
-            tv.setText(R.string.commander);
+            counter = findViewById(getResourceId(prefix+"_life"));
+            counter.setText(R.string.commander);
         }
     }
 

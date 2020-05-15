@@ -28,7 +28,7 @@
 
     <style name="radioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">@dimen/radio</item>
     </style>
 
 </resources>

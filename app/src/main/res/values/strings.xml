@@ -19,18 +19,21 @@
     <string name="label_type">Type</string>
     <string name="label_life">Life</string>
     <string name="label_commander">Commander</string>
-    <string name="label_life_poison">Life/Poison</string>
+    <string name="label_player_counter0">Life/P/Ex/En</string>
     <string name="label_commander0">C1</string>
     <string name="label_commander1">C2</string>
     <string name="label_commander2">C3</string>
     <string name="label_commander3">C4</string>
 
     <string name="label_poison">Poison</string>
+    <string name="label_experience">Experience</string>
+    <string name="label_energy">Energy</string>
+
     <string name="label_mana">Mana</string>
-    <string name="label_counter">Counter</string>
     <string name="label_storm">(Storm)</string>
     <string name="label_draw">(Draw)</string>
-    <string name="label_other">(Other)</string>
+    <string name="label_other_radio">(Other)</string>
+    <string name="label_other">Other</string>
 
     <string name="turn_date">YYYY-MM-dd</string>
     <string name="turn_time">HH:mm:ss</string>
