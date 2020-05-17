@@ -57,7 +57,7 @@ public class HistoryActivity extends AppCompatActivity implements  AdapterView.O
 
         for (int historyIndex = 0; historyIndex < histories_.size(); ++historyIndex) {
             HashMap<String, String> map = new HashMap<>();
-            map.put("history_id", String.format(Locale.getDefault(), "%3d", historyIndex+1));
+            map.put("history_id", String.format(Locale.getDefault(), "%d", historyIndex+1));
             GameHistory gh = histories_.get(historyIndex);
             map.put("history_date", format.format(gh.createdDate));
             map.put("history_title", gh.title);

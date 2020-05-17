@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton counter_;
     private HistoryListAdapter adapter_;
     private final GameHistory gameHistory_ = new GameHistory();
-    private EditText comment_;
     private EditText title_;
 
     public static int getResourceId(Context context, String key) {
@@ -60,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         ((ListView) findViewById(R.id.game_history)).setAdapter(adapter_);
 
         counter_ = findViewById(R.id.life);
-        comment_ = findViewById(R.id.comment);
 
         title_ = findViewById(R.id.game_title);
         title_.addTextChangedListener(new TitleWatcher(gameHistory_));
@@ -122,8 +120,7 @@ public class MainActivity extends AppCompatActivity {
         HashMap<String, String> turn = new HashMap<>();
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.US);
         turn.put("turn_time", timeFormat.format(now));
-        turn.put("turn_count", String.format(Locale.getDefault(), "%02d", turnCount_));
-        turn.put("turn_comment", comment_.getText().toString());
+        turn.put("turn_count", String.format(Locale.getDefault(), "%d", turnCount_));
 
         String key;
         for (int playerIndex = 0; playerIndex < TOTAL_PLAYERS; ++playerIndex) {
@@ -146,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
         ListView lv = findViewById(R.id.game_history);
         lv.smoothScrollToPosition(gameHistory_.history.size());
 
-        comment_.setText("");
         ++turnCount_;
     }
 
@@ -175,17 +171,6 @@ public class MainActivity extends AppCompatActivity {
             counter.setText(String.format(Locale.getDefault(), "%02d",
                     Integer.parseInt(counter.getText().toString()) + increment));
         }
-    }
-
-    public void onPendingButtonClicked(@SuppressWarnings("unused") View view) {
-        StringBuilder buffer = new StringBuilder(comment_.getText().toString());
-        if (!comment_.getText().toString().isEmpty()) {
-            buffer.append(", ");
-        }
-
-        EditText life = findViewById(getResourceId("player"+activePlayerIndex_+"_life"));
-        buffer.append(life.getText().toString()).append(" (P").append(activePlayerIndex_+1).append(")");
-        comment_.setText(buffer.toString());
     }
 
     @Override
@@ -240,14 +225,9 @@ public class MainActivity extends AppCompatActivity {
         turnCount_ = 1;
         activePlayerIndex_ = 0;
         gameHistory_.clear();
-
         title_.setText("");
-        comment_.setText("");
 
-        EditText et;
-        et = findViewById(R.id.comment);
-        et.setText("");
-        et = findViewById(R.id.other);
+        EditText et = findViewById(R.id.other);
         et.setText(R.string.label_other);
 
         RadioButton rb;

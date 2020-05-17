@@ -32,7 +32,7 @@ After launch MTGCounter, following home activity is shown.
 
 ![home.example](image/v1.0.0/home.example.png)
 
-Fill in [Title] text fieled.
+Fill in [Title] text field.
 
 [Title] is game title. This text is used by history description. Multiple line is allowed. So you can use this filed as memo (Side in/out, opponent public hand, your deck, opponent deck etc.).
 
@@ -44,9 +44,9 @@ Current life is shown in middle of application. This area is editable. So you ca
 
 You can fill in turn's comment in [COMMENT] field.
 
-After fix life changes, select [COMMIT] button. Information of turn is commited and shown top list. In this list, value is editable except for [Turn/Time].
+After fix life changes, select [COMMIT] button. Information of turn is committed and shown top list. In this list, value is editable except for [Turn/Time].
 
-[COMMENT] fieled is shown end of right in list. You can slide list item to left and right .
+[COMMENT] field is shown end of right in list. You can slide list item to left and right .
 
 If select [PENDING] button, append current life and player ID [COMMENT] field.
 
@@ -55,7 +55,7 @@ Bottom of 2 lines ([Mana], [Other]) are only counter. These entry is not saved i
 ### Menu
 ![menu](image/v1.0.0/menu.png)
 
-MTGCounter has menu opsions in home activity.
+MTGCounter has menu options in home activity.
 
 - [About]: Application information.
 - [New Game]: Start new game.

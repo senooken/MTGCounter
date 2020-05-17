@@ -11,10 +11,16 @@
     tools:context=".MainActivity">
 
     <include
-        layout="@layout/activity_game_history"
+        layout="@layout/game_history"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="@android:color/white" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="5"
-                android:text="@string/label_player_counter0"
+                android:text="@string/label_counter"
                 android:textSize="@dimen/turn_font_size" />
 
             <TextView
@@ -44,32 +50,29 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/turn_left"
-                android:layout_marginLeft="@dimen/turn_left"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="end"
                     android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/player0_life"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:autofillHints=""
                         android:background="@null"
                         android:gravity="end"
-                        android:hint="@string/turn_hint"
+                        android:hint="@string/life"
                         android:inputType="number"
                         android:text="@string/life"
                         android:textColor="@color/player0"
@@ -88,8 +91,7 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_poison"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
                         android:text="@string/zero"
@@ -110,8 +112,7 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_poison"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
                         android:text="@string/zero"
@@ -131,8 +132,7 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_poison"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
                         android:text="@string/zero"
@@ -151,14 +151,13 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_commander"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text="@string/zero"
                         android:textColor="@color/player0"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/zero" />
+                        tools:targetApi="o" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -172,14 +171,13 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_commander"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text="@string/zero"
                         android:textColor="@color/player1"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/zero" />
+                        tools:targetApi="o" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -193,14 +191,13 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_commander"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text="@string/zero"
                         android:textColor="@color/player2"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/zero" />
+                        tools:targetApi="o" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -212,17 +209,15 @@
                         android:id="@+id/player0_commander3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="0dp"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_commander"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text="@string/zero"
                         android:textColor="@color/player3"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/zero" />
+                        tools:targetApi="o" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -230,30 +225,27 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/turn_left"
-                android:layout_marginLeft="@dimen/turn_left"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="end"
                     android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/player1_life"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:autofillHints=""
                         android:background="@null"
                         android:gravity="end"
-                        android:hint="@string/turn_hint"
+                        android:hint="@string/life"
                         android:inputType="number"
+                        android:text="@string/life"
                         android:textColor="@color/player1"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/life" />
+                        tools:targetApi="o" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -267,14 +259,13 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_poison"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text="@string/zero"
                         android:textColor="@color/poison"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/zero" />
+                        tools:targetApi="o" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -288,8 +279,7 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_poison"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
                         android:text="@string/zero"
@@ -308,8 +298,7 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_poison"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
                         android:text="@string/zero"
@@ -327,14 +316,13 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_commander"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text="@string/zero"
                         android:textColor="@color/player0"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/zero" />
+                        tools:targetApi="o" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -348,14 +336,13 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_commander"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text="@string/zero"
                         android:textColor="@color/player1"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/zero" />
+                        tools:targetApi="o" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -369,14 +356,13 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_commander"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text="@string/zero"
                         android:textColor="@color/player2"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/zero" />
+                        tools:targetApi="o" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -390,14 +376,13 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_commander"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text="@string/zero"
                         android:textColor="@color/player3"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/zero" />
+                        tools:targetApi="o" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -405,29 +390,26 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/turn_left"
-                android:layout_marginLeft="@dimen/turn_left"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
                     <EditText
                         android:id="@+id/player2_life"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
                         android:gravity="end"
-                        android:hint="@string/turn_hint"
+                        android:hint="@string/life"
                         android:inputType="number"
+                        android:text="@string/life"
                         android:textColor="@color/player2"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/life" />
+                        tools:targetApi="o" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -441,14 +423,13 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_poison"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text="@string/zero"
                         android:textColor="@color/poison"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/zero" />
+                        tools:targetApi="o" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -462,8 +443,7 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_poison"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
                         android:text="@string/zero"
@@ -482,8 +462,7 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_poison"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
                         android:text="@string/zero"
@@ -501,14 +480,13 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_commander"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text="@string/zero"
                         android:textColor="@color/player0"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/zero" />
+                        tools:targetApi="o" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -522,14 +500,13 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_commander"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text="@string/zero"
                         android:textColor="@color/player1"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/zero" />
+                        tools:targetApi="o" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -543,14 +520,13 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_commander"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text="@string/zero"
                         android:textColor="@color/player2"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/zero" />
+                        tools:targetApi="o" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -564,14 +540,13 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_commander"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text="@string/zero"
                         android:textColor="@color/player3"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/zero" />
+                        tools:targetApi="o" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -579,29 +554,27 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/turn_left"
-                android:layout_marginLeft="@dimen/turn_left"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/player3_life"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:autofillHints=""
                         android:background="@null"
                         android:gravity="end"
-                        android:hint="@string/turn_hint"
+                        android:hint="@string/life"
                         android:inputType="number"
+                        android:text="@string/life"
                         android:textColor="@color/player3"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/life" />
+                        tools:targetApi="o" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -615,14 +588,13 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_poison"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text="@string/zero"
                         android:textColor="@color/poison"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/zero" />
+                        tools:targetApi="o" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -636,8 +608,7 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_poison"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
                         android:text="@string/zero"
@@ -656,8 +627,7 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_poison"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
                         android:text="@string/zero"
@@ -675,14 +645,13 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_commander"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text="@string/zero"
                         android:textColor="@color/player0"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/zero" />
+                        tools:targetApi="o" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -696,14 +665,13 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_commander"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text="@string/zero"
                         android:textColor="@color/player1"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/zero" />
+                        tools:targetApi="o" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -717,14 +685,13 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_commander"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text="@string/zero"
                         android:textColor="@color/player2"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/zero" />
+                        tools:targetApi="o" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -738,26 +705,22 @@
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@null"
-                        android:ems="1"
-                        android:hint="@string/label_commander"
+                        android:hint="@string/zero"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text="@string/zero"
                         android:textColor="@color/player3"
                         android:textSize="@dimen/turn_font_size"
-                        tools:targetApi="o"
-                        android:text="@string/zero" />
+                        tools:targetApi="o" />
                 </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
 
-
-
     </LinearLayout>
 
     <RadioGroup
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checkedButton="@+id/player0"
@@ -787,7 +750,8 @@
             android:layout_weight="1"
             android:onClick="onPlayerSelected"
             android:text="@string/label_player1"
-            android:textColor="@color/player1" />
+            android:textColor="@color/player1"
+            tools:ignore="TooManyViews" />
 
         <RadioButton
             android:id="@+id/player2"
@@ -812,7 +776,6 @@
 
 
     <RadioGroup
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checkedButton="@+id/life">
@@ -978,6 +941,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <TextView
@@ -988,68 +952,79 @@
                 android:textSize="@dimen/turn_font_size"
                 tools:ignore="TooManyViews" />
 
-            <RadioButton
-                android:id="@+id/counter_storm"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onRadioButtonClicked"
-                android:text="@string/zero" />
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/label_storm"
-                android:textSize="@dimen/radio" />
+                <RadioButton
+                    android:id="@+id/counter_storm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/zero" />
 
-            <RadioButton
-                android:id="@+id/counter_draw"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onRadioButtonClicked"
-                android:text="@string/zero"
-                tools:ignore="TooManyViews" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_storm"
+                    android:textSize="@dimen/radio" />
+            </LinearLayout>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/label_draw"
-                android:textSize="@dimen/radio" />
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/counter_other"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onRadioButtonClicked"
-                android:text="@string/zero" />
+                <RadioButton
+                    android:id="@+id/counter_draw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/zero"
+                    tools:ignore="TooManyViews" />
 
-            <EditText
-                android:id="@+id/other"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_draw"
+                    android:textSize="@dimen/radio" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:background="@null"
-                android:ems="4"
-                android:hint="@string/label_other"
-                android:inputType="text"
-                android:paddingTop="2sp"
-                android:paddingBottom="8sp"
-                android:text="@string/label_other_radio"
-                android:textSize="@dimen/radio"
-                tools:targetApi="o" />
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/counter_other"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/zero" />
+
+                <EditText
+                    android:id="@+id/other"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@null"
+                    android:ems="4"
+                    android:hint="@string/label_other"
+                    android:inputType="text"
+                    android:paddingTop="2sp"
+                    android:paddingBottom="8sp"
+                    android:text="@string/label_other_radio"
+                    android:textSize="@dimen/radio"
+                    tools:targetApi="o" />
+            </LinearLayout>
 
         </LinearLayout>
 
     </RadioGroup>
-
-    <EditText
-
-        android:id="@+id/comment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:hint="@string/comment"
-        android:inputType="textMultiLine|text"
-        tools:targetApi="o" />
 
     <LinearLayout
         style="?android:attr/buttonBarStyle"
@@ -1057,16 +1032,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
-
-        <Button
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onPendingButtonClicked"
-            android:text="@string/pending"
-            android:textSize="@dimen/button"
-            tools:ignore="TooManyViews" />
 
         <Button
             style="?android:attr/buttonBarButtonStyle"
@@ -1082,8 +1047,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="onPlusButtonClicked"
-            android:text="@string/plus"
+            android:onClick="onCommitButtonClicked"
+            android:text="@string/commit"
             android:textSize="@dimen/button" />
 
         <Button
@@ -1091,8 +1056,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="onCommitButtonClicked"
-            android:text="@string/commit"
+            android:onClick="onPlusButtonClicked"
+            android:text="@string/plus"
             android:textSize="@dimen/button" />
 
     </LinearLayout>
