@@ -14,12 +14,12 @@ This counter application has following features.
 - Support commander.
 - Support old Android (since Android 4.0.3 API level 15).
 - Open Source (https://github.com/senooken/MTGCounter).
-- No advertisement.
+- No advertisement.end
 
 If you find any bugs or have suggestion, please tell me by e-mail (contact@senooken.jp) or GitHub issues (https://github.com/senooken/MTGCounter/issues).
 
 ## Screenshot
-![home.example](image/v1.0.0/home.example.png)
+![home.example](image/master/home.example.png)
 
 ## Attribute
 - Author: SENOO, Ken
@@ -30,7 +30,7 @@ If you find any bugs or have suggestion, please tell me by e-mail (contact@senoo
 ### Home
 After launch MTGCounter, following home activity is shown.
 
-![home.example](image/v1.0.0/home.example.png)
+![home.example](image/master/home.example.png)
 
 Fill in [Title] text field.
 
@@ -42,18 +42,12 @@ Select [Player] ID and counter [Type] in radio buttons. Then you can increment/d
 
 Current life is shown in middle of application. This area is editable. So you can update directly.
 
-You can fill in turn's comment in [COMMENT] field.
-
 After fix life changes, select [COMMIT] button. Information of turn is committed and shown top list. In this list, value is editable except for [Turn/Time].
-
-[COMMENT] field is shown end of right in list. You can slide list item to left and right .
-
-If select [PENDING] button, append current life and player ID [COMMENT] field.
 
 Bottom of 2 lines ([Mana], [Other]) are only counter. These entry is not saved in history.
 
 ### Menu
-![menu](image/v1.0.0/menu.png)
+![menu](image/master/menu.png)
 
 MTGCounter has menu options in home activity.
 
@@ -64,7 +58,7 @@ MTGCounter has menu options in home activity.
 - [Commander Life]: Set all players life to 40 for commander.
 
 ### History
-![history](image/v1.0.0/history.png)
+![history](image/master/history.png)
 
 In [History] menu, all saved history are shown with ID, created date, title.
 
