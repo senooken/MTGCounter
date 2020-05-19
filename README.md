@@ -1,12 +1,12 @@
 # MTGCounter
 ![icon](image/icon/icon-256x256.png)
 
-Counter application for the Magic: The Gathering (MTG).
+Life counter application for the Magic: The Gathering (MTG).
 
 ## Introduction
-MTGCounter is the counter Android application for the Magic: The Gathering (MTG).
+MTGCounter is the life counter Android application for the Magic: The Gathering (MTG).
 
-This counter application has following features.
+This life counter application has following features.
 
 - Count many type (life, poison, experience, energy, mana, storm, draw).
 - Trailing life history.
