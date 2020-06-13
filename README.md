@@ -16,7 +16,7 @@ This life counter application has following features.
 - Support commander.
 - Support old Android (since Android 4.0.3 API level 15).
 - Open Source (https://github.com/senooken/MTGCounter).
-- No advertisement.end
+- No advertisement.
 
 If you find any bugs or have suggestion, please tell me by e-mail (contact@senooken.jp) or GitHub issues (https://github.com/senooken/MTGCounter/issues).
 
@@ -26,6 +26,16 @@ If you find any bugs or have suggestion, please tell me by e-mail (contact@senoo
 ## Attribute
 - Author: SENOO, Ken
 - License: [CC0](https://creativecommons.org/publicdomain/zero/1.0/deed.en) ![CC0](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)
+
+## Environment
+I developed this application by following environment.
+
+- Target: Android 4.0.3+ (API Level 15+)
+- Language: Java SE 6+
+- IDE: Android Studio 3.5.3
+- OS: Ubuntu 18.04
+
+If you want to build this application, after run `git clone` or download this repository, then open it by Android Studio.
 
 ## Usage
 
