@@ -5,6 +5,8 @@ Life counter application for the Magic: The Gathering (MTG).
 
 Now on release at [Google Play](https://play.google.com/store/apps/details?id=jp.senooken.android.mtgcounter) since 2020-05-23.
 
+If you want to install directly, please download .apk or .aab file from [GitHub Releases](https://github.com/senooken/MTGCounter/releases).
+
 ## Introduction
 MTGCounter is the life counter Android application for the Magic: The Gathering (MTG).
 
