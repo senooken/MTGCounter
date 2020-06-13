@@ -3,6 +3,8 @@
 
 Life counter application for the Magic: The Gathering (MTG).
 
+Now on release at [Google Play](https://play.google.com/store/apps/details?id=jp.senooken.android.mtgcounter) since 2020-05-23.
+
 ## Introduction
 MTGCounter is the life counter Android application for the Magic: The Gathering (MTG).
 
@@ -19,7 +21,7 @@ This life counter application has following features.
 If you find any bugs or have suggestion, please tell me by e-mail (contact@senooken.jp) or GitHub issues (https://github.com/senooken/MTGCounter/issues).
 
 ## Screenshot
-![home.example](image/master/home.example.png)
+<img src="image/master/home.example.png" width="300" alt="home.example" />
 
 ## Attribute
 - Author: SENOO, Ken
@@ -30,7 +32,7 @@ If you find any bugs or have suggestion, please tell me by e-mail (contact@senoo
 ### Home
 After launch MTGCounter, following home activity is shown.
 
-![home.example](image/master/home.example.png)
+<img src="image/master/home.example.png" width="300" alt="home.example" />
 
 Fill in [Title] text field.
 
@@ -47,7 +49,7 @@ After fix life changes, select [COMMIT] button. Information of turn is committed
 Bottom of 2 lines ([Mana], [Other]) are only counter. These entry is not saved in history.
 
 ### Menu
-![menu](image/master/menu.png)
+<img src="image/master/menu.png" width="300" alt="menu" />
 
 MTGCounter has menu options in home activity.
 
@@ -58,14 +60,21 @@ MTGCounter has menu options in home activity.
 - [Commander Life]: Set all players life to 40 for commander.
 
 ### History
-![history](image/master/history.png)
+<img src="image/master/history.png" width="300" alt="history" />
 
 In [History] menu, all saved history are shown with ID, created date, title.
-
-Game history is read only. You cannot modify saved history data.
 
 When select list item, saved game history is shown.
 
 When long select list item, [Delete] menu is shown.
 
 If you want to delete all history, select bottom of [DELETE ALL] button.
+
+<img src="image/master/history.delete.png" width="300" alt="history.delete" />
+
+### Game History
+<img src="image/master/history.game.png" width="300" alt="history.game" />
+
+When select an item in [History] menu, then game History is shown.
+
+Game history is read only. You cannot modify saved history data.
