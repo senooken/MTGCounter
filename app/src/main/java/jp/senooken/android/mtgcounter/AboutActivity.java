@@ -34,11 +34,11 @@ public class AboutActivity extends AppCompatActivity {
         HashMap<String, String> map;
         map = new HashMap<>();
         map.put("about_key", "Application");
-        map.put("about_value", "MTGCounter");
+        map.put("about_value", getString(R.string.app_name));
         list.add(map);
         map = new HashMap<>();
         map.put("about_key", "Version");
-        map.put("about_value", "1.0.0");
+        map.put("about_value", BuildConfig.VERSION_NAME);
         list.add(map);
         map = new HashMap<>();
         map.put("about_key", "Author");
